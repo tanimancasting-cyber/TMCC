@@ -276,8 +276,25 @@
        ACTOR PROFILE
   ========================== -->
 
-  <div id="profileScreen" class="hidden">
+  <div id="actorUpdates" class="hidden">
 
+  <div class="card">
+
+    <h2>Latest Auditions & Updates</h2>
+
+    <div id="updatesList">
+      Loading updates...
+    </div>
+
+  </div>
+
+</div>
+
+<div id="profileScreen" class="hidden">
+
+  <div class="card">
+
+    <h2>Actor Profile</h2>
     <div class="card">
 
       <h2>Actor Profile</h2>
@@ -541,26 +558,31 @@ async function login() {
 // SHOW PROFILE
 // =========================
 
+// =========================
+// SHOW PROFILE
+// =========================
+
 async function showProfile() {
 
   const authScreen =
-    document.getElementById(
-      "authScreen"
-    );
+    document.getElementById("authScreen");
 
   const profileScreen =
-    document.getElementById(
-      "profileScreen"
-    );
+    document.getElementById("profileScreen");
+
+  authScreen.classList.add("hidden");
+
+  profileScreen.classList.remove("hidden");
 
 
-  authScreen.classList.add(
-    "hidden"
-  );
+  // SHOW ACTOR UPDATES
 
-  profileScreen.classList.remove(
-    "hidden"
-  );
+  const actorUpdates =
+    document.getElementById("actorUpdates");
+
+  if (actorUpdates) {
+    actorUpdates.classList.remove("hidden");
+  }
 
 
   const {
@@ -574,6 +596,8 @@ async function showProfile() {
   }
 
 
+  // ADMIN ACCESS
+
   if (
     user.email.toLowerCase() ===
     "tanimancasting@gmail.com"
@@ -581,16 +605,12 @@ async function showProfile() {
 
     document.getElementById(
       "adminUpdates"
-    ).classList.remove(
-      "hidden"
-    );
+    ).classList.remove("hidden");
 
 
     document.getElementById(
       "adminActors"
-    ).classList.remove(
-      "hidden"
-    );
+    ).classList.remove("hidden");
 
 
     await loadActors();
@@ -599,6 +619,8 @@ async function showProfile() {
 
 
   await loadProfile();
+
+  await loadUpdates();
 
 }
 
