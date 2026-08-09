@@ -505,7 +505,12 @@ async function loadProfile() {
       .eq("id", user.id)
       .maybeSingle();
 
-  if (error || !data) return;
+  if (error) {
+    console.error(error);
+    return;
+  }
+
+  if (!data) return;
 
   document.getElementById("full_name").value =
     data.full_name || "";
@@ -529,7 +534,7 @@ async function loadProfile() {
     data.hobbies || "";
 
   document.getElementById("experience").value =
-    data.experience || "";
+    data.acting_experience || "";
 
   document.getElementById("intro_video_url").value =
     data.intro_video_url || "";
