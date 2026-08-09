@@ -230,9 +230,12 @@ async function login() {
 
     const { data, error } =
       await supabaseClient.auth.signUp({
-        email: email,
-        password: password
-      });
+  email: email,
+  password: password,
+  options: {
+    emailRedirectTo: "https://tanimancasting-cyber.github.io/TMCC/"
+  }
+});
 
     if (error) {
       message.innerText = error.message;
