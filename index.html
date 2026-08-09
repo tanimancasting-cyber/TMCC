@@ -427,7 +427,79 @@ async function loadProfile() {
     data.intro_video_url || "";
 }
 
+async function publishUpdate() {
 
+  const title = document.getElementById("update_title").value.trim();
+  const description = document.getElementById("update_description").value.trim();
+  const date = document.getElementById("update_date").value;
+  const location = document.getElementById("update_location").value.trim();
+  const applyLink = document.getElementById("update_link").value.trim();
+  const imageFile = document.getElementById("update_image").files[0];
+
+  const message = document.getElementById("updateMessage");
+
+  if (!title) {
+    message.innerText = "Please enter a title.";
+    return;
+  }
+
+  message.innerText = "Publishing...";
+
+  let imageUrl = null;
+
+  if (imageFile) {
+
+    const fileName =
+      Date.now() + "_" + imageFile.name.replace(/\s+/g, "_");
+
+    const { error: uploadError } =
+      await supabaseClient.storage
+        .from("updates")
+        .upload(fileName, imageFile);
+
+    if (uploadError) {
+      message.innerText =
+        "Photo upload error: " + uploadError.message;
+      return;
+    }
+
+    const { data: publicData } =
+      supabaseClient.storage
+        .from("updates")
+        .getPublicUrl(fileName);
+
+    imageUrl = publicData.publicUrl;
+  }
+
+  const { error } =
+    await supabaseClient
+      .from("updates")
+      .insert({
+        title: title,
+        description: description,
+        image_url: imageUrl,
+        audition_date: date || null,
+        location: location,
+        apply_link: applyLink,
+        created_at: new Date().toISOString()
+      });
+
+  if (error) {
+    console.error(error);
+    message.innerText =
+      "Publish error: " + error.message;
+    return;
+  }
+
+  message.innerText = "Update published successfully!";
+
+  document.getElementById("update_title").value = "";
+  document.getElementById("update_description").value = "";
+  document.getElementById("update_date").value = "";
+  document.getElementById("update_location").value = "";
+  document.getElementById("update_link").value = "";
+  document.getElementById("update_image").value = "";
+  }
 // LOGOUT
 async function logout() {
 
