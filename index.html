@@ -179,6 +179,8 @@
   <!-- PROFILE SCREEN -->
   <!-- ADMIN UPDATES -->
 <div id="adminUpdates" class="hidden">
+<!-- ADMIN UPDATES -->
+<div id="adminUpdates" class="hidden">
 
   <div class="card">
 
@@ -209,54 +211,71 @@
   </div>
 
 </div>
-  <div id="profileScreen" class="hidden">
 
-    <div class="card">
 
-      <h2>Actor Profile</h2>
+<!-- ADMIN ACTORS -->
+<div id="adminActors" class="hidden">
 
-      <label>Profile Photo</label>
-<input id="profile_photo" type="file" accept="image/*">
+  <div class="card">
 
-      <label>Full Name</label>
-      <input id="full_name" type="text" placeholder="Your full name">
+    <h2>Registered Actors</h2>
 
-      <label>Age</label>
-      <input id="age" type="number" placeholder="Age">
-
-      <label>Gender</label>
-      <select id="gender">
-        <option value="">Select Gender</option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-        <option value="Other">Other</option>
-      </select>
-
-      <label>Height</label>
-      <input id="height" type="text" placeholder="Example: 5'8">
-
-      <label>Contact Number</label>
-      <input id="contact" type="tel" placeholder="Contact number">
-
-      <label>Current Location</label>
-      <input id="current_location" type="text" placeholder="Current location">
-
-      <label>Hobbies</label>
-      <textarea id="hobbies" placeholder="Your hobbies"></textarea>
-
-      <label>Acting Experience</label>
-      <textarea id="experience" placeholder="Your acting experience"></textarea>
-
-      <label>Introduction Video URL</label>
-      <input id="intro_video_url" type="url" placeholder="Video link">
-
-      <button onclick="saveProfile()">Save Profile</button>
-
-      <button class="secondary" onclick="logout()">Logout</button>
-
-      <div id="profileMessage" class="message"></div>
-
+    <div id="actorsList">
+      Loading actors...
     </div>
+
+  </div>
+
+</div>
+
+
+<!-- PROFILE SCREEN -->
+<div id="profileScreen" class="hidden">
+
+  <div class="card">
+
+    <h2>Actor Profile</h2>
+
+    <label>Profile Photo</label>
+    <input id="profile_photo" type="file" accept="image/*">
+
+    <label>Full Name</label>
+    <input id="full_name" type="text" placeholder="Your full name">
+
+    <label>Age</label>
+    <input id="age" type="number" placeholder="Age">
+
+    <label>Gender</label>
+    <select id="gender">
+      <option value="">Select Gender</option>
+      <option value="Male">Male</option>
+      <option value="Female">Female</option>
+      <option value="Other">Other</option>
+    </select>
+
+    <label>Height</label>
+    <input id="height" type="text" placeholder="Example: 5'8">
+
+    <label>Contact Number</label>
+    <input id="contact" type="tel" placeholder="Contact number">
+
+    <label>Current Location</label>
+    <input id="current_location" type="text" placeholder="Current location">
+
+    <label>Hobbies</label>
+    <textarea id="hobbies" placeholder="Your hobbies"></textarea>
+
+    <label>Acting Experience</label>
+    <textarea id="experience" placeholder="Your acting experience"></textarea>
+
+    <label>Introduction Video URL</label>
+    <input id="intro_video_url" type="url" placeholder="Video link">
+
+    <button onclick="saveProfile()">Save Profile</button>
+
+    <button class="secondary" onclick="logout()">Logout</button>
+
+    <div id="profileMessage" class="message"></div>
 
   </div>
 
