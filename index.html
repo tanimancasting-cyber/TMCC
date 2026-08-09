@@ -656,7 +656,7 @@ async function saveProfile() {
       error: uploadError
     } =
       await supabaseClient.storage
-        .from("actor-profiles")
+        .from("Actor-profiles")
         .upload(
           fileName,
           photoFile,
@@ -686,7 +686,7 @@ async function saveProfile() {
       data: publicData
     } =
       supabaseClient.storage
-        .from("actor-profiles")
+        .from("Actor-profiles")
         .getPublicUrl(
           fileName
         );
