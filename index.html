@@ -215,6 +215,9 @@
 
       <h2>Actor Profile</h2>
 
+      <label>Profile Photo</label>
+<input id="profile_photo" type="file" accept="image/*">
+
       <label>Full Name</label>
       <input id="full_name" type="text" placeholder="Your full name">
 
@@ -386,6 +389,42 @@ async function saveProfile() {
     return;
   }
 
+  const photoFile =
+    document.getElementById("profile_photo").files[0];
+
+  let profilePhotoUrl = null;
+
+  // Upload profile photo
+  if (photoFile) {
+
+    const fileName =
+      user.id + "_" + Date.now() + "_" +
+      photoFile.name.replace(/\s+/g, "_");
+
+    const { error: uploadError } =
+      await supabaseClient.storage
+        .from("actor-profiles")
+        .upload(fileName, photoFile, {
+          upsert: true
+        });
+
+    if (uploadError) {
+      console.error(uploadError);
+
+      document.getElementById("profileMessage").innerText =
+        "Photo upload error: " + uploadError.message;
+
+      return;
+    }
+
+    const { data: publicData } =
+      supabaseClient.storage
+        .from("actor-profiles")
+        .getPublicUrl(fileName);
+
+    profilePhotoUrl = publicData.publicUrl;
+  }
+
   const profile = {
 
     id: user.id,
@@ -413,15 +452,19 @@ async function saveProfile() {
     hobbies:
       document.getElementById("hobbies").value,
 
-   acting_experience:
+    acting_experience:
       document.getElementById("experience").value,
 
     intro_video_url:
       document.getElementById("intro_video_url").value,
 
-    updated_at: new Date().toISOString()
+    updated_at:
+      new Date().toISOString()
   };
 
+  if (profilePhotoUrl) {
+    profile.profile_photo_url = profilePhotoUrl;
+  }
 
   const { error } =
     await supabaseClient
@@ -443,7 +486,6 @@ async function saveProfile() {
 
   message.innerText =
     "Profile saved successfully!";
-
 }
 
 
