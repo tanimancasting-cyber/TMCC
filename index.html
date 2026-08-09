@@ -106,24 +106,60 @@
   <div class="subtitle">TaniMan Casting Company</div>
 
   <!-- AUTH SCREEN -->
-  <div id="authScreen" class="card">
-<!-- PROFILE SCREEN -->
-<div id="profileScreen" class="hidden">
-    <h2 id="authTitle">Actor Login</h2>
+  <!-- AUTH SCREEN -->
+<div id="authScreen" class="card">
 
-    <input id="email" type="email" placeholder="Email address">
+  <h2 id="authTitle">Actor Login</h2>
 
-    <input id="password" type="password" placeholder="Password">
+  <input id="email" type="email" placeholder="Email address">
 
-    <button id="authButton" onclick="login()">Login</button>
+  <input id="password" type="password" placeholder="Password">
 
-    <button class="secondary" onclick="toggleAuth()">
-      Create New Account
-    </button>
+  <button id="authButton" onclick="login()">Login</button>
 
-    <div id="authMessage" class="message"></div>
+  <button class="secondary" onclick="toggleAuth()">
+    Create New Account
+  </button>
+
+  <div id="authMessage" class="message"></div>
+
+</div>
+
+<!-- ADMIN UPDATES -->
+<div id="adminUpdates" class="hidden">
+
+  <div class="card">
+
+    <h2>Post New Audition / Update</h2>
+
+    <label>Title</label>
+    <input id="update_title" type="text" placeholder="Audition title">
+
+    <label>Description</label>
+    <textarea id="update_description" placeholder="Write audition details"></textarea>
+
+    <label>Audition Date</label>
+    <input id="update_date" type="date">
+
+    <label>Location</label>
+    <input id="update_location" type="text" placeholder="Pune">
+
+    <label>Apply Link</label>
+    <input id="update_link" type="url" placeholder="https://">
+
+    <label>Photo</label>
+    <input id="update_image" type="file" accept="image/*">
+
+    <button onclick="publishUpdate()">Publish Update</button>
+
+    <div id="updateMessage" class="message"></div>
 
   </div>
+
+</div>
+
+<!-- PROFILE SCREEN -->
+<div id="profileScreen" class="hidden">
 
 
   <!-- PROFILE SCREEN -->
