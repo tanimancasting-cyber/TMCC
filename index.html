@@ -1,11 +1,426 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>TMCC</title>
+  <title>TMCC - TanIMan Casting Company</title>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: #111118;
+      color: white;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: auto;
+      padding: 25px 18px;
+    }
+
+    .logo {
+      text-align: center;
+      font-size: 42px;
+      font-weight: bold;
+      margin-top: 30px;
+    }
+
+    .subtitle {
+      text-align: center;
+      color: #c9a45c;
+      margin-bottom: 35px;
+    }
+
+    .card {
+      background: #1d1d27;
+      padding: 22px;
+      border-radius: 18px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 14px;
+      margin: 8px 0 14px;
+      border: 1px solid #444;
+      border-radius: 10px;
+      background: #292934;
+      color: white;
+      font-size: 15px;
+    }
+
+    textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    button {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 10px;
+      background: #c99a4a;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      margin-top: 8px;
+    }
+
+    .secondary {
+      background: #33333f;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .message {
+      text-align: center;
+      margin: 15px 0;
+      color: #c9a45c;
+    }
+
+    label {
+      font-size: 14px;
+      color: #ccc;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>TMCC</h1>
-  <p>Taniman Casting Company</p>
+
+<div class="container">
+
+  <div class="logo">TMCC</div>
+  <div class="subtitle">TanIMan Casting Company</div>
+
+  <!-- AUTH SCREEN -->
+  <div id="authScreen" class="card">
+
+    <h2 id="authTitle">Actor Login</h2>
+
+    <input id="email" type="email" placeholder="Email address">
+
+    <input id="password" type="password" placeholder="Password">
+
+    <button id="authButton" onclick="login()">Login</button>
+
+    <button class="secondary" onclick="toggleAuth()">
+      Create New Account
+    </button>
+
+    <div id="authMessage" class="message"></div>
+
+  </div>
+
+
+  <!-- PROFILE SCREEN -->
+  <div id="profileScreen" class="hidden">
+
+    <div class="card">
+
+      <h2>Actor Profile</h2>
+
+      <label>Full Name</label>
+      <input id="full_name" type="text" placeholder="Your full name">
+
+      <label>Age</label>
+      <input id="age" type="number" placeholder="Age">
+
+      <label>Gender</label>
+      <select id="gender">
+        <option value="">Select Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label>Height</label>
+      <input id="height" type="text" placeholder="Example: 5'8">
+
+      <label>Contact Number</label>
+      <input id="contact" type="tel" placeholder="Contact number">
+
+      <label>Current Location</label>
+      <input id="current_location" type="text" placeholder="Current location">
+
+      <label>Hobbies</label>
+      <textarea id="hobbies" placeholder="Your hobbies"></textarea>
+
+      <label>Acting Experience</label>
+      <textarea id="experience" placeholder="Your acting experience"></textarea>
+
+      <label>Introduction Video URL</label>
+      <input id="intro_video_url" type="url" placeholder="Video link">
+
+      <button onclick="saveProfile()">Save Profile</button>
+
+      <button class="secondary" onclick="logout()">Logout</button>
+
+      <div id="profileMessage" class="message"></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<script>
+
+const SUPABASE_URL = "https://xxrmvtpkroqbzoihgfsj.supabase.co";
+
+const SUPABASE_KEY = "sb_publishable_0L8GrY20o9c-SK-dgWlAMg_S_2WZEcd";
+
+const supabaseClient =
+  supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+let isSignup = false;
+
+
+// LOGIN / SIGNUP SWITCH
+function toggleAuth() {
+
+  isSignup = !isSignup;
+
+  document.getElementById("authTitle").innerText =
+    isSignup ? "Create Actor Account" : "Actor Login";
+
+  document.getElementById("authButton").innerText =
+    isSignup ? "Sign Up" : "Login";
+
+  document.querySelector("#authScreen .secondary").innerText =
+    isSignup ? "Already have an account? Login" : "Create New Account";
+
+  document.getElementById("authMessage").innerText = "";
+}
+
+
+// LOGIN / SIGNUP
+async function login() {
+
+  const email =
+    document.getElementById("email").value.trim();
+
+  const password =
+    document.getElementById("password").value;
+
+  const message =
+    document.getElementById("authMessage");
+
+  if (!email || !password) {
+    message.innerText = "Please enter email and password.";
+    return;
+  }
+
+  message.innerText = "Please wait...";
+
+  if (isSignup) {
+
+    const { data, error } =
+      await supabaseClient.auth.signUp({
+        email: email,
+        password: password
+      });
+
+    if (error) {
+      message.innerText = error.message;
+      return;
+    }
+
+    message.innerText =
+      "Account created. Please check your email if confirmation is required.";
+
+  } else {
+
+    const { data, error } =
+      await supabaseClient.auth.signInWithPassword({
+        email: email,
+        password: password
+      });
+
+    if (error) {
+      message.innerText = error.message;
+      return;
+    }
+
+    showProfile();
+  }
+}
+
+
+// SHOW PROFILE
+async function showProfile() {
+
+  document.getElementById("authScreen")
+    .classList.add("hidden");
+
+  document.getElementById("profileScreen")
+    .classList.remove("hidden");
+
+  await loadProfile();
+}
+
+
+// SAVE PROFILE
+async function saveProfile() {
+
+  const {
+    data: { user }
+  } = await supabaseClient.auth.getUser();
+
+  if (!user) {
+    alert("Please login first.");
+    return;
+  }
+
+  const profile = {
+
+    id: user.id,
+
+    full_name:
+      document.getElementById("full_name").value,
+
+    age:
+      document.getElementById("age").value
+        ? parseInt(document.getElementById("age").value)
+        : null,
+
+    gender:
+      document.getElementById("gender").value,
+
+    height:
+      document.getElementById("height").value,
+
+    contact:
+      document.getElementById("contact").value,
+
+    current_location:
+      document.getElementById("current_location").value,
+
+    hobbies:
+      document.getElementById("hobbies").value,
+
+    experience:
+      document.getElementById("experience").value,
+
+    intro_video_url:
+      document.getElementById("intro_video_url").value,
+
+    updated_at: new Date().toISOString()
+  };
+
+
+  const { error } =
+    await supabaseClient
+      .from("actors")
+      .upsert(profile);
+
+  const message =
+    document.getElementById("profileMessage");
+
+  if (error) {
+
+    console.error(error);
+
+    message.innerText =
+      "Error: " + error.message;
+
+    return;
+  }
+
+  message.innerText =
+    "Profile saved successfully!";
+
+}
+
+
+// LOAD EXISTING PROFILE
+async function loadProfile() {
+
+  const {
+    data: { user }
+  } = await supabaseClient.auth.getUser();
+
+  if (!user) return;
+
+  const { data, error } =
+    await supabaseClient
+      .from("actors")
+      .select("*")
+      .eq("id", user.id)
+      .maybeSingle();
+
+  if (error || !data) return;
+
+  document.getElementById("full_name").value =
+    data.full_name || "";
+
+  document.getElementById("age").value =
+    data.age || "";
+
+  document.getElementById("gender").value =
+    data.gender || "";
+
+  document.getElementById("height").value =
+    data.height || "";
+
+  document.getElementById("contact").value =
+    data.contact || "";
+
+  document.getElementById("current_location").value =
+    data.current_location || "";
+
+  document.getElementById("hobbies").value =
+    data.hobbies || "";
+
+  document.getElementById("experience").value =
+    data.experience || "";
+
+  document.getElementById("intro_video_url").value =
+    data.intro_video_url || "";
+}
+
+
+// LOGOUT
+async function logout() {
+
+  await supabaseClient.auth.signOut();
+
+  document.getElementById("profileScreen")
+    .classList.add("hidden");
+
+  document.getElementById("authScreen")
+    .classList.remove("hidden");
+}
+
+
+// CHECK EXISTING LOGIN
+async function checkUser() {
+
+  const {
+    data: { user }
+  } = await supabaseClient.auth.getUser();
+
+  if (user) {
+    showProfile();
+  }
+}
+
+checkUser();
+
+</script>
+
 </body>
 </html>
