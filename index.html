@@ -127,6 +127,20 @@
 
 <!-- ADMIN UPDATES -->
 <div id="adminUpdates" class="hidden">
+  <!-- ADMIN ACTORS -->
+<div id="adminActors" class="hidden">
+
+  <div class="card">
+
+    <h2>Registered Actors</h2>
+
+    <div id="actorsList">
+      Loading actors...
+    </div>
+
+  </div>
+
+</div>
 
   <div class="card">
 
@@ -545,6 +559,63 @@ async function publishUpdate() {
   document.getElementById("update_location").value = "";
   document.getElementById("update_link").value = "";
   document.getElementById("update_image").value = "";
+  }
+  async function loadActors() {
+
+  const actorsList = document.getElementById("actorsList");
+
+  actorsList.innerHTML = "Loading actors...";
+
+  const { data, error } =
+    await supabaseClient
+      .from("actors")
+      .select("*")
+      .order("created_at", { ascending: false });
+
+  if (error) {
+    console.error(error);
+    actorsList.innerHTML =
+      "Error loading actors: " + error.message;
+    return;
+  }
+
+  if (!data || data.length === 0) {
+    actorsList.innerHTML =
+      "No actors registered yet.";
+    return;
+  }
+
+  actorsList.innerHTML = data.map(actor => `
+    <div class="card" style="margin-top:15px;">
+
+      <h3>${actor.full_name || "No Name"}</h3>
+
+      <p><b>Age:</b> ${actor.age || "Not provided"}</p>
+
+      <p><b>Gender:</b> ${actor.gender || "Not provided"}</p>
+
+      <p><b>Height:</b> ${actor.height || "Not provided"}</p>
+
+      <p><b>Contact:</b> ${actor.contact || "Not provided"}</p>
+
+      <p><b>Location:</b> ${actor.current_location || "Not provided"}</p>
+
+      <p><b>Hobbies:</b> ${actor.hobbies || "Not provided"}</p>
+
+      <p><b>Acting Experience:</b>
+        ${actor.acting_experience || "Not provided"}
+      </p>
+
+      ${
+        actor.intro_video_url
+        ? `<p><a href="${actor.intro_video_url}" target="_blank">
+             Watch Introduction Video
+           </a></p>`
+        : ""
+      }
+
+    </div>
+  `).join("");
   }
 // LOGOUT
 async function logout() {
