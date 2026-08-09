@@ -360,8 +360,14 @@ async function showProfile() {
   } = await supabaseClient.auth.getUser();
 
   if (user && user.email === "tanimancasting@gmail.com") {
+
     document.getElementById("adminUpdates")
       .classList.remove("hidden");
+
+    document.getElementById("adminActors")
+      .classList.remove("hidden");
+
+    await loadActors();
   }
 
   await loadProfile();
