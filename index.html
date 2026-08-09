@@ -1280,13 +1280,13 @@ async function loadActors() {
 
   if (error) {
 
-    console.error(error);
+  console.error(error);
 
-    updatesList.innerHTML =
-      "Unable to load auditions.";
+  updatesList.innerHTML =
+    "Error: " + error.message;
 
-    return;
-  }
+  return;
+}
 
 
   if (!data || data.length === 0) {
