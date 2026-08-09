@@ -305,6 +305,15 @@ async function showProfile() {
   document.getElementById("profileScreen")
     .classList.remove("hidden");
 
+  const {
+    data: { user }
+  } = await supabaseClient.auth.getUser();
+
+  if (user && user.email === "tanimancasting@gmail.com") {
+    document.getElementById("adminUpdates")
+      .classList.remove("hidden");
+  }
+
   await loadProfile();
 }
 
