@@ -49,7 +49,9 @@
       margin-top: 0;
     }
 
-    input, select, textarea {
+    input,
+    select,
+    textarea {
       width: 100%;
       padding: 14px;
       margin: 8px 0 14px;
@@ -75,6 +77,7 @@
       font-size: 16px;
       font-weight: bold;
       margin-top: 8px;
+      cursor: pointer;
     }
 
     .secondary {
@@ -82,7 +85,7 @@
     }
 
     .hidden {
-      display: none;
+      display: none !important;
     }
 
     .message {
@@ -95,6 +98,38 @@
       font-size: 14px;
       color: #ccc;
     }
+
+    .actor-card {
+      background: #292934;
+      padding: 18px;
+      border-radius: 14px;
+      margin-top: 15px;
+    }
+
+    .actor-photo {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 12px;
+      display: block;
+      margin: 0 auto 15px;
+    }
+
+    .actor-photo-placeholder {
+      width: 120px;
+      height: 120px;
+      border-radius: 12px;
+      background: #3a3a46;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 15px;
+      color: #aaa;
+    }
+
+    a {
+      color: #c9a45c;
+    }
   </style>
 </head>
 
@@ -105,177 +140,257 @@
   <div class="logo">TMCC</div>
   <div class="subtitle">TaniMan Casting Company</div>
 
-  <!-- AUTH SCREEN -->
-  <!-- AUTH SCREEN -->
-<div id="authScreen" class="card">
 
-  <h2 id="authTitle">Actor Login</h2>
+  <!-- =========================
+       AUTH SCREEN
+  ========================== -->
 
-  <input id="email" type="email" placeholder="Email address">
+  <div id="authScreen" class="card">
 
-  <input id="password" type="password" placeholder="Password">
+    <h2 id="authTitle">Actor Login</h2>
 
-  <button id="authButton" onclick="login()">Login</button>
+    <input
+      id="email"
+      type="email"
+      placeholder="Email address"
+    >
 
-  <button class="secondary" onclick="toggleAuth()">
-    Create New Account
-  </button>
+    <input
+      id="password"
+      type="password"
+      placeholder="Password"
+    >
 
-  <div id="authMessage" class="message"></div>
+    <button
+      id="authButton"
+      onclick="login()"
+    >
+      Login
+    </button>
 
-</div>
+    <button
+      class="secondary"
+      onclick="toggleAuth()"
+    >
+      Create New Account
+    </button>
 
-<!-- ADMIN UPDATES -->
-<div id="adminUpdates" class="hidden">
-  <!-- ADMIN ACTORS -->
-<div id="adminActors" class="hidden">
+    <div
+      id="authMessage"
+      class="message"
+    ></div>
 
-  <div class="card">
+  </div>
 
-    <h2>Registered Actors</h2>
 
-    <div id="actorsList">
-      Loading actors...
+  <!-- =========================
+       ADMIN UPDATES
+  ========================== -->
+
+  <div id="adminUpdates" class="hidden">
+
+    <div class="card">
+
+      <h2>Post New Audition / Update</h2>
+
+      <label>Title</label>
+
+      <input
+        id="update_title"
+        type="text"
+        placeholder="Audition title"
+      >
+
+      <label>Description</label>
+
+      <textarea
+        id="update_description"
+        placeholder="Write audition details"
+      ></textarea>
+
+      <label>Audition Date</label>
+
+      <input
+        id="update_date"
+        type="date"
+      >
+
+      <label>Location</label>
+
+      <input
+        id="update_location"
+        type="text"
+        placeholder="Pune"
+      >
+
+      <label>Apply Link</label>
+
+      <input
+        id="update_link"
+        type="url"
+        placeholder="https://"
+      >
+
+      <label>Photo</label>
+
+      <input
+        id="update_image"
+        type="file"
+        accept="image/*"
+      >
+
+      <button onclick="publishUpdate()">
+        Publish Update
+      </button>
+
+      <div
+        id="updateMessage"
+        class="message"
+      ></div>
+
     </div>
 
   </div>
 
-</div>
 
-  <div class="card">
+  <!-- =========================
+       ADMIN ACTORS
+  ========================== -->
 
-    <h2>Post New Audition / Update</h2>
+  <div id="adminActors" class="hidden">
 
-    <label>Title</label>
-    <input id="update_title" type="text" placeholder="Audition title">
+    <div class="card">
 
-    <label>Description</label>
-    <textarea id="update_description" placeholder="Write audition details"></textarea>
+      <h2>Registered Actors</h2>
 
-    <label>Audition Date</label>
-    <input id="update_date" type="date">
+      <div id="actorsList">
+        Loading actors...
+      </div>
 
-    <label>Location</label>
-    <input id="update_location" type="text" placeholder="Pune">
-
-    <label>Apply Link</label>
-    <input id="update_link" type="url" placeholder="https://">
-
-    <label>Photo</label>
-    <input id="update_image" type="file" accept="image/*">
-
-    <button onclick="publishUpdate()">Publish Update</button>
-
-    <div id="updateMessage" class="message"></div>
-
-  </div>
-
-</div>
-
-<!-- PROFILE SCREEN -->
-<div id="profileScreen" class="hidden">
-
-
-  <!-- PROFILE SCREEN -->
-  <!-- ADMIN UPDATES -->
-<div id="adminUpdates" class="hidden">
-<!-- ADMIN UPDATES -->
-<div id="adminUpdates" class="hidden">
-
-  <div class="card">
-
-    <h2>Post New Audition / Update</h2>
-
-    <label>Title</label>
-    <input id="update_title" type="text" placeholder="Audition title">
-
-    <label>Description</label>
-    <textarea id="update_description" placeholder="Write audition details"></textarea>
-
-    <label>Audition Date</label>
-    <input id="update_date" type="date">
-
-    <label>Location</label>
-    <input id="update_location" type="text" placeholder="Pune">
-
-    <label>Apply Link</label>
-    <input id="update_link" type="url" placeholder="https://">
-
-    <label>Photo</label>
-    <input id="update_image" type="file" accept="image/*">
-
-    <button onclick="publishUpdate()">Publish Update</button>
-
-    <div id="updateMessage" class="message"></div>
-
-  </div>
-
-</div>
-
-
-<!-- ADMIN ACTORS -->
-<div id="adminActors" class="hidden">
-
-  <div class="card">
-
-    <h2>Registered Actors</h2>
-
-    <div id="actorsList">
-      Loading actors...
     </div>
 
   </div>
 
-</div>
 
+  <!-- =========================
+       ACTOR PROFILE
+  ========================== -->
 
-<!-- PROFILE SCREEN -->
-<div id="profileScreen" class="hidden">
+  <div id="profileScreen" class="hidden">
 
-  <div class="card">
+    <div class="card">
 
-    <h2>Actor Profile</h2>
+      <h2>Actor Profile</h2>
 
-    <label>Profile Photo</label>
-    <input id="profile_photo" type="file" accept="image/*">
+      <label>Profile Photo</label>
 
-    <label>Full Name</label>
-    <input id="full_name" type="text" placeholder="Your full name">
+      <input
+        id="profile_photo"
+        type="file"
+        accept="image/*"
+      >
 
-    <label>Age</label>
-    <input id="age" type="number" placeholder="Age">
+      <label>Full Name</label>
 
-    <label>Gender</label>
-    <select id="gender">
-      <option value="">Select Gender</option>
-      <option value="Male">Male</option>
-      <option value="Female">Female</option>
-      <option value="Other">Other</option>
-    </select>
+      <input
+        id="full_name"
+        type="text"
+        placeholder="Your full name"
+      >
 
-    <label>Height</label>
-    <input id="height" type="text" placeholder="Example: 5'8">
+      <label>Age</label>
 
-    <label>Contact Number</label>
-    <input id="contact" type="tel" placeholder="Contact number">
+      <input
+        id="age"
+        type="number"
+        placeholder="Age"
+      >
 
-    <label>Current Location</label>
-    <input id="current_location" type="text" placeholder="Current location">
+      <label>Gender</label>
 
-    <label>Hobbies</label>
-    <textarea id="hobbies" placeholder="Your hobbies"></textarea>
+      <select id="gender">
 
-    <label>Acting Experience</label>
-    <textarea id="experience" placeholder="Your acting experience"></textarea>
+        <option value="">
+          Select Gender
+        </option>
 
-    <label>Introduction Video URL</label>
-    <input id="intro_video_url" type="url" placeholder="Video link">
+        <option value="Male">
+          Male
+        </option>
 
-    <button onclick="saveProfile()">Save Profile</button>
+        <option value="Female">
+          Female
+        </option>
 
-    <button class="secondary" onclick="logout()">Logout</button>
+        <option value="Other">
+          Other
+        </option>
 
-    <div id="profileMessage" class="message"></div>
+      </select>
+
+      <label>Height</label>
+
+      <input
+        id="height"
+        type="text"
+        placeholder="Example: 5'8"
+      >
+
+      <label>Contact Number</label>
+
+      <input
+        id="contact"
+        type="tel"
+        placeholder="Contact number"
+      >
+
+      <label>Current Location</label>
+
+      <input
+        id="current_location"
+        type="text"
+        placeholder="Current location"
+      >
+
+      <label>Hobbies</label>
+
+      <textarea
+        id="hobbies"
+        placeholder="Your hobbies"
+      ></textarea>
+
+      <label>Acting Experience</label>
+
+      <textarea
+        id="experience"
+        placeholder="Your acting experience"
+      ></textarea>
+
+      <label>Introduction Video URL</label>
+
+      <input
+        id="intro_video_url"
+        type="url"
+        placeholder="Video link"
+      >
+
+      <button onclick="saveProfile()">
+        Save Profile
+      </button>
+
+      <button
+        class="secondary"
+        onclick="logout()"
+      >
+        Logout
+      </button>
+
+      <div
+        id="profileMessage"
+        class="message"
+      ></div>
+
+    </div>
 
   </div>
 
@@ -284,439 +399,909 @@
 
 <script>
 
-const SUPABASE_URL = "https://xxrmvtpkroqbzoihgfsj.supabase.co";
+const SUPABASE_URL =
+  "https://xxrmvtpkroqbzoihgfsj.supabase.co";
 
-const SUPABASE_KEY = "sb_publishable_0L8GrY20o9c-SK-dgWlAMg_S_2WZEcd";
+const SUPABASE_KEY =
+  "sb_publishable_0L8GrY20o9c-SK-dgWlAMg_S_2WZEcd";
 
 const supabaseClient =
-  supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
+  );
 
 let isSignup = false;
 
 
+// =========================
 // LOGIN / SIGNUP SWITCH
+// =========================
+
 function toggleAuth() {
 
   isSignup = !isSignup;
 
   document.getElementById("authTitle").innerText =
-    isSignup ? "Create Actor Account" : "Actor Login";
+    isSignup
+      ? "Create Actor Account"
+      : "Actor Login";
 
   document.getElementById("authButton").innerText =
-    isSignup ? "Sign Up" : "Login";
+    isSignup
+      ? "Sign Up"
+      : "Login";
 
-  document.querySelector("#authScreen .secondary").innerText =
-    isSignup ? "Already have an account? Login" : "Create New Account";
+  document.querySelector(
+    "#authScreen .secondary"
+  ).innerText =
+    isSignup
+      ? "Already have an account? Login"
+      : "Create New Account";
 
-  document.getElementById("authMessage").innerText = "";
+  document.getElementById(
+    "authMessage"
+  ).innerText = "";
 }
 
 
+// =========================
 // LOGIN / SIGNUP
+// =========================
+
 async function login() {
 
   const email =
-    document.getElementById("email").value.trim();
+    document.getElementById("email")
+      .value
+      .trim();
 
   const password =
-    document.getElementById("password").value;
+    document.getElementById("password")
+      .value;
 
   const message =
-    document.getElementById("authMessage");
+    document.getElementById(
+      "authMessage"
+    );
 
   if (!email || !password) {
-    message.innerText = "Please enter email and password.";
+
+    message.innerText =
+      "Please enter email and password.";
+
     return;
   }
 
-  message.innerText = "Please wait...";
+  message.innerText =
+    "Please wait...";
+
 
   if (isSignup) {
 
-    const { data, error } =
+    const { error } =
       await supabaseClient.auth.signUp({
-  email: email,
-  password: password,
-  options: {
-    emailRedirectTo: "https://tanimancasting-cyber.github.io/TMCC/"
-  }
-});
+
+        email: email,
+
+        password: password,
+
+        options: {
+
+          emailRedirectTo:
+            "https://tanimancasting-cyber.github.io/TMCC/"
+        }
+
+      });
+
 
     if (error) {
-      message.innerText = error.message;
+
+      message.innerText =
+        error.message;
+
       return;
     }
+
 
     message.innerText =
       "Account created. Please check your email if confirmation is required.";
 
-  } else {
+  }
 
-    const { data, error } =
+  else {
+
+    const { error } =
       await supabaseClient.auth.signInWithPassword({
+
         email: email,
+
         password: password
+
       });
 
+
     if (error) {
-      message.innerText = error.message;
+
+      message.innerText =
+        error.message;
+
       return;
     }
 
-    showProfile();
+
+    await showProfile();
+
   }
+
 }
 
 
+// =========================
 // SHOW PROFILE
+// =========================
+
 async function showProfile() {
 
-  document.getElementById("authScreen")
-    .classList.add("hidden");
+  const authScreen =
+    document.getElementById(
+      "authScreen"
+    );
 
-  document.getElementById("profileScreen")
-    .classList.remove("hidden");
+  const profileScreen =
+    document.getElementById(
+      "profileScreen"
+    );
+
+
+  authScreen.classList.add(
+    "hidden"
+  );
+
+  profileScreen.classList.remove(
+    "hidden"
+  );
+
 
   const {
     data: { user }
-  } = await supabaseClient.auth.getUser();
+  } =
+    await supabaseClient.auth.getUser();
 
-  if (user && user.email === "tanimancasting@gmail.com") {
 
-    document.getElementById("adminUpdates")
-      .classList.remove("hidden");
-
-    document.getElementById("adminActors")
-      .classList.remove("hidden");
-
-    await loadActors();
+  if (!user) {
+    return;
   }
 
+
+  if (
+    user.email.toLowerCase() ===
+    "tanimancasting@gmail.com"
+  ) {
+
+    document.getElementById(
+      "adminUpdates"
+    ).classList.remove(
+      "hidden"
+    );
+
+
+    document.getElementById(
+      "adminActors"
+    ).classList.remove(
+      "hidden"
+    );
+
+
+    await loadActors();
+
+  }
+
+
   await loadProfile();
+
 }
 
 
+// =========================
 // SAVE PROFILE
+// =========================
+
 async function saveProfile() {
 
   const {
     data: { user }
-  } = await supabaseClient.auth.getUser();
+  } =
+    await supabaseClient.auth.getUser();
+
 
   if (!user) {
-    alert("Please login first.");
+
+    alert(
+      "Please login first."
+    );
+
     return;
   }
 
+
+  const photoInput =
+    document.getElementById(
+      "profile_photo"
+    );
+
   const photoFile =
-    document.getElementById("profile_photo").files[0];
+    photoInput.files[0];
+
 
   let profilePhotoUrl = null;
 
-  // Upload profile photo
+
+  // PHOTO UPLOAD
+
   if (photoFile) {
 
     const fileName =
-      user.id + "_" + Date.now() + "_" +
-      photoFile.name.replace(/\s+/g, "_");
+      user.id +
+      "_" +
+      Date.now() +
+      "_" +
+      photoFile.name.replace(
+        /\s+/g,
+        "_"
+      );
 
-    const { error: uploadError } =
+
+    const {
+      error: uploadError
+    } =
       await supabaseClient.storage
         .from("actor-profiles")
-        .upload(fileName, photoFile, {
-          upsert: true
-        });
+        .upload(
+          fileName,
+          photoFile,
+          {
+            upsert: true
+          }
+        );
+
 
     if (uploadError) {
-      console.error(uploadError);
 
-      document.getElementById("profileMessage").innerText =
-        "Photo upload error: " + uploadError.message;
+      console.error(
+        uploadError
+      );
+
+      document.getElementById(
+        "profileMessage"
+      ).innerText =
+        "Photo upload error: " +
+        uploadError.message;
 
       return;
     }
 
-    const { data: publicData } =
+
+    const {
+      data: publicData
+    } =
       supabaseClient.storage
         .from("actor-profiles")
-        .getPublicUrl(fileName);
+        .getPublicUrl(
+          fileName
+        );
 
-    profilePhotoUrl = publicData.publicUrl;
+
+    profilePhotoUrl =
+      publicData.publicUrl;
+
   }
+
 
   const profile = {
 
     id: user.id,
 
     full_name:
-      document.getElementById("full_name").value,
+      document.getElementById(
+        "full_name"
+      ).value,
 
     age:
-      document.getElementById("age").value
-        ? parseInt(document.getElementById("age").value)
+      document.getElementById(
+        "age"
+      ).value
+        ? parseInt(
+            document.getElementById(
+              "age"
+            ).value
+          )
         : null,
 
     gender:
-      document.getElementById("gender").value,
+      document.getElementById(
+        "gender"
+      ).value,
 
     height:
-      document.getElementById("height").value,
+      document.getElementById(
+        "height"
+      ).value,
 
     contact:
-      document.getElementById("contact").value,
+      document.getElementById(
+        "contact"
+      ).value,
 
     current_location:
-      document.getElementById("current_location").value,
+      document.getElementById(
+        "current_location"
+      ).value,
 
     hobbies:
-      document.getElementById("hobbies").value,
+      document.getElementById(
+        "hobbies"
+      ).value,
 
     acting_experience:
-      document.getElementById("experience").value,
+      document.getElementById(
+        "experience"
+      ).value,
 
     intro_video_url:
-      document.getElementById("intro_video_url").value,
+      document.getElementById(
+        "intro_video_url"
+      ).value,
 
     updated_at:
       new Date().toISOString()
+
   };
 
+
   if (profilePhotoUrl) {
-    profile.profile_photo_url = profilePhotoUrl;
+
+    profile.profile_photo_url =
+      profilePhotoUrl;
+
   }
+
 
   const { error } =
     await supabaseClient
       .from("actors")
-      .upsert(profile);
+      .upsert(
+        profile
+      );
+
 
   const message =
-    document.getElementById("profileMessage");
+    document.getElementById(
+      "profileMessage"
+    );
+
 
   if (error) {
 
     console.error(error);
 
     message.innerText =
-      "Error: " + error.message;
+      "Error: " +
+      error.message;
 
     return;
   }
 
+
   message.innerText =
     "Profile saved successfully!";
+
 }
 
 
-// LOAD EXISTING PROFILE
+// =========================
+// LOAD PROFILE
+// =========================
+
 async function loadProfile() {
 
   const {
     data: { user }
-  } = await supabaseClient.auth.getUser();
+  } =
+    await supabaseClient.auth.getUser();
 
-  if (!user) return;
 
-  const { data, error } =
+  if (!user) {
+    return;
+  }
+
+
+  const {
+    data,
+    error
+  } =
     await supabaseClient
       .from("actors")
       .select("*")
-      .eq("id", user.id)
+      .eq(
+        "id",
+        user.id
+      )
       .maybeSingle();
 
+
   if (error) {
+
     console.error(error);
+
     return;
   }
 
-  if (!data) return;
 
-  document.getElementById("full_name").value =
+  if (!data) {
+    return;
+  }
+
+
+  document.getElementById(
+    "full_name"
+  ).value =
     data.full_name || "";
 
-  document.getElementById("age").value =
+
+  document.getElementById(
+    "age"
+  ).value =
     data.age || "";
 
-  document.getElementById("gender").value =
+
+  document.getElementById(
+    "gender"
+  ).value =
     data.gender || "";
 
-  document.getElementById("height").value =
+
+  document.getElementById(
+    "height"
+  ).value =
     data.height || "";
 
-  document.getElementById("contact").value =
+
+  document.getElementById(
+    "contact"
+  ).value =
     data.contact || "";
 
-  document.getElementById("current_location").value =
+
+  document.getElementById(
+    "current_location"
+  ).value =
     data.current_location || "";
 
-  document.getElementById("hobbies").value =
+
+  document.getElementById(
+    "hobbies"
+  ).value =
     data.hobbies || "";
 
-  document.getElementById("experience").value =
+
+  document.getElementById(
+    "experience"
+  ).value =
     data.acting_experience || "";
 
-  document.getElementById("intro_video_url").value =
+
+  document.getElementById(
+    "intro_video_url"
+  ).value =
     data.intro_video_url || "";
+
 }
+
+
+// =========================
+// PUBLISH UPDATE
+// =========================
 
 async function publishUpdate() {
 
-  const title = document.getElementById("update_title").value.trim();
-  const description = document.getElementById("update_description").value.trim();
-  const date = document.getElementById("update_date").value;
-  const location = document.getElementById("update_location").value.trim();
-  const applyLink = document.getElementById("update_link").value.trim();
-  const imageFile = document.getElementById("update_image").files[0];
+  const title =
+    document.getElementById(
+      "update_title"
+    ).value.trim();
 
-  const message = document.getElementById("updateMessage");
+
+  const description =
+    document.getElementById(
+      "update_description"
+    ).value.trim();
+
+
+  const date =
+    document.getElementById(
+      "update_date"
+    ).value;
+
+
+  const location =
+    document.getElementById(
+      "update_location"
+    ).value.trim();
+
+
+  const applyLink =
+    document.getElementById(
+      "update_link"
+    ).value.trim();
+
+
+  const imageFile =
+    document.getElementById(
+      "update_image"
+    ).files[0];
+
+
+  const message =
+    document.getElementById(
+      "updateMessage"
+    );
+
 
   if (!title) {
-    message.innerText = "Please enter a title.";
+
+    message.innerText =
+      "Please enter a title.";
+
     return;
   }
 
-  message.innerText = "Publishing...";
+
+  message.innerText =
+    "Publishing...";
+
 
   let imageUrl = null;
+
 
   if (imageFile) {
 
     const fileName =
-      Date.now() + "_" + imageFile.name.replace(/\s+/g, "_");
+      Date.now() +
+      "_" +
+      imageFile.name.replace(
+        /\s+/g,
+        "_"
+      );
 
-    const { error: uploadError } =
+
+    const {
+      error: uploadError
+    } =
       await supabaseClient.storage
         .from("updates")
-        .upload(fileName, imageFile);
+        .upload(
+          fileName,
+          imageFile
+        );
+
 
     if (uploadError) {
+
       message.innerText =
-        "Photo upload error: " + uploadError.message;
+        "Photo upload error: " +
+        uploadError.message;
+
       return;
     }
 
-    const { data: publicData } =
+
+    const {
+      data: publicData
+    } =
       supabaseClient.storage
         .from("updates")
-        .getPublicUrl(fileName);
+        .getPublicUrl(
+          fileName
+        );
 
-    imageUrl = publicData.publicUrl;
+
+    imageUrl =
+      publicData.publicUrl;
+
   }
+
 
   const { error } =
     await supabaseClient
       .from("updates")
       .insert({
+
         title: title,
-        description: description,
-        image_url: imageUrl,
-        audition_date: date || null,
-        location: location,
-        apply_link: applyLink,
-        created_at: new Date().toISOString()
+
+        description:
+          description,
+
+        image_url:
+          imageUrl,
+
+        audition_date:
+          date || null,
+
+        location:
+          location,
+
+        apply_link:
+          applyLink,
+
+        created_at:
+          new Date().toISOString()
+
       });
 
+
   if (error) {
+
     console.error(error);
+
     message.innerText =
-      "Publish error: " + error.message;
+      "Publish error: " +
+      error.message;
+
     return;
   }
 
-  message.innerText = "Update published successfully!";
 
-  document.getElementById("update_title").value = "";
-  document.getElementById("update_description").value = "";
-  document.getElementById("update_date").value = "";
-  document.getElementById("update_location").value = "";
-  document.getElementById("update_link").value = "";
-  document.getElementById("update_image").value = "";
-  }
-  async function loadActors() {
+  message.innerText =
+    "Update published successfully!";
 
-  const actorsList = document.getElementById("actorsList");
 
-  actorsList.innerHTML = "Loading actors...";
+  document.getElementById(
+    "update_title"
+  ).value = "";
 
-  const { data, error } =
+
+  document.getElementById(
+    "update_description"
+  ).value = "";
+
+
+  document.getElementById(
+    "update_date"
+  ).value = "";
+
+
+  document.getElementById(
+    "update_location"
+  ).value = "";
+
+
+  document.getElementById(
+    "update_link"
+  ).value = "";
+
+
+  document.getElementById(
+    "update_image"
+  ).value = "";
+
+}
+
+
+// =========================
+// LOAD ACTORS - ADMIN
+// =========================
+
+async function loadActors() {
+
+  const actorsList =
+    document.getElementById(
+      "actorsList"
+    );
+
+
+  actorsList.innerHTML =
+    "Loading actors...";
+
+
+  const {
+    data,
+    error
+  } =
     await supabaseClient
       .from("actors")
       .select("*")
-      .order("created_at", { ascending: false });
+      .order(
+        "updated_at",
+        {
+          ascending: false
+        }
+      );
+
 
   if (error) {
+
     console.error(error);
+
     actorsList.innerHTML =
-      "Error loading actors: " + error.message;
+      "Error loading actors: " +
+      error.message;
+
     return;
   }
 
-  if (!data || data.length === 0) {
+
+  if (
+    !data ||
+    data.length === 0
+  ) {
+
     actorsList.innerHTML =
       "No actors registered yet.";
+
     return;
   }
 
-  actorsList.innerHTML = data.map(actor => `
-    <div class="card" style="margin-top:15px;">
 
-      <h3>${actor.full_name || "No Name"}</h3>
+  actorsList.innerHTML =
+    data.map(actor => `
 
-      <p><b>Age:</b> ${actor.age || "Not provided"}</p>
+      <div class="actor-card">
 
-      <p><b>Gender:</b> ${actor.gender || "Not provided"}</p>
+        ${
+          actor.profile_photo_url
 
-      <p><b>Height:</b> ${actor.height || "Not provided"}</p>
+          ? `
+            <img
+              src="${actor.profile_photo_url}"
+              class="actor-photo"
+              alt="Actor Photo"
+            >
+          `
 
-      <p><b>Contact:</b> ${actor.contact || "Not provided"}</p>
+          : `
+            <div class="actor-photo-placeholder">
+              No Photo
+            </div>
+          `
+        }
 
-      <p><b>Location:</b> ${actor.current_location || "Not provided"}</p>
 
-      <p><b>Hobbies:</b> ${actor.hobbies || "Not provided"}</p>
+        <h3>
+          ${actor.full_name || "No Name"}
+        </h3>
 
-      <p><b>Acting Experience:</b>
-        ${actor.acting_experience || "Not provided"}
-      </p>
 
-      ${
-        actor.intro_video_url
-        ? `<p><a href="${actor.intro_video_url}" target="_blank">
-             Watch Introduction Video
-           </a></p>`
-        : ""
-      }
+        <p>
+          <b>Age:</b>
+          ${actor.age || "Not provided"}
+        </p>
 
-    </div>
-  `).join("");
-  }
+
+        <p>
+          <b>Gender:</b>
+          ${actor.gender || "Not provided"}
+        </p>
+
+
+        <p>
+          <b>Height:</b>
+          ${actor.height || "Not provided"}
+        </p>
+
+
+        <p>
+          <b>Contact:</b>
+          ${actor.contact || "Not provided"}
+        </p>
+
+
+        <p>
+          <b>Location:</b>
+          ${actor.current_location || "Not provided"}
+        </p>
+
+
+        <p>
+          <b>Hobbies:</b>
+          ${actor.hobbies || "Not provided"}
+        </p>
+
+
+        <p>
+          <b>Acting Experience:</b>
+          ${actor.acting_experience || "Not provided"}
+        </p>
+
+
+        ${
+          actor.intro_video_url
+
+          ? `
+            <p>
+              <a
+                href="${actor.intro_video_url}"
+                target="_blank"
+              >
+                Watch Introduction Video
+              </a>
+            </p>
+          `
+
+          : ""
+        }
+
+      </div>
+
+    `).join("");
+
+}
+
+
+// =========================
 // LOGOUT
+// =========================
+
 async function logout() {
 
   await supabaseClient.auth.signOut();
 
-  document.getElementById("profileScreen")
-    .classList.add("hidden");
 
-  document.getElementById("authScreen")
-    .classList.remove("hidden");
+  document.getElementById(
+    "profileScreen"
+  ).classList.add(
+    "hidden"
+  );
+
+
+  document.getElementById(
+    "adminUpdates"
+  ).classList.add(
+    "hidden"
+  );
+
+
+  document.getElementById(
+    "adminActors"
+  ).classList.add(
+    "hidden"
+  );
+
+
+  document.getElementById(
+    "authScreen"
+  ).classList.remove(
+    "hidden"
+  );
+
 }
 
 
+// =========================
 // CHECK EXISTING LOGIN
+// =========================
+
 async function checkUser() {
 
   const {
     data: { user }
-  } = await supabaseClient.auth.getUser();
+  } =
+    await supabaseClient.auth.getUser();
+
 
   if (user) {
-    showProfile();
+
+    await showProfile();
+
   }
+
 }
 
-// checkUser();
+
+// Automatic login check
+
+checkUser();
 
 </script>
 
 </body>
-</html>
+  </html>
