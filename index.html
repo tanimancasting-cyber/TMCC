@@ -1847,26 +1847,12 @@ function auditionHTML(
         :
         ""
       }
-
-
-      ${
-        update.apply_link
-        ?
-        `
-        <a
-          href="${escapeHtml(
-            update.apply_link
-          )}"
-          target="_blank"
-        >
-          <button>
-            Apply Now
-          </button>
-        </a>
-        `
-        :
-        ""
-      }
+<button
+  class="apply-btn"
+  onclick="showPage('profile')"
+>
+  Apply Now
+</button>
 
 
       ${
