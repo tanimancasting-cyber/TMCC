@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TaniMan Casting Company</title>
+<title>TMCC - TaniMan Casting Company</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
@@ -18,256 +17,68 @@
 
 body{
   margin:0;
-  background:#101117;
-  color:#fff;
+  background:#111118;
+  color:white;
   padding-bottom:85px;
-}
-
-button,input,textarea,select{
-  font-family:inherit;
 }
 
 .hidden{
   display:none !important;
 }
 
-/* ================= HEADER ================= */
-
-.header{
-  padding:18px 20px 10px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-
-.logo-wrap{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-/* TRANSPARENT LOGO */
-.logo{
-  width:58px;
-  height:58px;
-  object-fit:contain;
-  border-radius:0;
-  background:transparent;
-  display:block;
-}
-
-.brand{
-  display:flex;
-  flex-direction:column;
-}
-
-.brand-name{
-  font-size:20px;
-  font-weight:700;
-  letter-spacing:1px;
-}
-
-.brand-sub{
-  color:#c9a45c;
-  font-size:11px;
-  letter-spacing:2px;
-  margin-top:3px;
-}
-
-.header-icons{
-  display:flex;
-  gap:10px;
-}
-
-.icon-btn{
-  width:44px;
-  height:44px;
-  border-radius:50%;
-  border:1px solid #444;
-  background:#1b1c24;
-  color:white;
-  font-size:20px;
-  cursor:pointer;
-}
-
-/* ================= PAGE ================= */
-
-.page{
-  padding:10px 20px 25px;
+.container{
   max-width:700px;
   margin:auto;
+  padding:20px;
 }
 
-.section-title{
-  font-size:25px;
-  margin:20px 0 14px;
+/* ================= LOGO ================= */
+
+.logo{
+  width:100px;
+  height:100px;
+  object-fit:contain;
+  display:block;
+  margin:25px auto 10px;
 }
+
+.brand-title{
+  text-align:center;
+  font-size:28px;
+  font-weight:bold;
+}
+
+.brand-subtitle{
+  text-align:center;
+  color:#c9a45c;
+  letter-spacing:2px;
+  margin-bottom:30px;
+}
+
+/* ================= CARD ================= */
 
 .card{
-  background:#1b1c24;
-  border:1px solid #292a33;
+  background:#1d1d27;
   border-radius:18px;
-  padding:18px;
-  margin-bottom:18px;
-}
-
-/* ================= HERO ================= */
-
-.hero{
-  background:linear-gradient(135deg,#25262f,#171820);
-  border-radius:22px;
-  padding:25px 20px;
-  margin-top:10px;
-  border:1px solid #33343d;
-}
-
-.hero h1{
-  margin:0;
-  font-size:29px;
-}
-
-.hero p{
-  color:#c5c5c8;
-  line-height:1.6;
-  margin-bottom:0;
-}
-
-.gold{
-  color:#c9a45c;
-}
-
-/* ================= AUDITION CARD ================= */
-
-.audition-card{
-  background:#fff;
-  color:#151515;
-  border-radius:20px;
-  overflow:hidden;
+  padding:22px;
   margin-bottom:20px;
-  box-shadow:0 8px 25px rgba(0,0,0,.25);
+  border:1px solid #30303a;
 }
 
-.audition-image{
+h2{
+  margin-top:0;
+}
+
+input,
+select,
+textarea{
   width:100%;
-  height:auto;
-  max-height:520px;
-  object-fit:contain;
-  display:block;
-  background:#fff;
-}
-
-.audition-content{
-  padding:18px;
-}
-
-.audition-content h3{
-  margin:0 0 10px;
-  font-size:22px;
-}
-
-.audition-content p{
-  line-height:1.6;
-  color:#444;
-  white-space:pre-line;
-}
-
-.info{
-  margin:7px 0;
-  color:#333;
-}
-
-.apply-btn{
-  display:block;
-  text-align:center;
-  background:#c99a4a;
-  color:#fff;
-  text-decoration:none;
-  padding:13px;
-  border-radius:10px;
-  margin-top:15px;
-  font-weight:bold;
-}
-
-/* ================= BUTTONS ================= */
-
-.btn{
-  width:100%;
-  border:none;
   padding:14px;
-  border-radius:11px;
-  background:#c99a4a;
-  color:white;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
-  margin-top:8px;
-}
-
-.btn-secondary{
-  background:#30313b;
-}
-
-.btn-danger{
-  background:#a83232;
-}
-
-.small-btn{
-  padding:10px 14px;
-  border:none;
-  border-radius:9px;
-  background:#c99a4a;
-  color:white;
-  cursor:pointer;
-  font-weight:bold;
-}
-
-.small-danger{
-  background:#a83232;
-}
-
-/* ================= LOGIN ================= */
-
-.auth-page{
-  min-height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  padding:25px;
-}
-
-.auth-box{
-  width:100%;
-  max-width:430px;
-  background:#1b1c24;
-  padding:28px 22px;
-  border-radius:22px;
-  border:1px solid #30313b;
-}
-
-/* TRANSPARENT LOGO */
-.auth-logo{
-  width:120px;
-  height:120px;
-  object-fit:contain;
-  background:transparent;
-  border-radius:0;
-  display:block;
-  margin:0 auto 18px;
-}
-
-.auth-box h2{
-  text-align:center;
-  margin-bottom:25px;
-}
-
-input,textarea,select{
-  width:100%;
-  background:#282932;
-  color:white;
-  border:1px solid #41424b;
+  margin:8px 0 14px;
+  border:1px solid #444;
   border-radius:10px;
-  padding:13px;
-  margin:7px 0 14px;
+  background:#292934;
+  color:white;
   font-size:15px;
 }
 
@@ -277,24 +88,94 @@ textarea{
 }
 
 label{
-  color:#c8c8ca;
-  font-size:13px;
+  font-size:14px;
+  color:#ccc;
+}
+
+button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:10px;
+  background:#c99a4a;
+  color:white;
+  font-size:16px;
+  font-weight:bold;
+  margin-top:8px;
+  cursor:pointer;
+}
+
+.secondary{
+  background:#33333f;
+}
+
+.danger{
+  background:#a83232;
 }
 
 .message{
   text-align:center;
+  margin:15px 0;
   color:#c9a45c;
-  margin-top:15px;
   line-height:1.5;
 }
 
-.forgot{
+/* ================= LOGIN ================= */
+
+#authScreen{
+  max-width:450px;
+  margin:30px auto;
+}
+
+.auth-logo{
+  width:120px;
+  height:120px;
+  object-fit:contain;
   display:block;
-  text-align:right;
+  margin:0 auto 20px;
+}
+
+/* ================= ACTOR CARD ================= */
+
+.actor-card{
+  background:#292934;
+  padding:18px;
+  border-radius:14px;
+  margin-top:15px;
+}
+
+.actor-photo{
+  width:120px;
+  height:120px;
+  object-fit:cover;
+  border-radius:12px;
+  display:block;
+  margin:0 auto 15px;
+}
+
+.actor-photo-placeholder{
+  width:120px;
+  height:120px;
+  border-radius:12px;
+  background:#3a3a46;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:0 auto 15px;
+  color:#aaa;
+}
+
+a{
   color:#c9a45c;
-  font-size:14px;
-  cursor:pointer;
-  margin:0 0 8px;
+}
+
+.update-image{
+  width:100%;
+  max-height:500px;
+  object-fit:contain;
+  border-radius:12px;
+  background:#111;
+  margin-bottom:15px;
 }
 
 /* ================= BOTTOM NAV ================= */
@@ -304,7 +185,7 @@ label{
   bottom:0;
   left:0;
   right:0;
-  height:76px;
+  height:75px;
   background:#050507;
   border-top:1px solid #292a30;
   display:flex;
@@ -322,8 +203,8 @@ label{
 }
 
 .nav-icon{
-  font-size:25px;
   display:block;
+  font-size:25px;
   margin-bottom:3px;
 }
 
@@ -331,30 +212,36 @@ label{
   color:#c9a45c;
 }
 
-/* ================= PROFILE ================= */
+/* ================= HOME ================= */
 
-.profile-photo-preview{
-  width:120px;
-  height:120px;
-  border-radius:50%;
-  object-fit:cover;
-  display:block;
-  margin:0 auto 18px;
-  background:#30313b;
+.hero{
+  background:linear-gradient(135deg,#25262f,#171820);
+  border-radius:20px;
+  padding:25px 20px;
+  margin-bottom:25px;
+  border:1px solid #33343d;
 }
 
-.profile-name{
-  text-align:center;
-  font-size:23px;
-  font-weight:bold;
+.hero h1{
+  margin:0;
+  font-size:28px;
 }
 
-/* ================= SETTINGS ================= */
+.hero p{
+  color:#c5c5c8;
+  line-height:1.6;
+}
+
+.gold{
+  color:#c9a45c;
+}
+
+/* ================= NOTIFICATIONS ================= */
 
 .overlay{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.72);
+  background:rgba(0,0,0,.75);
   z-index:2000;
   display:flex;
   align-items:flex-end;
@@ -377,11 +264,24 @@ label{
   margin-bottom:18px;
 }
 
+.notification{
+  background:#292934;
+  border-radius:13px;
+  padding:15px;
+  margin-bottom:10px;
+}
+
+.notification strong{
+  color:#c9a45c;
+}
+
+/* ================= SETTINGS ================= */
+
 .setting-item{
-  background:#282932;
+  background:#292934;
   border-radius:12px;
   padding:16px;
-  margin:9px 0;
+  margin:10px 0;
   cursor:pointer;
 }
 
@@ -393,27 +293,6 @@ label{
 .setting-item span{
   color:#aaa;
   font-size:13px;
-}
-
-.notification{
-  background:#282932;
-  border-radius:13px;
-  padding:15px;
-  margin-bottom:10px;
-}
-
-.notification strong{
-  color:#c9a45c;
-}
-
-.close-btn{
-  position:absolute;
-  right:20px;
-  top:20px;
-  background:none;
-  border:none;
-  color:white;
-  font-size:24px;
 }
 
 /* ================= ADMIN ================= */
@@ -439,39 +318,24 @@ label{
   flex:1;
 }
 
-/* ================= ACTORS ================= */
+/* ================= PROFILE ================= */
 
-.actor-card{
-  background:#282932;
-  padding:17px;
-  border-radius:15px;
-  margin-bottom:15px;
-}
-
-.actor-photo{
-  width:110px;
-  height:110px;
-  border-radius:12px;
+.profile-photo{
+  width:120px;
+  height:120px;
+  border-radius:50%;
   object-fit:cover;
   display:block;
-  margin:0 auto 15px;
-}
-
-.actor-card p{
-  color:#ccc;
-  line-height:1.5;
-}
-
-.actor-card a{
-  color:#c9a45c;
+  margin:0 auto 20px;
+  background:#333;
 }
 
 /* ================= EMPTY ================= */
 
 .empty{
   text-align:center;
-  padding:30px 15px;
   color:#999;
+  padding:30px 10px;
 }
 
 </style>
@@ -480,418 +344,483 @@ label{
 <body>
 
 
-<!-- ================= LOGIN ================= -->
+<!-- =====================================================
+     LOGIN
+===================================================== -->
 
-<div id="loginPage" class="auth-page">
+<div id="authScreen" class="card">
 
-  <div class="auth-box">
+  <img
+    src="logo.png"
+    class="auth-logo"
+    alt="TaniMan Casting Company"
+  >
 
-    <img src="logo.png" class="auth-logo" alt="TaniMan">
+  <h2 id="authTitle">
+    Actor Login
+  </h2>
 
-    <h2 id="authTitle">Actor Login</h2>
+  <input
+    id="email"
+    type="email"
+    placeholder="Email address"
+  >
 
-    <input
-      id="email"
-      type="email"
-      placeholder="Email address"
-    >
+  <input
+    id="password"
+    type="password"
+    placeholder="Password"
+  >
 
-    <input
-      id="password"
-      type="password"
-      placeholder="Password"
-    >
-
-    <div
-      id="forgotPassword"
-      class="forgot"
-      onclick="forgotPassword()"
-    >
-      Forgot Password?
-    </div>
-
-    <button
-      class="btn"
-      id="authButton"
-      onclick="handleAuth()"
-    >
-      Login
-    </button>
-
-    <button
-      class="btn btn-secondary"
-      onclick="toggleAuth()"
-      id="toggleButton"
-    >
-      Create New Account
-    </button>
-
-    <div id="authMessage" class="message"></div>
-
+  <div
+    id="forgotPassword"
+    onclick="forgotPassword()"
+    style="
+      text-align:right;
+      color:#c9a45c;
+      cursor:pointer;
+      margin-bottom:8px;
+      font-size:14px;
+    "
+  >
+    Forgot Password?
   </div>
+
+  <button
+    id="authButton"
+    onclick="handleAuth()"
+  >
+    Login
+  </button>
+
+  <button
+    class="secondary"
+    id="toggleButton"
+    onclick="toggleAuth()"
+  >
+    Create New Account
+  </button>
+
+  <div
+    id="authMessage"
+    class="message"
+  ></div>
 
 </div>
 
 
-<!-- ================= MAIN APP ================= -->
+<!-- =====================================================
+     MAIN APP
+===================================================== -->
 
 <div id="app" class="hidden">
 
 
-<header class="header">
+  <!-- HEADER -->
 
-  <div class="logo-wrap">
+  <div class="container">
 
     <img
       src="logo.png"
       class="logo"
-      alt="TaniMan"
+      alt="TMCC"
     >
 
-    <div class="brand">
+    <div class="brand-title">
+      TaniMan
+    </div>
 
-      <div class="brand-name">
-        TaniMan
+    <div class="brand-subtitle">
+      CASTING COMPANY
+    </div>
+
+
+    <!-- ================= HOME ================= -->
+
+    <section id="homePage">
+
+      <div class="hero">
+
+        <h1>
+          Welcome to
+          <span class="gold">
+            TaniMan
+          </span>
+        </h1>
+
+        <p>
+          Your gateway to professional casting
+          opportunities, auditions and actor profiles.
+        </p>
+
       </div>
 
-      <div class="brand-sub">
-        CASTING COMPANY
+      <h2>
+        Latest Auditions
+      </h2>
+
+      <div id="homeUpdates">
+        <div class="empty">
+          Loading auditions...
+        </div>
       </div>
 
-    </div>
-
-  </div>
-
-  <div class="header-icons">
-
-    <button
-      class="icon-btn"
-      onclick="openNotifications()"
-    >
-      🔔
-    </button>
-
-    <button
-      class="icon-btn"
-      onclick="openSettings()"
-    >
-      ⚙️
-    </button>
-
-  </div>
-
-</header>
+    </section>
 
 
-<!-- ================= HOME ================= -->
+    <!-- ================= AUDITIONS ================= -->
 
-<section id="homePage" class="page">
-
-  <div class="hero">
-
-    <h1>
-      Welcome to
-      <span class="gold">
-        TaniMan
-      </span>
-    </h1>
-
-    <p>
-      Your gateway to professional casting opportunities,
-      auditions and actor profiles.
-    </p>
-
-  </div>
-
-  <h2 class="section-title">
-    Latest Auditions
-  </h2>
-
-  <div id="homeUpdates">
-
-    <div class="empty">
-      Loading auditions...
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ================= AUDITIONS ================= -->
-
-<section id="auditionsPage" class="page hidden">
-
-  <h2 class="section-title">
-    All Auditions
-  </h2>
-
-  <div id="updatesList">
-
-    <div class="empty">
-      Loading auditions...
-    </div>
-
-  </div>
-
-
-  <div id="adminPanel" class="card admin-box hidden">
-
-    <div class="admin-label">
-      ADMIN PANEL
-    </div>
-
-    <h2>
-      Post New Audition
-    </h2>
-
-    <label>Title</label>
-
-    <input
-      id="update_title"
-      placeholder="AD Film Casting Call"
+    <section
+      id="auditionsPage"
+      class="hidden"
     >
 
-    <label>Description</label>
+      <h2>
+        Auditions
+      </h2>
 
-    <textarea
-      id="update_description"
-      placeholder="Write audition requirements..."
-    ></textarea>
-
-    <label>Audition Date</label>
-
-    <input
-      id="update_date"
-      type="date"
-    >
-
-    <label>Location</label>
-
-    <input
-      id="update_location"
-      placeholder="Pune / Mumbai / Pan India"
-    >
-
-    <label>Apply Link</label>
-
-    <input
-      id="update_link"
-      type="url"
-      placeholder="https://..."
-    >
-
-    <label>Audition Photo</label>
-
-    <input
-      id="update_image"
-      type="file"
-      accept="image/*"
-    >
-
-    <button
-      class="btn"
-      onclick="publishUpdate()"
-    >
-      Publish Audition
-    </button>
-
-    <div
-      id="updateMessage"
-      class="message"
-    ></div>
-
-  </div>
+      <div id="updatesList">
+        <div class="empty">
+          Loading auditions...
+        </div>
+      </div>
 
 
-  <div id="adminActors" class="card hidden">
-
-    <div class="admin-label">
-      ADMIN
-    </div>
-
-    <h2>
-      Registered Actors
-    </h2>
-
-    <div id="actorsList">
-      Loading actors...
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- ================= PROFILE ================= -->
-
-<section id="profilePage" class="page hidden">
-
-  <div class="card">
-
-    <h2>
-      My Profile
-    </h2>
-
-    <div id="profilePhotoBox">
+      <!-- ADMIN POST -->
 
       <div
-        class="profile-photo-preview"
-        style="
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        color:#999;
-        "
+        id="adminPanel"
+        class="card admin-box hidden"
       >
-        Photo
+
+        <div class="admin-label">
+          ADMIN PANEL
+        </div>
+
+        <h2>
+          Post / Edit Audition
+        </h2>
+
+        <label>
+          Title
+        </label>
+
+        <input
+          id="update_title"
+          type="text"
+          placeholder="Audition title"
+        >
+
+        <label>
+          Description
+        </label>
+
+        <textarea
+          id="update_description"
+          placeholder="Write audition details"
+        ></textarea>
+
+        <label>
+          Audition Date
+        </label>
+
+        <input
+          id="update_date"
+          type="date"
+        >
+
+        <label>
+          Location
+        </label>
+
+        <input
+          id="update_location"
+          type="text"
+          placeholder="Pune / Mumbai"
+        >
+
+        <label>
+          Apply Link
+        </label>
+
+        <input
+          id="update_link"
+          type="url"
+          placeholder="https://"
+        >
+
+        <label>
+          Photo
+        </label>
+
+        <input
+          id="update_image"
+          type="file"
+          accept="image/*"
+        >
+
+        <button
+          id="publishButton"
+          onclick="publishUpdate()"
+        >
+          Publish Audition
+        </button>
+
+        <button
+          id="cancelEditButton"
+          class="secondary hidden"
+          onclick="cancelEdit()"
+        >
+          Cancel Edit
+        </button>
+
+        <div
+          id="updateMessage"
+          class="message"
+        ></div>
+
       </div>
+
+
+      <!-- ADMIN ACTORS -->
+
+      <div
+        id="adminActors"
+        class="card hidden"
+      >
+
+        <div class="admin-label">
+          ADMIN
+        </div>
+
+        <h2>
+          Registered Actors
+        </h2>
+
+        <div id="actorsList">
+          Loading actors...
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- ================= PROFILE ================= -->
+
+    <section
+      id="profilePage"
+      class="hidden"
+    >
+
+      <div class="card">
+
+        <h2>
+          My Profile
+        </h2>
+
+        <div id="profilePhotoBox">
+          <div
+            class="profile-photo"
+            style="
+              display:flex;
+              align-items:center;
+              justify-content:center;
+              color:#999;
+            "
+          >
+            Photo
+          </div>
+        </div>
+
+        <label>
+          Profile Photo
+        </label>
+
+        <input
+          id="profile_photo"
+          type="file"
+          accept="image/*"
+        >
+
+        <label>
+          Full Name
+        </label>
+
+        <input
+          id="full_name"
+          type="text"
+          placeholder="Your full name"
+        >
+
+        <label>
+          Age
+        </label>
+
+        <input
+          id="age"
+          type="number"
+          placeholder="Age"
+        >
+
+        <label>
+          Gender
+        </label>
+
+        <select id="gender">
+
+          <option value="">
+            Select Gender
+          </option>
+
+          <option value="Male">
+            Male
+          </option>
+
+          <option value="Female">
+            Female
+          </option>
+
+          <option value="Other">
+            Other
+          </option>
+
+        </select>
+
+        <label>
+          Height
+        </label>
+
+        <input
+          id="height"
+          type="text"
+          placeholder="Example: 5'8"
+        >
+
+        <label>
+          Contact Number
+        </label>
+
+        <input
+          id="contact"
+          type="tel"
+          placeholder="Contact number"
+        >
+
+        <label>
+          Current Location
+        </label>
+
+        <input
+          id="current_location"
+          type="text"
+          placeholder="Current location"
+        >
+
+        <label>
+          Hobbies
+        </label>
+
+        <textarea
+          id="hobbies"
+          placeholder="Your hobbies"
+        ></textarea>
+
+        <label>
+          Acting Experience
+        </label>
+
+        <textarea
+          id="experience"
+          placeholder="Your acting experience"
+        ></textarea>
+
+        <label>
+          Introduction Video URL
+        </label>
+
+        <input
+          id="intro_video_url"
+          type="url"
+          placeholder="YouTube / Drive link"
+        >
+
+        <button
+          onclick="saveProfile()"
+        >
+          Save / Update Profile
+        </button>
+
+        <div
+          id="profileMessage"
+          class="message"
+        ></div>
+
+      </div>
+
+    </section>
+
+  </div>
+
+
+  <!-- =====================================================
+       BOTTOM NAV
+  ===================================================== -->
+
+  <nav class="bottom-nav">
+
+    <div
+      id="navHome"
+      class="nav-item active"
+      onclick="showPage('home')"
+    >
+
+      <span class="nav-icon">
+        ⌂
+      </span>
+
+      Home
 
     </div>
 
-    <label>Profile Photo</label>
-
-    <input
-      id="profile_photo"
-      type="file"
-      accept="image/*"
-    >
-
-    <label>Full Name</label>
-
-    <input
-      id="full_name"
-      placeholder="Your full name"
-    >
-
-    <label>Age</label>
-
-    <input
-      id="age"
-      type="number"
-      placeholder="Age"
-    >
-
-    <label>Gender</label>
-
-    <select id="gender">
-
-      <option value="">
-        Select Gender
-      </option>
-
-      <option value="Male">
-        Male
-      </option>
-
-      <option value="Female">
-        Female
-      </option>
-
-      <option value="Other">
-        Other
-      </option>
-
-    </select>
-
-    <label>Height</label>
-
-    <input
-      id="height"
-      placeholder="Example: 5'8"
-    >
-
-    <label>Contact Number</label>
-
-    <input
-      id="contact"
-      type="tel"
-      placeholder="Contact number"
-    >
-
-    <label>Current Location</label>
-
-    <input
-      id="current_location"
-      placeholder="Current location"
-    >
-
-    <label>Hobbies</label>
-
-    <textarea
-      id="hobbies"
-      placeholder="Your hobbies"
-    ></textarea>
-
-    <label>Acting Experience</label>
-
-    <textarea
-      id="experience"
-      placeholder="Your acting experience"
-    ></textarea>
-
-    <label>Introduction Video URL</label>
-
-    <input
-      id="intro_video_url"
-      type="url"
-      placeholder="YouTube / Drive / other video link"
-    >
-
-    <button
-      class="btn"
-      onclick="saveProfile()"
-    >
-      Save / Update Profile
-    </button>
 
     <div
-      id="profileMessage"
-      class="message"
-    ></div>
+      id="navAuditions"
+      class="nav-item"
+      onclick="showPage('auditions')"
+    >
 
-  </div>
+      <span class="nav-icon">
+        🎬
+      </span>
 
-</section>
+      Auditions
+
+    </div>
 
 
-<!-- ================= BOTTOM NAV ================= -->
+    <div
+      id="navProfile"
+      class="nav-item"
+      onclick="showPage('profile')"
+    >
 
-<nav class="bottom-nav">
+      <span class="nav-icon">
+        👤
+      </span>
 
-  <div
-    id="navHome"
-    class="nav-item active"
-    onclick="showPage('home')"
-  >
-    <span class="nav-icon">⌂</span>
-    Home
-  </div>
+      Profile
 
-  <div
-    id="navAuditions"
-    class="nav-item"
-    onclick="showPage('auditions')"
-  >
-    <span class="nav-icon">🎬</span>
-    Auditions
-  </div>
+    </div>
 
-  <div
-    id="navProfile"
-    class="nav-item"
-    onclick="showPage('profile')"
-  >
-    <span class="nav-icon">👤</span>
-    Profile
-  </div>
-
-</nav>
+  </nav>
 
 </div>
 
 
-<!-- ================= NOTIFICATIONS ================= -->
+<!-- =====================================================
+     NOTIFICATIONS
+===================================================== -->
 
 <div
   id="notificationOverlay"
@@ -917,7 +846,7 @@ label{
     </div>
 
     <button
-      class="btn btn-secondary"
+      class="secondary"
       onclick="closeNotifications()"
     >
       Close
@@ -928,7 +857,9 @@ label{
 </div>
 
 
-<!-- ================= SETTINGS ================= -->
+<!-- =====================================================
+     SETTINGS
+===================================================== -->
 
 <div
   id="settingsOverlay"
@@ -945,6 +876,7 @@ label{
       Settings
     </div>
 
+
     <div
       class="setting-item"
       onclick="forgotPassword()"
@@ -960,6 +892,7 @@ label{
 
     </div>
 
+
     <div
       class="setting-item"
       onclick="showAccountInfo()"
@@ -970,14 +903,15 @@ label{
       </strong>
 
       <span>
-        View your registered email address.
+        View registered email address.
       </span>
 
     </div>
 
+
     <div
       class="setting-item"
-      onclick="closeSettings(); showPage('profile')"
+      onclick="closeSettings();showPage('profile')"
     >
 
       <strong>
@@ -985,10 +919,11 @@ label{
       </strong>
 
       <span>
-        Update your actor profile and information.
+        Update your actor profile.
       </span>
 
     </div>
+
 
     <div
       class="setting-item"
@@ -1005,8 +940,9 @@ label{
 
     </div>
 
+
     <button
-      class="btn btn-secondary"
+      class="secondary"
       onclick="closeSettings()"
     >
       Close
@@ -1035,7 +971,13 @@ supabase.createClient(
   SUPABASE_KEY
 );
 
+
+/* =====================================================
+   SETTINGS
+===================================================== */
+
 let isSignup = false;
+
 let editingUpdateId = null;
 
 const ADMIN_EMAIL =
@@ -1050,28 +992,37 @@ function toggleAuth(){
 
   isSignup = !isSignup;
 
-  document.getElementById("authTitle").innerText =
+  document.getElementById(
+    "authTitle"
+  ).innerText =
     isSignup
     ? "Create Actor Account"
     : "Actor Login";
 
-  document.getElementById("authButton").innerText =
+  document.getElementById(
+    "authButton"
+  ).innerText =
     isSignup
     ? "Sign Up"
     : "Login";
 
-  document.getElementById("toggleButton").innerText =
+  document.getElementById(
+    "toggleButton"
+  ).innerText =
     isSignup
     ? "Already have an account? Login"
     : "Create New Account";
 
-  document.getElementById("forgotPassword")
-    .classList.toggle(
-      "hidden",
-      isSignup
-    );
+  document.getElementById(
+    "forgotPassword"
+  ).classList.toggle(
+    "hidden",
+    isSignup
+  );
 
-  document.getElementById("authMessage").innerText = "";
+  document.getElementById(
+    "authMessage"
+  ).innerText = "";
 
 }
 
@@ -1083,15 +1034,20 @@ function toggleAuth(){
 async function handleAuth(){
 
   const email =
-    document.getElementById("email")
-    .value.trim();
+    document.getElementById(
+      "email"
+    ).value.trim();
 
   const password =
-    document.getElementById("password")
-    .value;
+    document.getElementById(
+      "password"
+    ).value;
 
   const message =
-    document.getElementById("authMessage");
+    document.getElementById(
+      "authMessage"
+    );
+
 
   if(!email || !password){
 
@@ -1100,6 +1056,7 @@ async function handleAuth(){
 
     return;
   }
+
 
   message.innerText =
     "Please wait...";
@@ -1121,6 +1078,7 @@ async function handleAuth(){
 
       });
 
+
     if(error){
 
       message.innerText =
@@ -1128,6 +1086,7 @@ async function handleAuth(){
 
       return;
     }
+
 
     message.innerText =
       "Account created successfully. Please login.";
@@ -1146,6 +1105,7 @@ async function handleAuth(){
 
     });
 
+
   if(error){
 
     message.innerText =
@@ -1153,6 +1113,7 @@ async function handleAuth(){
 
     return;
   }
+
 
   message.innerText = "";
 
@@ -1168,8 +1129,10 @@ async function handleAuth(){
 async function forgotPassword(){
 
   const email =
-    document.getElementById("email")
-    .value.trim();
+    document.getElementById(
+      "email"
+    ).value.trim();
+
 
   if(!email){
 
@@ -1179,10 +1142,13 @@ async function forgotPassword(){
       "First enter your registered email address."
     );
 
-    document.getElementById("email").focus();
+    document.getElementById(
+      "email"
+    ).focus();
 
     return;
   }
+
 
   const { error } =
     await supabaseClient.auth
@@ -1194,6 +1160,7 @@ async function forgotPassword(){
       }
     );
 
+
   if(error){
 
     alert(
@@ -1203,6 +1170,7 @@ async function forgotPassword(){
 
     return;
   }
+
 
   closeSettings();
 
@@ -1219,14 +1187,23 @@ async function forgotPassword(){
 
 async function startApp(){
 
-  document.getElementById("loginPage")
-    .classList.add("hidden");
+  document.getElementById(
+    "authScreen"
+  ).classList.add(
+    "hidden"
+  );
 
-  document.getElementById("app")
-    .classList.remove("hidden");
+  document.getElementById(
+    "app"
+  ).classList.remove(
+    "hidden"
+  );
+
 
   await loadProfile();
+
   await loadUpdates();
+
   await loadActors();
 
   showPage("home");
@@ -1240,42 +1217,80 @@ async function startApp(){
 
 function showPage(page){
 
-  const pages = {
-
-    home:
-      document.getElementById("homePage"),
-
-    auditions:
-      document.getElementById("auditionsPage"),
-
-    profile:
-      document.getElementById("profilePage")
-
-  };
-
-  Object.values(pages).forEach(
-    p => p.classList.add("hidden")
-  );
-
-  pages[page].classList.remove("hidden");
-
-  document
-    .querySelectorAll(".nav-item")
-    .forEach(
-      n => n.classList.remove("active")
+  const home =
+    document.getElementById(
+      "homePage"
     );
 
-  if(page === "home")
-    document.getElementById("navHome")
-      .classList.add("active");
+  const auditions =
+    document.getElementById(
+      "auditionsPage"
+    );
 
-  if(page === "auditions")
-    document.getElementById("navAuditions")
-      .classList.add("active");
+  const profile =
+    document.getElementById(
+      "profilePage"
+    );
 
-  if(page === "profile")
-    document.getElementById("navProfile")
-      .classList.add("active");
+
+  home.classList.add("hidden");
+  auditions.classList.add("hidden");
+  profile.classList.add("hidden");
+
+
+  document.querySelectorAll(
+    ".nav-item"
+  ).forEach(
+    item =>
+      item.classList.remove(
+        "active"
+      )
+  );
+
+
+  if(page === "home"){
+
+    home.classList.remove(
+      "hidden"
+    );
+
+    document.getElementById(
+      "navHome"
+    ).classList.add(
+      "active"
+    );
+
+  }
+
+
+  if(page === "auditions"){
+
+    auditions.classList.remove(
+      "hidden"
+    );
+
+    document.getElementById(
+      "navAuditions"
+    ).classList.add(
+      "active"
+    );
+
+  }
+
+
+  if(page === "profile"){
+
+    profile.classList.remove(
+      "hidden"
+    );
+
+    document.getElementById(
+      "navProfile"
+    ).classList.add(
+      "active"
+    );
+
+  }
 
 }
 
@@ -1293,7 +1308,10 @@ async function loadProfile(){
   } =
     await supabaseClient.auth.getUser();
 
-  if(!user) return;
+
+  if(!user)
+    return;
+
 
   const {
     data,
@@ -1302,8 +1320,12 @@ async function loadProfile(){
     await supabaseClient
     .from("actors")
     .select("*")
-    .eq("id",user.id)
+    .eq(
+      "id",
+      user.id
+    )
     .maybeSingle();
+
 
   if(error){
 
@@ -1312,47 +1334,80 @@ async function loadProfile(){
     return;
   }
 
-  if(!data) return;
 
-  document.getElementById("full_name").value =
+  if(!data)
+    return;
+
+
+  document.getElementById(
+    "full_name"
+  ).value =
     data.full_name || "";
 
-  document.getElementById("age").value =
+
+  document.getElementById(
+    "age"
+  ).value =
     data.age || "";
 
-  document.getElementById("gender").value =
+
+  document.getElementById(
+    "gender"
+  ).value =
     data.gender || "";
 
-  document.getElementById("height").value =
+
+  document.getElementById(
+    "height"
+  ).value =
     data.height || "";
 
-  document.getElementById("contact").value =
+
+  document.getElementById(
+    "contact"
+  ).value =
     data.contact || "";
 
-  document.getElementById("current_location").value =
+
+  document.getElementById(
+    "current_location"
+  ).value =
     data.current_location || "";
 
-  document.getElementById("hobbies").value =
+
+  document.getElementById(
+    "hobbies"
+  ).value =
     data.hobbies || "";
 
-  document.getElementById("experience").value =
+
+  document.getElementById(
+    "experience"
+  ).value =
     data.acting_experience || "";
 
-  document.getElementById("intro_video_url").value =
+
+  document.getElementById(
+    "intro_video_url"
+  ).value =
     data.intro_video_url || "";
+
 
   if(data.profile_photo_url){
 
-    document.getElementById("profilePhotoBox")
-      .innerHTML = `
+    document.getElementById(
+      "profilePhotoBox"
+    ).innerHTML = `
 
       <img
-        src="${escapeHtml(data.profile_photo_url)}"
-        class="profile-photo-preview"
+        src="${escapeHtml(
+          data.profile_photo_url
+        )}"
+        class="profile-photo"
         alt="Profile Photo"
       >
 
-      `;
+    `;
 
   }
 
@@ -1372,27 +1427,35 @@ async function saveProfile(){
   } =
     await supabaseClient.auth.getUser();
 
+
   if(!user){
 
-    alert("Please login first.");
+    alert(
+      "Please login first."
+    );
 
     return;
   }
+
 
   const message =
     document.getElementById(
       "profileMessage"
     );
 
+
   message.innerText =
     "Saving profile...";
+
 
   const photoFile =
     document.getElementById(
       "profile_photo"
     ).files[0];
 
-  let profilePhotoUrl = null;
+
+  let profilePhotoUrl =
+    null;
 
 
   if(photoFile){
@@ -1407,6 +1470,7 @@ async function saveProfile(){
         "_"
       );
 
+
     const {
       error:uploadError
     } =
@@ -1420,6 +1484,7 @@ async function saveProfile(){
         }
       );
 
+
     if(uploadError){
 
       message.innerText =
@@ -1429,6 +1494,7 @@ async function saveProfile(){
       return;
     }
 
+
     const {
       data:publicData
     } =
@@ -1437,6 +1503,7 @@ async function saveProfile(){
       .getPublicUrl(
         fileName
       );
+
 
     profilePhotoUrl =
       publicData.publicUrl;
@@ -1457,12 +1524,14 @@ async function saveProfile(){
       document.getElementById(
         "age"
       ).value
-      ? parseInt(
-          document.getElementById(
-            "age"
-          ).value
-        )
-      : null,
+      ?
+      parseInt(
+        document.getElementById(
+          "age"
+        ).value
+      )
+      :
+      null,
 
     gender:
       document.getElementById(
@@ -1504,6 +1573,7 @@ async function saveProfile(){
 
   };
 
+
   if(profilePhotoUrl){
 
     profile.profile_photo_url =
@@ -1511,10 +1581,14 @@ async function saveProfile(){
 
   }
 
+
   const { error } =
     await supabaseClient
     .from("actors")
-    .upsert(profile);
+    .upsert(
+      profile
+    );
+
 
   if(error){
 
@@ -1527,8 +1601,12 @@ async function saveProfile(){
     return;
   }
 
+
   message.innerText =
     "Profile saved successfully!";
+
+
+  await loadProfile();
 
   await loadActors();
 
@@ -1551,13 +1629,22 @@ async function loadUpdates(){
       "homeUpdates"
     );
 
-  if(updatesList)
+
+  if(updatesList){
+
     updatesList.innerHTML =
       "<div class='empty'>Loading auditions...</div>";
 
-  if(homeUpdates)
+  }
+
+
+  if(homeUpdates){
+
     homeUpdates.innerHTML =
       "<div class='empty'>Loading auditions...</div>";
+
+  }
+
 
   const {
     data,
@@ -1572,6 +1659,7 @@ async function loadUpdates(){
         ascending:false
       }
     );
+
 
   if(error){
 
@@ -1588,19 +1676,23 @@ async function loadUpdates(){
     return;
   }
 
+
   if(!data || data.length === 0){
 
     const empty =
       "<div class='empty'>No auditions available yet.</div>";
 
     if(updatesList)
-      updatesList.innerHTML = empty;
+      updatesList.innerHTML =
+        empty;
 
     if(homeUpdates)
-      homeUpdates.innerHTML = empty;
+      homeUpdates.innerHTML =
+        empty;
 
     return;
   }
+
 
   const {
     data:{
@@ -1609,36 +1701,46 @@ async function loadUpdates(){
   } =
     await supabaseClient.auth.getUser();
 
+
   const isAdmin =
     user &&
     user.email &&
     user.email.toLowerCase() ===
     ADMIN_EMAIL.toLowerCase();
 
+
   if(isAdmin){
 
     document.getElementById(
       "adminPanel"
-    ).classList.remove("hidden");
+    ).classList.remove(
+      "hidden"
+    );
 
     document.getElementById(
       "adminActors"
-    ).classList.remove("hidden");
+    ).classList.remove(
+      "hidden"
+    );
 
   }
 
-  const allHTML =
-    data.map(
-      update =>
-        auditionHTML(
-          update,
-          isAdmin
-        )
-    ).join("");
 
-  if(updatesList)
+  if(updatesList){
+
     updatesList.innerHTML =
-      allHTML;
+      data
+      .map(
+        update =>
+          auditionHTML(
+            update,
+            isAdmin
+          )
+      )
+      .join("");
+
+  }
+
 
   if(homeUpdates){
 
@@ -1656,6 +1758,7 @@ async function loadUpdates(){
 
   }
 
+
   loadNotifications(data);
 
 }
@@ -1665,33 +1768,39 @@ async function loadUpdates(){
    AUDITION HTML
 ===================================================== */
 
-function auditionHTML(update,isAdmin){
+function auditionHTML(
+  update,
+  isAdmin
+){
 
   return `
 
-  <article class="audition-card">
+    <div class="actor-card">
 
-    ${
-      update.image_url
-      ?
-      `
-      <img
-        src="${escapeHtml(update.image_url)}"
-        class="audition-image"
-        alt="Audition"
-      >
-      `
-      :
-      ""
-    }
+      ${
+        update.image_url
+        ?
+        `
+        <img
+          src="${escapeHtml(
+            update.image_url
+          )}"
+          class="update-image"
+          alt="Audition"
+        >
+        `
+        :
+        ""
+      }
 
-    <div class="audition-content">
 
       <h3>
         ${escapeHtml(
-          update.title || "Casting Call"
+          update.title ||
+          "Audition"
         )}
       </h3>
+
 
       ${
         update.description
@@ -1707,52 +1816,58 @@ function auditionHTML(update,isAdmin){
         ""
       }
 
+
       ${
         update.audition_date
         ?
         `
-        <div class="info">
+        <p>
           📅 <b>Date:</b>
           ${escapeHtml(
             update.audition_date
           )}
-        </div>
+        </p>
         `
         :
         ""
       }
 
+
       ${
         update.location
         ?
         `
-        <div class="info">
+        <p>
           📍 <b>Location:</b>
           ${escapeHtml(
             update.location
           )}
-        </div>
+        </p>
         `
         :
         ""
       }
+
 
       ${
         update.apply_link
         ?
         `
         <a
-          class="apply-btn"
-          href="${escapeHtml(update.apply_link)}"
+          href="${escapeHtml(
+            update.apply_link
+          )}"
           target="_blank"
-          rel="noopener noreferrer"
         >
-          Apply Now
+          <button>
+            Apply Now
+          </button>
         </a>
         `
         :
         ""
       }
+
 
       ${
         isAdmin
@@ -1761,14 +1876,13 @@ function auditionHTML(update,isAdmin){
         <div class="admin-actions">
 
           <button
-            class="small-btn"
             onclick="editUpdate('${update.id}')"
           >
             Edit
           </button>
 
           <button
-            class="small-btn small-danger"
+            class="danger"
             onclick="deleteUpdate('${update.id}')"
           >
             Delete
@@ -1782,15 +1896,13 @@ function auditionHTML(update,isAdmin){
 
     </div>
 
-  </article>
-
   `;
 
 }
 
 
 /* =====================================================
-   PUBLISH UPDATE
+   PUBLISH / UPDATE
 ===================================================== */
 
 async function publishUpdate(){
@@ -1800,35 +1912,42 @@ async function publishUpdate(){
       "updateMessage"
     );
 
+
   const title =
     document.getElementById(
       "update_title"
     ).value.trim();
+
 
   const description =
     document.getElementById(
       "update_description"
     ).value.trim();
 
+
   const date =
     document.getElementById(
       "update_date"
     ).value;
+
 
   const location =
     document.getElementById(
       "update_location"
     ).value.trim();
 
+
   const applyLink =
     document.getElementById(
       "update_link"
     ).value.trim();
 
+
   const imageFile =
     document.getElementById(
       "update_image"
     ).files[0];
+
 
   if(!title){
 
@@ -1838,12 +1957,18 @@ async function publishUpdate(){
     return;
   }
 
+
   message.innerText =
     editingUpdateId
-    ? "Updating..."
-    : "Publishing...";
+    ?
+    "Updating..."
+    :
+    "Publishing...";
 
-  let imageUrl = null;
+
+  let imageUrl =
+    null;
+
 
   if(imageFile){
 
@@ -1854,6 +1979,7 @@ async function publishUpdate(){
         /\s+/g,
         "_"
       );
+
 
     const {
       error:uploadError
@@ -1868,6 +1994,7 @@ async function publishUpdate(){
         }
       );
 
+
     if(uploadError){
 
       message.innerText =
@@ -1876,6 +2003,7 @@ async function publishUpdate(){
 
       return;
     }
+
 
     const {
       data:publicData
@@ -1886,10 +2014,12 @@ async function publishUpdate(){
         fileName
       );
 
+
     imageUrl =
       publicData.publicUrl;
 
   }
+
 
   const updateData = {
 
@@ -1906,6 +2036,7 @@ async function publishUpdate(){
 
   };
 
+
   if(imageUrl){
 
     updateData.image_url =
@@ -1913,14 +2044,18 @@ async function publishUpdate(){
 
   }
 
+
   let result;
+
 
   if(editingUpdateId){
 
     result =
       await supabaseClient
       .from("updates")
-      .update(updateData)
+      .update(
+        updateData
+      )
       .eq(
         "id",
         editingUpdateId
@@ -1935,13 +2070,18 @@ async function publishUpdate(){
     result =
       await supabaseClient
       .from("updates")
-      .insert(updateData);
+      .insert(
+        updateData
+      );
 
   }
 
+
   if(result.error){
 
-    console.error(result.error);
+    console.error(
+      result.error
+    );
 
     message.innerText =
       "Error: " +
@@ -1950,19 +2090,56 @@ async function publishUpdate(){
     return;
   }
 
+
   message.innerText =
     editingUpdateId
-    ? "Audition updated successfully!"
-    : "Audition published successfully!";
+    ?
+    "Audition updated successfully!"
+    :
+    "Audition published successfully!";
 
-  editingUpdateId = null;
 
-  document.getElementById("update_title").value = "";
-  document.getElementById("update_description").value = "";
-  document.getElementById("update_date").value = "";
-  document.getElementById("update_location").value = "";
-  document.getElementById("update_link").value = "";
-  document.getElementById("update_image").value = "";
+  editingUpdateId =
+    null;
+
+
+  document.getElementById(
+    "update_title"
+  ).value = "";
+
+  document.getElementById(
+    "update_description"
+  ).value = "";
+
+  document.getElementById(
+    "update_date"
+  ).value = "";
+
+  document.getElementById(
+    "update_location"
+  ).value = "";
+
+  document.getElementById(
+    "update_link"
+  ).value = "";
+
+  document.getElementById(
+    "update_image"
+  ).value = "";
+
+
+  document.getElementById(
+    "publishButton"
+  ).innerText =
+    "Publish Audition";
+
+
+  document.getElementById(
+    "cancelEditButton"
+  ).classList.add(
+    "hidden"
+  );
+
 
   await loadUpdates();
 
@@ -1982,8 +2159,12 @@ async function editUpdate(id){
     await supabaseClient
     .from("updates")
     .select("*")
-    .eq("id",id)
+    .eq(
+      "id",
+      id
+    )
     .single();
+
 
   if(error){
 
@@ -1995,24 +2176,64 @@ async function editUpdate(id){
     return;
   }
 
-  editingUpdateId = id;
 
-  document.getElementById("update_title").value =
+  editingUpdateId =
+    id;
+
+
+  document.getElementById(
+    "update_title"
+  ).value =
     data.title || "";
 
-  document.getElementById("update_description").value =
+
+  document.getElementById(
+    "update_description"
+  ).value =
     data.description || "";
 
-  document.getElementById("update_date").value =
+
+  document.getElementById(
+    "update_date"
+  ).value =
     data.audition_date || "";
 
-  document.getElementById("update_location").value =
+
+  document.getElementById(
+    "update_location"
+  ).value =
     data.location || "";
 
-  document.getElementById("update_link").value =
+
+  document.getElementById(
+    "update_link"
+  ).value =
     data.apply_link || "";
 
-  showPage("auditions");
+
+  document.getElementById(
+    "publishButton"
+  ).innerText =
+    "Update Audition";
+
+
+  document.getElementById(
+    "cancelEditButton"
+  ).classList.remove(
+    "hidden"
+  );
+
+
+  document.getElementById(
+    "updateMessage"
+  ).innerText =
+    "Editing audition. Upload a new photo only if you want to replace it.";
+
+
+  showPage(
+    "auditions"
+  );
+
 
   document.getElementById(
     "adminPanel"
@@ -2020,10 +2241,61 @@ async function editUpdate(id){
     behavior:"smooth"
   });
 
+}
+
+
+/* =====================================================
+   CANCEL EDIT
+===================================================== */
+
+function cancelEdit(){
+
+  editingUpdateId =
+    null;
+
+
+  document.getElementById(
+    "update_title"
+  ).value = "";
+
+  document.getElementById(
+    "update_description"
+  ).value = "";
+
+  document.getElementById(
+    "update_date"
+  ).value = "";
+
+  document.getElementById(
+    "update_location"
+  ).value = "";
+
+  document.getElementById(
+    "update_link"
+  ).value = "";
+
+  document.getElementById(
+    "update_image"
+  ).value = "";
+
+
+  document.getElementById(
+    "publishButton"
+  ).innerText =
+    "Publish Audition";
+
+
+  document.getElementById(
+    "cancelEditButton"
+  ).classList.add(
+    "hidden"
+  );
+
+
   document.getElementById(
     "updateMessage"
   ).innerText =
-    "Editing this audition. Upload a new photo only if you want to replace the existing one.";
+    "";
 
 }
 
@@ -2039,8 +2311,10 @@ async function deleteUpdate(id){
       "Are you sure you want to delete this audition?"
     );
 
+
   if(!confirmDelete)
     return;
+
 
   const { error } =
     await supabaseClient
@@ -2050,6 +2324,7 @@ async function deleteUpdate(id){
       "id",
       id
     );
+
 
   if(error){
 
@@ -2061,9 +2336,11 @@ async function deleteUpdate(id){
     return;
   }
 
+
   alert(
     "Audition deleted successfully."
   );
+
 
   await loadUpdates();
 
@@ -2081,8 +2358,10 @@ async function loadActors(){
       "actorsList"
     );
 
+
   if(!actorsList)
     return;
+
 
   const {
     data:{
@@ -2091,18 +2370,22 @@ async function loadActors(){
   } =
     await supabaseClient.auth.getUser();
 
+
   const isAdmin =
     user &&
     user.email &&
     user.email.toLowerCase() ===
     ADMIN_EMAIL.toLowerCase();
 
+
   if(!isAdmin){
 
-    actorsList.innerHTML = "";
+    actorsList.innerHTML =
+      "";
 
     return;
   }
+
 
   const {
     data,
@@ -2118,14 +2401,18 @@ async function loadActors(){
       }
     );
 
+
   if(error){
 
     actorsList.innerHTML =
       "Error loading actors: " +
-      escapeHtml(error.message);
+      escapeHtml(
+        error.message
+      );
 
     return;
   }
+
 
   if(!data || data.length === 0){
 
@@ -2134,6 +2421,7 @@ async function loadActors(){
 
     return;
   }
+
 
   actorsList.innerHTML =
     data.map(
@@ -2150,15 +2438,17 @@ async function loadActors(){
               actor.profile_photo_url
             )}"
             class="actor-photo"
+            alt="Actor"
           >
           `
           :
           `
-          <div class="empty">
+          <div class="actor-photo-placeholder">
             No Photo
           </div>
           `
         }
+
 
         <h3>
           ${escapeHtml(
@@ -2167,10 +2457,12 @@ async function loadActors(){
           )}
         </h3>
 
+
         <p>
           <b>Age:</b>
           ${actor.age || "Not provided"}
         </p>
+
 
         <p>
           <b>Gender:</b>
@@ -2180,6 +2472,7 @@ async function loadActors(){
           )}
         </p>
 
+
         <p>
           <b>Height:</b>
           ${escapeHtml(
@@ -2187,6 +2480,7 @@ async function loadActors(){
             "Not provided"
           )}
         </p>
+
 
         <p>
           <b>Contact:</b>
@@ -2196,6 +2490,7 @@ async function loadActors(){
           )}
         </p>
 
+
         <p>
           <b>Location:</b>
           ${escapeHtml(
@@ -2203,6 +2498,7 @@ async function loadActors(){
             "Not provided"
           )}
         </p>
+
 
         <p>
           <b>Hobbies:</b>
@@ -2212,6 +2508,7 @@ async function loadActors(){
           )}
         </p>
 
+
         <p>
           <b>Experience:</b>
           ${escapeHtml(
@@ -2220,18 +2517,21 @@ async function loadActors(){
           )}
         </p>
 
+
         ${
           actor.intro_video_url
           ?
           `
-          <a
-            href="${escapeHtml(
-              actor.intro_video_url
-            )}"
-            target="_blank"
-          >
-            Watch Introduction Video
-          </a>
+          <p>
+            <a
+              href="${escapeHtml(
+                actor.intro_video_url
+              )}"
+              target="_blank"
+            >
+              Watch Introduction Video
+            </a>
+          </p>
           `
           :
           ""
@@ -2256,6 +2556,7 @@ function loadNotifications(data){
       "notificationsList"
     );
 
+
   if(!data || data.length === 0){
 
     list.innerHTML =
@@ -2264,8 +2565,12 @@ function loadNotifications(data){
     return;
   }
 
+
   list.innerHTML =
-    data.slice(0,10)
+    data.slice(
+      0,
+      10
+    )
     .map(
       item => `
 
@@ -2309,8 +2614,12 @@ function closeNotifications(event){
     document.getElementById(
       "notificationOverlay"
     )
-  )
+  ){
+
     return;
+
+  }
+
 
   document.getElementById(
     "notificationOverlay"
@@ -2344,8 +2653,12 @@ function closeSettings(event){
     document.getElementById(
       "settingsOverlay"
     )
-  )
+  ){
+
     return;
+
+  }
+
 
   document.getElementById(
     "settingsOverlay"
@@ -2369,8 +2682,10 @@ async function showAccountInfo(){
   } =
     await supabaseClient.auth.getUser();
 
+
   if(!user)
     return;
+
 
   alert(
     "Registered Email:\n\n" +
@@ -2388,15 +2703,35 @@ async function logout(){
 
   await supabaseClient.auth.signOut();
 
-  document.getElementById("app")
-    .classList.add("hidden");
 
-  document.getElementById("loginPage")
-    .classList.remove("hidden");
+  document.getElementById(
+    "app"
+  ).classList.add(
+    "hidden"
+  );
 
-  document.getElementById("email").value = "";
-  document.getElementById("password").value = "";
-  document.getElementById("authMessage").innerText = "";
+
+  document.getElementById(
+    "authScreen"
+  ).classList.remove(
+    "hidden"
+  );
+
+
+  document.getElementById(
+    "email"
+  ).value = "";
+
+
+  document.getElementById(
+    "password"
+  ).value = "";
+
+
+  document.getElementById(
+    "authMessage"
+  ).innerText = "";
+
 
   closeSettings();
 
@@ -2410,17 +2745,32 @@ async function logout(){
 function escapeHtml(value){
 
   return String(value)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
+    .replace(
+      /&/g,
+      "&amp;"
+    )
+    .replace(
+      /</g,
+      "&lt;"
+    )
+    .replace(
+      />/g,
+      "&gt;"
+    )
+    .replace(
+      /"/g,
+      "&quot;"
+    )
+    .replace(
+      /'/g,
+      "&#039;"
+    );
 
 }
 
 
 /* =====================================================
-   CHECK LOGIN
+   CHECK EXISTING LOGIN
 ===================================================== */
 
 async function checkUser(){
@@ -2431,6 +2781,7 @@ async function checkUser(){
     }
   } =
     await supabaseClient.auth.getUser();
+
 
   if(user){
 
@@ -2450,4 +2801,4 @@ checkUser();
 </script>
 
 </body>
-      </html>
+  </html>
