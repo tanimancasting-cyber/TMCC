@@ -85,6 +85,10 @@
       background: #33333f;
     }
 
+    .delete-btn {
+      background: #8b3030;
+    }
+
     .hidden {
       display: none !important;
     }
@@ -138,8 +142,6 @@
 
 <div class="container">
 
-  <!-- LOGO -->
-
   <div class="logo">
     TMCC
   </div>
@@ -149,9 +151,7 @@
   </div>
 
 
-  <!-- =========================
-       LOGIN / SIGNUP
-  ========================== -->
+  <!-- LOGIN / SIGNUP -->
 
   <div id="authScreen" class="card">
 
@@ -193,9 +193,7 @@
   </div>
 
 
-  <!-- =========================
-       ADMIN UPDATES
-  ========================== -->
+  <!-- ADMIN UPDATES -->
 
   <div
     id="adminUpdates"
@@ -208,9 +206,7 @@
         Post New Audition / Update
       </h2>
 
-      <label>
-        Title
-      </label>
+      <label>Title</label>
 
       <input
         id="update_title"
@@ -218,27 +214,21 @@
         placeholder="Audition title"
       >
 
-      <label>
-        Description
-      </label>
+      <label>Description</label>
 
       <textarea
         id="update_description"
         placeholder="Write audition details"
       ></textarea>
 
-      <label>
-        Audition Date
-      </label>
+      <label>Audition Date</label>
 
       <input
         id="update_date"
         type="date"
       >
 
-      <label>
-        Location
-      </label>
+      <label>Location</label>
 
       <input
         id="update_location"
@@ -246,9 +236,7 @@
         placeholder="Pune"
       >
 
-      <label>
-        Apply Link
-      </label>
+      <label>Apply Link</label>
 
       <input
         id="update_link"
@@ -256,9 +244,7 @@
         placeholder="https://"
       >
 
-      <label>
-        Photo
-      </label>
+      <label>Photo</label>
 
       <input
         id="update_image"
@@ -282,9 +268,7 @@
   </div>
 
 
-  <!-- =========================
-       ADMIN ACTORS
-  ========================== -->
+  <!-- ADMIN ACTORS -->
 
   <div
     id="adminActors"
@@ -306,9 +290,7 @@
   </div>
 
 
-  <!-- =========================
-       ACTOR UPDATES
-  ========================== -->
+  <!-- ACTOR UPDATES -->
 
   <div
     id="actorUpdates"
@@ -330,9 +312,7 @@
   </div>
 
 
-  <!-- =========================
-       ACTOR PROFILE
-  ========================== -->
+  <!-- ACTOR PROFILE -->
 
   <div
     id="profileScreen"
@@ -345,9 +325,7 @@
         Actor Profile
       </h2>
 
-      <label>
-        Profile Photo
-      </label>
+      <label>Profile Photo</label>
 
       <input
         id="profile_photo"
@@ -355,9 +333,7 @@
         accept="image/*"
       >
 
-      <label>
-        Full Name
-      </label>
+      <label>Full Name</label>
 
       <input
         id="full_name"
@@ -365,9 +341,7 @@
         placeholder="Your full name"
       >
 
-      <label>
-        Age
-      </label>
+      <label>Age</label>
 
       <input
         id="age"
@@ -375,9 +349,7 @@
         placeholder="Age"
       >
 
-      <label>
-        Gender
-      </label>
+      <label>Gender</label>
 
       <select id="gender">
 
@@ -399,9 +371,7 @@
 
       </select>
 
-      <label>
-        Height
-      </label>
+      <label>Height</label>
 
       <input
         id="height"
@@ -409,9 +379,7 @@
         placeholder="Example: 5'8"
       >
 
-      <label>
-        Contact Number
-      </label>
+      <label>Contact Number</label>
 
       <input
         id="contact"
@@ -419,9 +387,7 @@
         placeholder="Contact number"
       >
 
-      <label>
-        Current Location
-      </label>
+      <label>Current Location</label>
 
       <input
         id="current_location"
@@ -429,27 +395,21 @@
         placeholder="Current location"
       >
 
-      <label>
-        Hobbies
-      </label>
+      <label>Hobbies</label>
 
       <textarea
         id="hobbies"
         placeholder="Your hobbies"
       ></textarea>
 
-      <label>
-        Acting Experience
-      </label>
+      <label>Acting Experience</label>
 
       <textarea
         id="experience"
         placeholder="Your acting experience"
       ></textarea>
 
-      <label>
-        Introduction Video URL
-      </label>
+      <label>Introduction Video URL</label>
 
       <input
         id="intro_video_url"
@@ -457,9 +417,7 @@
         placeholder="Video link"
       >
 
-      <button
-        onclick="saveProfile()"
-      >
+      <button onclick="saveProfile()">
         Save Profile
       </button>
 
@@ -500,7 +458,6 @@ const supabaseClient =
     SUPABASE_KEY
   );
 
-
 let isSignup = false;
 
 
@@ -508,25 +465,19 @@ let isSignup = false;
    LOGIN / SIGNUP SWITCH
 ========================= */
 
-function toggleAuth() {
+window.toggleAuth = function() {
 
   isSignup = !isSignup;
 
-  document.getElementById(
-    "authTitle"
-  ).innerText =
+  document.getElementById("authTitle").innerText =
     isSignup
       ? "Create Actor Account"
       : "Actor Login";
 
-
-  document.getElementById(
-    "authButton"
-  ).innerText =
+  document.getElementById("authButton").innerText =
     isSignup
       ? "Sign Up"
       : "Login";
-
 
   document.querySelector(
     "#authScreen .secondary"
@@ -535,36 +486,26 @@ function toggleAuth() {
       ? "Already have an account? Login"
       : "Create New Account";
 
-
   document.getElementById(
     "authMessage"
   ).innerText = "";
-}
+};
 
 
 /* =========================
    LOGIN / SIGNUP
 ========================= */
 
-async function login() {
+window.login = async function() {
 
   const email =
-    document.getElementById(
-      "email"
-    ).value.trim();
-
+    document.getElementById("email").value.trim();
 
   const password =
-    document.getElementById(
-      "password"
-    ).value;
-
+    document.getElementById("password").value;
 
   const message =
-    document.getElementById(
-      "authMessage"
-    );
-
+    document.getElementById("authMessage");
 
   if (!email || !password) {
 
@@ -574,12 +515,9 @@ async function login() {
     return;
   }
 
-
   message.innerText =
     "Please wait...";
 
-
-  /* SIGNUP */
 
   if (isSignup) {
 
@@ -593,10 +531,8 @@ async function login() {
         password: password,
 
         options: {
-
           emailRedirectTo:
             "https://tanimancasting-cyber.github.io/TMCC/"
-
         }
 
       });
@@ -610,15 +546,12 @@ async function login() {
       return;
     }
 
-
     message.innerText =
       "Account created successfully. Please login.";
 
     return;
   }
 
-
-  /* LOGIN */
 
   const {
     error
@@ -643,7 +576,7 @@ async function login() {
 
   await showProfile();
 
-}
+};
 
 
 /* =========================
@@ -652,37 +585,17 @@ async function login() {
 
 async function showProfile() {
 
-  const authScreen =
-    document.getElementById(
-      "authScreen"
-    );
+  document.getElementById(
+    "authScreen"
+  ).classList.add("hidden");
 
+  document.getElementById(
+    "profileScreen"
+  ).classList.remove("hidden");
 
-  const profileScreen =
-    document.getElementById(
-      "profileScreen"
-    );
-
-
-  authScreen.classList.add(
-    "hidden"
-  );
-
-
-  profileScreen.classList.remove(
-    "hidden"
-  );
-
-
-  const actorUpdates =
-    document.getElementById(
-      "actorUpdates"
-    );
-
-
-  actorUpdates.classList.remove(
-    "hidden"
-  );
+  document.getElementById(
+    "actorUpdates"
+  ).classList.remove("hidden");
 
 
   const {
@@ -693,13 +606,8 @@ async function showProfile() {
     await supabaseClient.auth.getUser();
 
 
-  if (!user) {
+  if (!user) return;
 
-    return;
-  }
-
-
-  /* ADMIN */
 
   if (
     user.email &&
@@ -709,30 +617,17 @@ async function showProfile() {
 
     document.getElementById(
       "adminUpdates"
-    ).classList.remove(
-      "hidden"
-    );
-
+    ).classList.remove("hidden");
 
     document.getElementById(
       "adminActors"
-    ).classList.remove(
-      "hidden"
-    );
-
+    ).classList.remove("hidden");
 
     await loadActors();
-
   }
 
 
   await loadProfile();
-
-
-  /*
-    Updates table अजून तयार नसेल
-    तरी login बंद होऊ नये.
-  */
 
   await loadUpdates();
 
@@ -743,7 +638,7 @@ async function showProfile() {
    SAVE PROFILE
 ========================= */
 
-async function saveProfile() {
+window.saveProfile = async function() {
 
   const {
     data: {
@@ -755,29 +650,20 @@ async function saveProfile() {
 
   if (!user) {
 
-    alert(
-      "Please login first."
-    );
+    alert("Please login first.");
 
     return;
   }
 
 
-  const photoInput =
+  const photoFile =
     document.getElementById(
       "profile_photo"
-    );
+    ).files[0];
 
 
-  const photoFile =
-    photoInput.files[0];
+  let profilePhotoUrl = null;
 
-
-  let profilePhotoUrl =
-    null;
-
-
-  /* PHOTO UPLOAD */
 
   if (photoFile) {
 
@@ -808,17 +694,11 @@ async function saveProfile() {
 
     if (uploadError) {
 
-      console.error(
-        uploadError
-      );
-
-
       document.getElementById(
         "profileMessage"
       ).innerText =
         "Photo upload error: " +
         uploadError.message;
-
 
       return;
     }
@@ -836,16 +716,12 @@ async function saveProfile() {
 
     profilePhotoUrl =
       publicData.publicUrl;
-
   }
 
 
-  /* PROFILE DATA */
-
   const profile = {
 
-    id:
-      user.id,
+    id: user.id,
 
     full_name:
       document.getElementById(
@@ -908,7 +784,6 @@ async function saveProfile() {
 
     profile.profile_photo_url =
       profilePhotoUrl;
-
   }
 
 
@@ -917,9 +792,7 @@ async function saveProfile() {
   } =
     await supabaseClient
       .from("actors")
-      .upsert(
-        profile
-      );
+      .upsert(profile);
 
 
   const message =
@@ -930,15 +803,9 @@ async function saveProfile() {
 
   if (error) {
 
-    console.error(
-      error
-    );
-
-
     message.innerText =
       "Error: " +
       error.message;
-
 
     return;
   }
@@ -947,7 +814,7 @@ async function saveProfile() {
   message.innerText =
     "Profile saved successfully!";
 
-}
+};
 
 
 /* =========================
@@ -964,10 +831,7 @@ async function loadProfile() {
     await supabaseClient.auth.getUser();
 
 
-  if (!user) {
-
-    return;
-  }
+  if (!user) return;
 
 
   const {
@@ -977,27 +841,11 @@ async function loadProfile() {
     await supabaseClient
       .from("actors")
       .select("*")
-      .eq(
-        "id",
-        user.id
-      )
+      .eq("id", user.id)
       .maybeSingle();
 
 
-  if (error) {
-
-    console.error(
-      error
-    );
-
-    return;
-  }
-
-
-  if (!data) {
-
-    return;
-  }
+  if (error || !data) return;
 
 
   document.getElementById(
@@ -1005,48 +853,40 @@ async function loadProfile() {
   ).value =
     data.full_name || "";
 
-
   document.getElementById(
     "age"
   ).value =
     data.age || "";
-
 
   document.getElementById(
     "gender"
   ).value =
     data.gender || "";
 
-
   document.getElementById(
     "height"
   ).value =
     data.height || "";
-
 
   document.getElementById(
     "contact"
   ).value =
     data.contact || "";
 
-
   document.getElementById(
     "current_location"
   ).value =
     data.current_location || "";
-
 
   document.getElementById(
     "hobbies"
   ).value =
     data.hobbies || "";
 
-
   document.getElementById(
     "experience"
   ).value =
     data.acting_experience || "";
-
 
   document.getElementById(
     "intro_video_url"
@@ -1060,71 +900,86 @@ async function loadProfile() {
    PUBLISH UPDATE
 ========================= */
 
-async function publishUpdate() {
+window.publishUpdate = async function() {
 
   const message =
-    document.getElementById("updateMessage");
+    document.getElementById(
+      "updateMessage"
+    );
 
   const title =
-    document.getElementById("update_title").value.trim();
+    document.getElementById(
+      "update_title"
+    ).value.trim();
 
   const description =
-    document.getElementById("update_description").value.trim();
+    document.getElementById(
+      "update_description"
+    ).value.trim();
 
   const date =
-    document.getElementById("update_date").value;
+    document.getElementById(
+      "update_date"
+    ).value;
 
   const location =
-    document.getElementById("update_location").value.trim();
+    document.getElementById(
+      "update_location"
+    ).value.trim();
 
   const applyLink =
-    document.getElementById("update_link").value.trim();
+    document.getElementById(
+      "update_link"
+    ).value.trim();
 
   const imageFile =
-    document.getElementById("update_image").files[0];
+    document.getElementById(
+      "update_image"
+    ).files[0];
 
 
   if (!title) {
-    message.innerText = "Please enter a title.";
+
+    message.innerText =
+      "Please enter a title.";
+
     return;
   }
 
 
-  message.innerText = "Publishing...";
+  message.innerText =
+    "Publishing...";
 
 
   let imageUrl = null;
 
-
-  /* =========================
-     UPLOAD PHOTO
-  ========================== */
 
   if (imageFile) {
 
     const fileName =
       Date.now() +
       "_" +
-      imageFile.name.replace(/\s+/g, "_");
+      imageFile.name.replace(
+        /\s+/g,
+        "_"
+      );
 
 
     const {
       error: uploadError
     } =
-      await supabaseClient.storage
-        .from("Updates")
-        .upload(
-          fileName,
-          imageFile,
-          {
-            upsert: false
-          }
-        );
+    await supabaseClient.storage
+      .from("Updates")
+      .upload(
+        fileName,
+        imageFile,
+        {
+          upsert: false
+        }
+      );
 
 
     if (uploadError) {
-
-      console.error(uploadError);
 
       message.innerText =
         "Photo upload error: " +
@@ -1137,19 +992,17 @@ async function publishUpdate() {
     const {
       data: publicData
     } =
-      supabaseClient.storage
-        .from("Updates")
-        .getPublicUrl(fileName);
+    supabaseClient.storage
+      .from("Updates")
+      .getPublicUrl(
+        fileName
+      );
 
 
     imageUrl =
       publicData.publicUrl;
   }
 
-
-  /* =========================
-     SAVE UPDATE
-  ========================== */
 
   const {
     error
@@ -1179,8 +1032,6 @@ async function publishUpdate() {
 
   if (error) {
 
-    console.error(error);
-
     message.innerText =
       "Publish error: " +
       error.message;
@@ -1188,10 +1039,6 @@ async function publishUpdate() {
     return;
   }
 
-
-  /* =========================
-     SUCCESS
-  ========================== */
 
   message.innerText =
     "Update published successfully!";
@@ -1201,26 +1048,21 @@ async function publishUpdate() {
     "update_title"
   ).value = "";
 
-
   document.getElementById(
     "update_description"
   ).value = "";
-
 
   document.getElementById(
     "update_date"
   ).value = "";
 
-
   document.getElementById(
     "update_location"
   ).value = "";
 
-
   document.getElementById(
     "update_link"
   ).value = "";
-
 
   document.getElementById(
     "update_image"
@@ -1228,10 +1070,12 @@ async function publishUpdate() {
 
 
   await loadUpdates();
-}
+
+};
+
 
 /* =========================
-   LOAD ACTORS - ADMIN
+   LOAD ACTORS
 ========================= */
 
 async function loadActors() {
@@ -1240,7 +1084,6 @@ async function loadActors() {
     document.getElementById(
       "actorsList"
     );
-
 
   actorsList.innerHTML =
     "Loading actors...";
@@ -1263,24 +1106,15 @@ async function loadActors() {
 
   if (error) {
 
-    console.error(
-      error
-    );
-
-
     actorsList.innerHTML =
       "Error loading actors: " +
       error.message;
-
 
     return;
   }
 
 
-  if (
-    !data ||
-    data.length === 0
-  ) {
+  if (!data || data.length === 0) {
 
     actorsList.innerHTML =
       "No actors registered yet.";
@@ -1290,14 +1124,12 @@ async function loadActors() {
 
 
   actorsList.innerHTML =
-    data.map(
-      actor => `
+    data.map(actor => `
 
       <div class="actor-card">
 
         ${
           actor.profile_photo_url
-
           ? `
             <img
               src="${actor.profile_photo_url}"
@@ -1305,7 +1137,6 @@ async function loadActors() {
               alt="Actor Photo"
             >
           `
-
           : `
             <div class="actor-photo-placeholder">
               No Photo
@@ -1313,57 +1144,47 @@ async function loadActors() {
           `
         }
 
-
         <h3>
           ${actor.full_name || "No Name"}
         </h3>
-
 
         <p>
           <b>Age:</b>
           ${actor.age || "Not provided"}
         </p>
 
-
         <p>
           <b>Gender:</b>
           ${actor.gender || "Not provided"}
         </p>
-
 
         <p>
           <b>Height:</b>
           ${actor.height || "Not provided"}
         </p>
 
-
         <p>
           <b>Contact:</b>
           ${actor.contact || "Not provided"}
         </p>
-
 
         <p>
           <b>Location:</b>
           ${actor.current_location || "Not provided"}
         </p>
 
-
         <p>
           <b>Hobbies:</b>
           ${actor.hobbies || "Not provided"}
         </p>
-
 
         <p>
           <b>Acting Experience:</b>
           ${actor.acting_experience || "Not provided"}
         </p>
 
-
         ${
           actor.intro_video_url
-
           ? `
             <p>
               <a
@@ -1374,14 +1195,12 @@ async function loadActors() {
               </a>
             </p>
           `
-
           : ""
         }
 
       </div>
 
-    `
-    ).join("");
+    `).join("");
 
 }
 
@@ -1389,12 +1208,17 @@ async function loadActors() {
 /* =========================
    LOAD UPDATES
 ========================= */
+
 async function loadUpdates() {
 
   const updatesList =
-    document.getElementById("updatesList");
+    document.getElementById(
+      "updatesList"
+    );
+
 
   if (!updatesList) return;
+
 
   updatesList.innerHTML =
     "Loading auditions...";
@@ -1407,9 +1231,12 @@ async function loadUpdates() {
     await supabaseClient
       .from("updates")
       .select("*")
-      .order("created_at", {
-        ascending: false
-      });
+      .order(
+        "created_at",
+        {
+          ascending: false
+        }
+      );
 
 
   if (error) {
@@ -1513,6 +1340,7 @@ async function loadUpdates() {
               <a
                 href="${update.apply_link}"
                 target="_blank"
+                rel="noopener noreferrer"
               >
                 Apply Now
               </a>
@@ -1526,13 +1354,15 @@ async function loadUpdates() {
           isAdmin
           ? `
             <button
+              type="button"
               onclick="editUpdate('${update.id}')"
             >
               Edit
             </button>
 
             <button
-              class="secondary"
+              type="button"
+              class="delete-btn"
               onclick="deleteUpdate('${update.id}')"
             >
               Delete
@@ -1544,51 +1374,213 @@ async function loadUpdates() {
       </div>
 
     `).join("");
+
 }
+
+
+/* =========================
+   EDIT UPDATE
+========================= */
+
+window.editUpdate = async function(id) {
+
+  const {
+    data: update,
+    error: fetchError
+  } =
+    await supabaseClient
+      .from("updates")
+      .select("*")
+      .eq("id", id)
+      .single();
+
+
+  if (fetchError) {
+
+    alert(
+      "Unable to load update: " +
+      fetchError.message
+    );
+
+    return;
+  }
+
+
+  const title =
+    prompt(
+      "Edit title:",
+      update.title || ""
+    );
+
+
+  if (title === null) return;
+
+
+  const description =
+    prompt(
+      "Edit description:",
+      update.description || ""
+    );
+
+
+  if (description === null) return;
+
+
+  const location =
+    prompt(
+      "Edit location:",
+      update.location || ""
+    );
+
+
+  if (location === null) return;
+
+
+  const auditionDate =
+    prompt(
+      "Edit audition date (YYYY-MM-DD):",
+      update.audition_date || ""
+    );
+
+
+  if (auditionDate === null) return;
+
+
+  const applyLink =
+    prompt(
+      "Edit apply link:",
+      update.apply_link || ""
+    );
+
+
+  if (applyLink === null) return;
+
+
+  const {
+    error
+  } =
+    await supabaseClient
+      .from("updates")
+      .update({
+
+        title: title,
+
+        description: description,
+
+        location: location,
+
+        audition_date:
+          auditionDate || null,
+
+        apply_link:
+          applyLink
+
+      })
+      .eq("id", id);
+
+
+  if (error) {
+
+    alert(
+      "Update failed: " +
+      error.message
+    );
+
+    console.error(error);
+
+    return;
+  }
+
+
+  alert(
+    "Update edited successfully!"
+  );
+
+
+  await loadUpdates();
+
+};
+
+
+/* =========================
+   DELETE UPDATE
+========================= */
+
+window.deleteUpdate = async function(id) {
+
+  const confirmed =
+    confirm(
+      "Are you sure you want to delete this audition?"
+    );
+
+
+  if (!confirmed) return;
+
+
+  const {
+    error
+  } =
+    await supabaseClient
+      .from("updates")
+      .delete()
+      .eq("id", id);
+
+
+  if (error) {
+
+    alert(
+      "Delete failed: " +
+      error.message
+    );
+
+    console.error(error);
+
+    return;
+  }
+
+
+  alert(
+    "Audition deleted successfully!"
+  );
+
+
+  await loadUpdates();
+
+};
 
 
 /* =========================
    LOGOUT
 ========================= */
 
-async function logout() {
+window.logout = async function() {
 
   await supabaseClient.auth.signOut();
 
 
   document.getElementById(
     "profileScreen"
-  ).classList.add(
-    "hidden"
-  );
+  ).classList.add("hidden");
 
 
   document.getElementById(
     "actorUpdates"
-  ).classList.add(
-    "hidden"
-  );
+  ).classList.add("hidden");
 
 
   document.getElementById(
     "adminUpdates"
-  ).classList.add(
-    "hidden"
-  );
+  ).classList.add("hidden");
 
 
   document.getElementById(
     "adminActors"
-  ).classList.add(
-    "hidden"
-  );
+  ).classList.add("hidden");
 
 
   document.getElementById(
     "authScreen"
-  ).classList.remove(
-    "hidden"
-  );
+  ).classList.remove("hidden");
 
 
   document.getElementById(
@@ -1600,11 +1592,11 @@ async function logout() {
     "password"
   ).value = "";
 
-}
+};
 
 
 /* =========================
-   CHECK EXISTING LOGIN
+   CHECK LOGIN
 ========================= */
 
 async function checkUser() {
