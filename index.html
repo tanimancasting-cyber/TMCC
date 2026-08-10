@@ -2514,42 +2514,142 @@ function loadNotifications(data){
         </strong>
 
         <div>
+async function loadApplications(){
+
+  const list =
+    document.getElementById("applicationsList");
+
+  if(!list)
+    return;
+
+  const {
+    data:{user}
+  } =
+    await supabaseClient.auth.getUser();
+
+  const isAdmin =
+    user &&
+    user.email &&
+    user.email.toLowerCase() ===
+    ADMIN_EMAIL.toLowerCase();
+
+  if(!isAdmin){
+    list.innerHTML = "";
+    return;
+  }
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient
+    .from("applications")
+    .select("*")
+    .order(
+      "created_at",
+      {ascending:false}
+    );
+
+  if(error){
+
+    list.innerHTML =
+      "Error loading applications: " +
+      escapeHtml(error.message);
+
+    return;
+  }
+
+  if(!data || data.length === 0){
+
+    list.innerHTML =
+      "<div class='empty'>No applications yet.</div>";
+
+    return;
+  }
+
+  list.innerHTML =
+    data.map(
+      app => `
+
+      <div class="application-card">
+
+        <div class="status">
+          ${escapeHtml(app.status || "Pending")}
+        </div>
+
+        <p>
+          <b>Name:</b>
           ${escapeHtml(
-            item.title ||
-            "New audition available"
+            app.full_name || "Not provided"
           )}
+        </p>
+
+        <p>
+          <b>Age:</b>
+          ${app.age || "Not provided"}
+        </p>
+
+        <p>
+          <b>Contact:</b>
+          ${escapeHtml(
+            app.contact || "Not provided"
+          )}
+        </p>
+
+        ${
+          app.intro_video_url
+          ?
+          `
+          <p>
+            <a
+              href="${escapeHtml(app.intro_video_url)}"
+              target="_blank">
+              Watch Introduction Video
+            </a>
+          </p>
+          `
+          :
+          ""
+        }
+
+        ${
+          app.message
+          ?
+          `
+          <p>
+            <b>Message:</b><br>
+            ${escapeHtml(app.message)}
+          </p>
+          `
+          :
+          ""
+        }
+
+        <p style="font-size:12px;color:#888;">
+          Application ID:
+          ${escapeHtml(app.id)}
+        </p>
+
+        <div class="admin-actions">
+
+          <button
+            class="small-btn"
+            onclick="updateApplicationStatus('${app.id}','Accepted')">
+            ✓ Accept
+          </button>
+
+          <button
+            class="small-btn small-danger"
+            onclick="updateApplicationStatus('${app.id}','Rejected')">
+            ✕ Reject
+          </button>
+
         </div>
 
       </div>
 
       `
     ).join("");
-}
-
-
-function openNotifications(){
-
-  document.getElementById(
-    "notificationOverlay"
-  ).classList.remove("hidden");
-}
-
-
-function closeNotifications(event){
-
-  if(
-    event &&
-    event.target !==
-    document.getElementById(
-      "notificationOverlay"
-    )
-  )
-    return;
-
-
-  document.getElementById(
-    "notificationOverlay"
-  ).classList.add("hidden");
 }
 
 
