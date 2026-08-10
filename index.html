@@ -1043,4 +1043,1687 @@ label{
 
     <div
       class="setting-item"
-     
+      onclick="forgotPassword()"
+    >
+
+      <strong>
+        🔐 Forgot Password
+      </strong>
+
+      <span>
+        Send a password reset link to your email.
+      </span>
+
+    </div>
+
+
+    <div
+      class="setting-item"
+      onclick="showAccountInfo()"
+    >
+
+      <strong>
+        👤 Account
+      </strong>
+
+      <span>
+        View your registered email address.
+      </span>
+
+    </div>
+
+
+    <div
+      class="setting-item"
+      onclick="closeSettings(); showPage('profile')"
+    >
+
+      <strong>
+        ✏️ Edit Profile
+      </strong>
+
+      <span>
+        Update your actor profile and information.
+      </span>
+
+    </div>
+
+
+    <div
+      class="setting-item"
+      onclick="logout()"
+    >
+
+      <strong>
+        🚪 Logout
+      </strong>
+
+      <span>
+        Sign out from your account.
+      </span>
+
+    </div>
+
+
+    <button
+      class="btn btn-secondary"
+      onclick="closeSettings()"
+    >
+      Close
+    </button>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   SUPABASE
+===================================================== */
+
+const SUPABASE_URL =
+"https://xxrmvtpkroqbzoihgfsj.supabase.co";
+
+const SUPABASE_KEY =
+"sb_publishable_0L8GrY20o9c-SK-dgWlAMg_S_2WZEcd";
+
+const supabaseClient =
+supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+
+let isSignup = false;
+
+let editingUpdateId = null;
+
+
+/* =====================================================
+   ADMIN EMAIL
+===================================================== */
+
+const ADMIN_EMAIL =
+"tanimancasting@gmail.com";
+
+
+/* =====================================================
+   AUTH TOGGLE
+===================================================== */
+
+function toggleAuth(){
+
+  isSignup = !isSignup;
+
+  document.getElementById("authTitle").innerText =
+    isSignup
+    ? "Create Actor Account"
+    : "Actor Login";
+
+  document.getElementById("authButton").innerText =
+    isSignup
+    ? "Sign Up"
+    : "Login";
+
+  document.getElementById("toggleButton").innerText =
+    isSignup
+    ? "Already have an account? Login"
+    : "Create New Account";
+
+  document.getElementById("forgotPassword")
+    .classList.toggle(
+      "hidden",
+      isSignup
+    );
+
+  document.getElementById("authMessage").innerText = "";
+
+}
+
+
+/* =====================================================
+   LOGIN / SIGNUP
+===================================================== */
+
+async function handleAuth(){
+
+  const email =
+    document.getElementById("email")
+    .value.trim();
+
+  const password =
+    document.getElementById("password")
+    .value;
+
+  const message =
+    document.getElementById("authMessage");
+
+
+  if(!email || !password){
+
+    message.innerText =
+      "Please enter email and password.";
+
+    return;
+  }
+
+
+  message.innerText =
+    "Please wait...";
+
+
+  /* SIGN UP */
+
+  if(isSignup){
+
+    const { error } =
+      await supabaseClient.auth.signUp({
+
+        email:email,
+
+        password:password,
+
+        options:{
+          emailRedirectTo:
+          "https://tanimancasting-cyber.github.io/TMCC/"
+        }
+
+      });
+
+
+    if(error){
+
+      message.innerText =
+        error.message;
+
+      return;
+    }
+
+
+    message.innerText =
+      "Account created successfully. Please login.";
+
+    return;
+  }
+
+
+  /* LOGIN */
+
+  const { error } =
+    await supabaseClient.auth
+    .signInWithPassword({
+
+      email:email,
+
+      password:password
+
+    });
+
+
+  if(error){
+
+    message.innerText =
+      error.message;
+
+    return;
+  }
+
+
+  message.innerText = "";
+
+  await startApp();
+
+}
+
+
+/* =====================================================
+   FORGOT PASSWORD
+===================================================== */
+
+async function forgotPassword(){
+
+  const emailInput =
+    document.getElementById("email");
+
+  const email =
+    emailInput.value.trim();
+
+
+  if(!email){
+
+    closeSettings();
+
+    alert(
+      "First enter your registered email address."
+    );
+
+    emailInput.focus();
+
+    return;
+  }
+
+
+  const { error } =
+    await supabaseClient.auth
+    .resetPasswordForEmail(
+      email,
+      {
+        redirectTo:
+        "https://tanimancasting-cyber.github.io/TMCC/"
+      }
+    );
+
+
+  if(error){
+
+    alert(
+      "Password reset error: " +
+      error.message
+    );
+
+    return;
+  }
+
+
+  closeSettings();
+
+  alert(
+    "Password reset link has been sent to your email."
+  );
+
+}
+
+
+/* =====================================================
+   START APP
+===================================================== */
+
+async function startApp(){
+
+  document.getElementById("loginPage")
+    .classList.add("hidden");
+
+  document.getElementById("app")
+    .classList.remove("hidden");
+
+
+  await loadProfile();
+
+  await loadUpdates();
+
+  await loadActors();
+
+
+  showPage("home");
+
+}
+
+
+/* =====================================================
+   NAVIGATION
+===================================================== */
+
+function showPage(page){
+
+  const pages = {
+
+    home:
+      document.getElementById("homePage"),
+
+    auditions:
+      document.getElementById("auditionsPage"),
+
+    profile:
+      document.getElementById("profilePage")
+
+  };
+
+
+  Object.values(pages).forEach(
+    p => p.classList.add("hidden")
+  );
+
+
+  pages[page].classList.remove("hidden");
+
+
+  document
+    .querySelectorAll(".nav-item")
+    .forEach(
+      n => n.classList.remove("active")
+    );
+
+
+  if(page === "home")
+    document.getElementById("navHome")
+      .classList.add("active");
+
+
+  if(page === "auditions")
+    document.getElementById("navAuditions")
+      .classList.add("active");
+
+
+  if(page === "profile")
+    document.getElementById("navProfile")
+      .classList.add("active");
+
+}
+
+
+/* =====================================================
+   LOAD PROFILE
+===================================================== */
+
+async function loadProfile(){
+
+  const {
+    data:{
+      user
+    }
+  } =
+    await supabaseClient.auth.getUser();
+
+
+  if(!user) return;
+
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient
+    .from("actors")
+    .select("*")
+    .eq("id",user.id)
+    .maybeSingle();
+
+
+  if(error){
+
+    console.error(error);
+
+    return;
+  }
+
+
+  if(!data) return;
+
+
+  document.getElementById("full_name").value =
+    data.full_name || "";
+
+  document.getElementById("age").value =
+    data.age || "";
+
+  document.getElementById("gender").value =
+    data.gender || "";
+
+  document.getElementById("height").value =
+    data.height || "";
+
+  document.getElementById("contact").value =
+    data.contact || "";
+
+  document.getElementById("current_location").value =
+    data.current_location || "";
+
+  document.getElementById("hobbies").value =
+    data.hobbies || "";
+
+  document.getElementById("experience").value =
+    data.acting_experience || "";
+
+  document.getElementById("intro_video_url").value =
+    data.intro_video_url || "";
+
+
+  if(data.profile_photo_url){
+
+    document.getElementById("profilePhotoBox")
+      .innerHTML = `
+
+      <img
+        src="${escapeHtml(data.profile_photo_url)}"
+        class="profile-photo-preview"
+        alt="Profile Photo"
+      >
+
+      `;
+
+  }
+
+}
+
+
+/* =====================================================
+   SAVE PROFILE
+===================================================== */
+
+async function saveProfile(){
+
+  const {
+    data:{
+      user
+    }
+  } =
+    await supabaseClient.auth.getUser();
+
+
+  if(!user){
+
+    alert("Please login first.");
+
+    return;
+  }
+
+
+  const message =
+    document.getElementById(
+      "profileMessage"
+    );
+
+
+  message.innerText =
+    "Saving profile...";
+
+
+  const photoFile =
+    document.getElementById(
+      "profile_photo"
+    ).files[0];
+
+
+  let profilePhotoUrl = null;
+
+
+  /* PHOTO */
+
+  if(photoFile){
+
+    const fileName =
+      user.id +
+      "_" +
+      Date.now() +
+      "_" +
+      photoFile.name.replace(
+        /\s+/g,
+        "_"
+      );
+
+
+    const {
+      error:uploadError
+    } =
+      await supabaseClient.storage
+      .from("Actor-profiles")
+      .upload(
+        fileName,
+        photoFile,
+        {
+          upsert:false
+        }
+      );
+
+
+    if(uploadError){
+
+      message.innerText =
+        "Photo upload error: " +
+        uploadError.message;
+
+      return;
+    }
+
+
+    const {
+      data:publicData
+    } =
+      supabaseClient.storage
+      .from("Actor-profiles")
+      .getPublicUrl(
+        fileName
+      );
+
+
+    profilePhotoUrl =
+      publicData.publicUrl;
+
+  }
+
+
+  const profile = {
+
+    id:user.id,
+
+    full_name:
+      document.getElementById(
+        "full_name"
+      ).value.trim(),
+
+    age:
+      document.getElementById(
+        "age"
+      ).value
+      ? parseInt(
+          document.getElementById(
+            "age"
+          ).value
+        )
+      : null,
+
+    gender:
+      document.getElementById(
+        "gender"
+      ).value,
+
+    height:
+      document.getElementById(
+        "height"
+      ).value.trim(),
+
+    contact:
+      document.getElementById(
+        "contact"
+      ).value.trim(),
+
+    current_location:
+      document.getElementById(
+        "current_location"
+      ).value.trim(),
+
+    hobbies:
+      document.getElementById(
+        "hobbies"
+      ).value.trim(),
+
+    acting_experience:
+      document.getElementById(
+        "experience"
+      ).value.trim(),
+
+    intro_video_url:
+      document.getElementById(
+        "intro_video_url"
+      ).value.trim(),
+
+    updated_at:
+      new Date().toISOString()
+
+  };
+
+
+  if(profilePhotoUrl){
+
+    profile.profile_photo_url =
+      profilePhotoUrl;
+
+  }
+
+
+  const { error } =
+    await supabaseClient
+    .from("actors")
+    .upsert(profile);
+
+
+  if(error){
+
+    console.error(error);
+
+    message.innerText =
+      "Error: " +
+      error.message;
+
+    return;
+  }
+
+
+  message.innerText =
+    "Profile saved successfully!";
+
+
+  await loadActors();
+
+}
+
+
+/* =====================================================
+   LOAD UPDATES
+===================================================== */
+
+async function loadUpdates(){
+
+  const updatesList =
+    document.getElementById(
+      "updatesList"
+    );
+
+  const homeUpdates =
+    document.getElementById(
+      "homeUpdates"
+    );
+
+
+  if(updatesList)
+    updatesList.innerHTML =
+      "<div class='empty'>Loading auditions...</div>";
+
+
+  if(homeUpdates)
+    homeUpdates.innerHTML =
+      "<div class='empty'>Loading auditions...</div>";
+
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient
+    .from("updates")
+    .select("*")
+    .order(
+      "created_at",
+      {
+        ascending:false
+      }
+    );
+
+
+  if(error){
+
+    console.error(error);
+
+    if(updatesList)
+      updatesList.innerHTML =
+        "<div class='empty'>Unable to load auditions.</div>";
+
+    if(homeUpdates)
+      homeUpdates.innerHTML =
+        "<div class='empty'>Unable to load auditions.</div>";
+
+    return;
+  }
+
+
+  if(!data || data.length === 0){
+
+    const empty =
+      "<div class='empty'>No auditions available yet.</div>";
+
+    if(updatesList)
+      updatesList.innerHTML = empty;
+
+    if(homeUpdates)
+      homeUpdates.innerHTML = empty;
+
+    return;
+  }
+
+
+  /* ADMIN CHECK */
+
+  const {
+    data:{
+      user
+    }
+  } =
+    await supabaseClient.auth.getUser();
+
+
+  const isAdmin =
+    user &&
+    user.email &&
+    user.email.toLowerCase() ===
+    ADMIN_EMAIL.toLowerCase();
+
+
+  if(isAdmin){
+
+    document.getElementById(
+      "adminPanel"
+    ).classList.remove("hidden");
+
+    document.getElementById(
+      "adminActors"
+    ).classList.remove("hidden");
+
+  }
+
+
+  const allHTML =
+    data.map(
+      update =>
+        auditionHTML(
+          update,
+          isAdmin
+        )
+    ).join("");
+
+
+  if(updatesList)
+    updatesList.innerHTML =
+      allHTML;
+
+
+  /* HOME ONLY FIRST 3 */
+
+  if(homeUpdates){
+
+    homeUpdates.innerHTML =
+      data
+      .slice(0,3)
+      .map(
+        update =>
+          auditionHTML(
+            update,
+            false
+          )
+      )
+      .join("");
+
+  }
+
+
+  loadNotifications(data);
+
+}
+
+
+/* =====================================================
+   AUDITION HTML
+===================================================== */
+
+function auditionHTML(
+  update,
+  isAdmin
+){
+
+  return `
+
+  <article class="audition-card">
+
+    ${
+      update.image_url
+      ?
+      `
+      <img
+        src="${escapeHtml(update.image_url)}"
+        class="audition-image"
+        alt="Audition"
+      >
+      `
+      :
+      ""
+    }
+
+
+    <div class="audition-content">
+
+      <h3>
+        ${escapeHtml(
+          update.title || "Casting Call"
+        )}
+      </h3>
+
+
+      ${
+        update.description
+        ?
+        `
+        <p>
+          ${escapeHtml(
+            update.description
+          )}
+        </p>
+        `
+        :
+        ""
+      }
+
+
+      ${
+        update.audition_date
+        ?
+        `
+        <div class="info">
+          📅 <b>Date:</b>
+          ${escapeHtml(
+            update.audition_date
+          )}
+        </div>
+        `
+        :
+        ""
+      }
+
+
+      ${
+        update.location
+        ?
+        `
+        <div class="info">
+          📍 <b>Location:</b>
+          ${escapeHtml(
+            update.location
+          )}
+        </div>
+        `
+        :
+        ""
+      }
+
+
+      ${
+        update.apply_link
+        ?
+        `
+        <a
+          class="apply-btn"
+          href="${escapeHtml(update.apply_link)}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Apply Now
+        </a>
+        `
+        :
+        ""
+      }
+
+
+      ${
+        isAdmin
+        ?
+        `
+        <div class="admin-actions">
+
+          <button
+            class="small-btn"
+            onclick="editUpdate('${update.id}')"
+          >
+            Edit
+          </button>
+
+          <button
+            class="small-btn small-danger"
+            onclick="deleteUpdate('${update.id}')"
+          >
+            Delete
+          </button>
+
+        </div>
+        `
+        :
+        ""
+      }
+
+    </div>
+
+  </article>
+
+  `;
+
+}
+
+
+/* =====================================================
+   PUBLISH UPDATE
+===================================================== */
+
+async function publishUpdate(){
+
+  const message =
+    document.getElementById(
+      "updateMessage"
+    );
+
+
+  const title =
+    document.getElementById(
+      "update_title"
+    ).value.trim();
+
+
+  const description =
+    document.getElementById(
+      "update_description"
+    ).value.trim();
+
+
+  const date =
+    document.getElementById(
+      "update_date"
+    ).value;
+
+
+  const location =
+    document.getElementById(
+      "update_location"
+    ).value.trim();
+
+
+  const applyLink =
+    document.getElementById(
+      "update_link"
+    ).value.trim();
+
+
+  const imageFile =
+    document.getElementById(
+      "update_image"
+    ).files[0];
+
+
+  if(!title){
+
+    message.innerText =
+      "Please enter a title.";
+
+    return;
+  }
+
+
+  message.innerText =
+    editingUpdateId
+    ? "Updating..."
+    : "Publishing...";
+
+
+  let imageUrl = null;
+
+
+  /* IMAGE */
+
+  if(imageFile){
+
+    const fileName =
+      Date.now() +
+      "_" +
+      imageFile.name.replace(
+        /\s+/g,
+        "_"
+      );
+
+
+    const {
+      error:uploadError
+    } =
+      await supabaseClient.storage
+      .from("Updates")
+      .upload(
+        fileName,
+        imageFile,
+        {
+          upsert:false
+        }
+      );
+
+
+    if(uploadError){
+
+      message.innerText =
+        "Photo upload error: " +
+        uploadError.message;
+
+      return;
+    }
+
+
+    const {
+      data:publicData
+    } =
+      supabaseClient.storage
+      .from("Updates")
+      .getPublicUrl(
+        fileName
+      );
+
+
+    imageUrl =
+      publicData.publicUrl;
+
+  }
+
+
+  const updateData = {
+
+    title:title,
+
+    description:description,
+
+    audition_date:
+      date || null,
+
+    location:location,
+
+    apply_link:applyLink
+
+  };
+
+
+  if(imageUrl){
+
+    updateData.image_url =
+      imageUrl;
+
+  }
+
+
+  let result;
+
+
+  if(editingUpdateId){
+
+    result =
+      await supabaseClient
+      .from("updates")
+      .update(updateData)
+      .eq(
+        "id",
+        editingUpdateId
+      );
+
+  }
+  else{
+
+    updateData.created_at =
+      new Date().toISOString();
+
+    result =
+      await supabaseClient
+      .from("updates")
+      .insert(updateData);
+
+  }
+
+
+  if(result.error){
+
+    console.error(result.error);
+
+    message.innerText =
+      "Error: " +
+      result.error.message;
+
+    return;
+  }
+
+
+  message.innerText =
+    editingUpdateId
+    ? "Audition updated successfully!"
+    : "Audition published successfully!";
+
+
+  editingUpdateId = null;
+
+
+  document.getElementById(
+    "update_title"
+  ).value = "";
+
+  document.getElementById(
+    "update_description"
+  ).value = "";
+
+  document.getElementById(
+    "update_date"
+  ).value = "";
+
+  document.getElementById(
+    "update_location"
+  ).value = "";
+
+  document.getElementById(
+    "update_link"
+  ).value = "";
+
+  document.getElementById(
+    "update_image"
+  ).value = "";
+
+
+  await loadUpdates();
+
+}
+
+
+/* =====================================================
+   EDIT UPDATE
+===================================================== */
+
+async function editUpdate(id){
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient
+    .from("updates")
+    .select("*")
+    .eq("id",id)
+    .single();
+
+
+  if(error){
+
+    alert(
+      "Unable to load audition: " +
+      error.message
+    );
+
+    return;
+  }
+
+
+  editingUpdateId = id;
+
+
+  document.getElementById(
+    "update_title"
+  ).value =
+    data.title || "";
+
+
+  document.getElementById(
+    "update_description"
+  ).value =
+    data.description || "";
+
+
+  document.getElementById(
+    "update_date"
+  ).value =
+    data.audition_date || "";
+
+
+  document.getElementById(
+    "update_location"
+  ).value =
+    data.location || "";
+
+
+  document.getElementById(
+    "update_link"
+  ).value =
+    data.apply_link || "";
+
+
+  showPage("auditions");
+
+
+  document.getElementById(
+    "adminPanel"
+  ).scrollIntoView({
+    behavior:"smooth"
+  });
+
+
+  document.getElementById(
+    "updateMessage"
+  ).innerText =
+    "Editing this audition. Upload a new photo only if you want to replace the existing one.";
+
+}
+
+
+/* =====================================================
+   DELETE UPDATE
+===================================================== */
+
+async function deleteUpdate(id){
+
+  const confirmDelete =
+    confirm(
+      "Are you sure you want to delete this audition?"
+    );
+
+
+  if(!confirmDelete)
+    return;
+
+
+  const { error } =
+    await supabaseClient
+    .from("updates")
+    .delete()
+    .eq(
+      "id",
+      id
+    );
+
+
+  if(error){
+
+    alert(
+      "Delete error: " +
+      error.message
+    );
+
+    return;
+  }
+
+
+  alert(
+    "Audition deleted successfully."
+  );
+
+
+  await loadUpdates();
+
+}
+
+
+/* =====================================================
+   LOAD ACTORS
+===================================================== */
+
+async function loadActors(){
+
+  const actorsList =
+    document.getElementById(
+      "actorsList"
+    );
+
+
+  if(!actorsList)
+    return;
+
+
+  const {
+    data:{
+      user
+    }
+  } =
+    await supabaseClient.auth.getUser();
+
+
+  const isAdmin =
+    user &&
+    user.email &&
+    user.email.toLowerCase() ===
+    ADMIN_EMAIL.toLowerCase();
+
+
+  if(!isAdmin){
+
+    actorsList.innerHTML = "";
+
+    return;
+  }
+
+
+  const {
+    data,
+    error
+  } =
+    await supabaseClient
+    .from("actors")
+    .select("*")
+    .order(
+      "updated_at",
+      {
+        ascending:false
+      }
+    );
+
+
+  if(error){
+
+    actorsList.innerHTML =
+      "Error loading actors: " +
+      escapeHtml(error.message);
+
+    return;
+  }
+
+
+  if(!data || data.length === 0){
+
+    actorsList.innerHTML =
+      "<div class='empty'>No actors registered yet.</div>";
+
+    return;
+  }
+
+
+  actorsList.innerHTML =
+    data.map(
+      actor => `
+
+      <div class="actor-card">
+
+        ${
+          actor.profile_photo_url
+          ?
+          `
+          <img
+            src="${escapeHtml(
+              actor.profile_photo_url
+            )}"
+            class="actor-photo"
+          >
+          `
+          :
+          `
+          <div class="empty">
+            No Photo
+          </div>
+          `
+        }
+
+
+        <h3>
+          ${escapeHtml(
+            actor.full_name ||
+            "No Name"
+          )}
+        </h3>
+
+
+        <p>
+          <b>Age:</b>
+          ${actor.age || "Not provided"}
+        </p>
+
+
+        <p>
+          <b>Gender:</b>
+          ${escapeHtml(
+            actor.gender ||
+            "Not provided"
+          )}
+        </p>
+
+
+        <p>
+          <b>Height:</b>
+          ${escapeHtml(
+            actor.height ||
+            "Not provided"
+          )}
+        </p>
+
+
+        <p>
+          <b>Contact:</b>
+          ${escapeHtml(
+            actor.contact ||
+            "Not provided"
+          )}
+        </p>
+
+
+        <p>
+          <b>Location:</b>
+          ${escapeHtml(
+            actor.current_location ||
+            "Not provided"
+          )}
+        </p>
+
+
+        <p>
+          <b>Hobbies:</b>
+          ${escapeHtml(
+            actor.hobbies ||
+            "Not provided"
+          )}
+        </p>
+
+
+        <p>
+          <b>Experience:</b>
+          ${escapeHtml(
+            actor.acting_experience ||
+            "Not provided"
+          )}
+        </p>
+
+
+        ${
+          actor.intro_video_url
+          ?
+          `
+          <a
+            href="${escapeHtml(
+              actor.intro_video_url
+            )}"
+            target="_blank"
+          >
+            Watch Introduction Video
+          </a>
+          `
+          :
+          ""
+        }
+
+      </div>
+
+      `
+    ).join("");
+
+}
+
+
+/* =====================================================
+   NOTIFICATIONS
+===================================================== */
+
+function loadNotifications(data){
+
+  const list =
+    document.getElementById(
+      "notificationsList"
+    );
+
+
+  if(!data || data.length === 0){
+
+    list.innerHTML =
+      "<div class='empty'>No new notifications.</div>";
+
+    return;
+  }
+
+
+  list.innerHTML =
+    data.slice(0,10)
+    .map(
+      item => `
+
+      <div class="notification">
+
+        <strong>
+          New Casting Update
+        </strong>
+
+        <div>
+          ${escapeHtml(
+            item.title ||
+            "New audition available"
+          )}
+        </div>
+
+      </div>
+
+      `
+    ).join("");
+
+}
+
+
+function openNotifications(){
+
+  document.getElementById(
+    "notificationOverlay"
+  ).classList.remove(
+    "hidden"
+  );
+
+}
+
+
+function closeNotifications(event){
+
+  if(
+    event &&
+    event.target !==
+    document.getElementById(
+      "notificationOverlay"
+    )
+  )
+    return;
+
+
+  document.getElementById(
+    "notificationOverlay"
+  ).classList.add(
+    "hidden"
+  );
+
+}
+
+
+/* =====================================================
+   SETTINGS
+===================================================== */
+
+function openSettings(){
+
+  document.getElementById(
+    "settingsOverlay"
+  ).classList.remove(
+    "hidden"
+  );
+
+}
+
+
+function closeSettings(event){
+
+  if(
+    event &&
+    event.target !==
+    document.getElementById(
+      "settingsOverlay"
+    )
+  )
+    return;
+
+
+  document.getElementById(
+    "settingsOverlay"
+  ).classList.add(
+    "hidden"
+  );
+
+}
+
+
+/* =====================================================
+   ACCOUNT INFO
+===================================================== */
+
+async function showAccountInfo(){
+
+  const {
+    data:{
+      user
+    }
+  } =
+    await supabaseClient.auth.getUser();
+
+
+  if(!user)
+    return;
+
+
+  alert(
+    "Registered Email:\n\n" +
+    user.email
+  );
+
+}
+
+
+/* =====================================================
+   LOGOUT
+===================================================== */
+
+async function logout(){
+
+  await supabaseClient.auth.signOut();
+
+
+  document.getElementById("app")
+    .classList.add("hidden");
+
+  document.getElementById("loginPage")
+    .classList.remove("hidden");
+
+
+  document.getElementById("email").value = "";
+
+  document.getElementById("password").value = "";
+
+  document.getElementById("authMessage").innerText = "";
+
+
+  closeSettings();
+
+}
+
+
+/* =====================================================
+   ESCAPE HTML
+===================================================== */
+
+function escapeHtml(value){
+
+  return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+
+/* =====================================================
+   CHECK EXISTING LOGIN
+===================================================== */
+
+async function checkUser(){
+
+  const {
+    data:{
+      user
+    }
+  } =
+    await supabaseClient.auth.getUser();
+
+
+  if(user){
+
+    await startApp();
+
+  }
+
+}
+
+
+/* =====================================================
+   START
+===================================================== */
+
+checkUser();
+
+</script>
+
+</body>
+  </html>
