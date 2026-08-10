@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>TMCC - TaniMan Casting Company</title>
 
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -137,17 +138,26 @@
 
 <div class="container">
 
-  <div class="logo">TMCC</div>
-  <div class="subtitle">TaniMan Casting Company</div>
+  <!-- LOGO -->
+
+  <div class="logo">
+    TMCC
+  </div>
+
+  <div class="subtitle">
+    TaniMan Casting Company
+  </div>
 
 
   <!-- =========================
-       AUTH SCREEN
+       LOGIN / SIGNUP
   ========================== -->
 
   <div id="authScreen" class="card">
 
-    <h2 id="authTitle">Actor Login</h2>
+    <h2 id="authTitle">
+      Actor Login
+    </h2>
 
     <input
       id="email"
@@ -187,13 +197,20 @@
        ADMIN UPDATES
   ========================== -->
 
-  <div id="adminUpdates" class="hidden">
+  <div
+    id="adminUpdates"
+    class="hidden"
+  >
 
     <div class="card">
 
-      <h2>Post New Audition / Update</h2>
+      <h2>
+        Post New Audition / Update
+      </h2>
 
-      <label>Title</label>
+      <label>
+        Title
+      </label>
 
       <input
         id="update_title"
@@ -201,21 +218,27 @@
         placeholder="Audition title"
       >
 
-      <label>Description</label>
+      <label>
+        Description
+      </label>
 
       <textarea
         id="update_description"
         placeholder="Write audition details"
       ></textarea>
 
-      <label>Audition Date</label>
+      <label>
+        Audition Date
+      </label>
 
       <input
         id="update_date"
         type="date"
       >
 
-      <label>Location</label>
+      <label>
+        Location
+      </label>
 
       <input
         id="update_location"
@@ -223,7 +246,9 @@
         placeholder="Pune"
       >
 
-      <label>Apply Link</label>
+      <label>
+        Apply Link
+      </label>
 
       <input
         id="update_link"
@@ -231,7 +256,9 @@
         placeholder="https://"
       >
 
-      <label>Photo</label>
+      <label>
+        Photo
+      </label>
 
       <input
         id="update_image"
@@ -239,7 +266,9 @@
         accept="image/*"
       >
 
-      <button onclick="publishUpdate()">
+      <button
+        onclick="publishUpdate()"
+      >
         Publish Update
       </button>
 
@@ -257,11 +286,16 @@
        ADMIN ACTORS
   ========================== -->
 
-  <div id="adminActors" class="hidden">
+  <div
+    id="adminActors"
+    class="hidden"
+  >
 
     <div class="card">
 
-      <h2>Registered Actors</h2>
+      <h2>
+        Registered Actors
+      </h2>
 
       <div id="actorsList">
         Loading actors...
@@ -273,33 +307,47 @@
 
 
   <!-- =========================
-       ACTOR PROFILE
+       ACTOR UPDATES
   ========================== -->
 
-  <div id="actorUpdates" class="hidden">
+  <div
+    id="actorUpdates"
+    class="hidden"
+  >
 
-  <div class="card">
+    <div class="card">
 
-    <h2>Latest Auditions & Updates</h2>
+      <h2>
+        Latest Auditions & Updates
+      </h2>
 
-    <div id="updatesList">
-      Loading updates...
+      <div id="updatesList">
+        No auditions or updates available yet.
+      </div>
+
     </div>
 
   </div>
 
-</div>
 
-<div id="profileScreen" class="hidden">
+  <!-- =========================
+       ACTOR PROFILE
+  ========================== -->
 
-  <div class="card">
+  <div
+    id="profileScreen"
+    class="hidden"
+  >
 
-    <h2>Actor Profile</h2>
     <div class="card">
 
-      <h2>Actor Profile</h2>
+      <h2>
+        Actor Profile
+      </h2>
 
-      <label>Profile Photo</label>
+      <label>
+        Profile Photo
+      </label>
 
       <input
         id="profile_photo"
@@ -307,7 +355,9 @@
         accept="image/*"
       >
 
-      <label>Full Name</label>
+      <label>
+        Full Name
+      </label>
 
       <input
         id="full_name"
@@ -315,7 +365,9 @@
         placeholder="Your full name"
       >
 
-      <label>Age</label>
+      <label>
+        Age
+      </label>
 
       <input
         id="age"
@@ -323,7 +375,9 @@
         placeholder="Age"
       >
 
-      <label>Gender</label>
+      <label>
+        Gender
+      </label>
 
       <select id="gender">
 
@@ -345,7 +399,9 @@
 
       </select>
 
-      <label>Height</label>
+      <label>
+        Height
+      </label>
 
       <input
         id="height"
@@ -353,7 +409,9 @@
         placeholder="Example: 5'8"
       >
 
-      <label>Contact Number</label>
+      <label>
+        Contact Number
+      </label>
 
       <input
         id="contact"
@@ -361,7 +419,9 @@
         placeholder="Contact number"
       >
 
-      <label>Current Location</label>
+      <label>
+        Current Location
+      </label>
 
       <input
         id="current_location"
@@ -369,21 +429,27 @@
         placeholder="Current location"
       >
 
-      <label>Hobbies</label>
+      <label>
+        Hobbies
+      </label>
 
       <textarea
         id="hobbies"
         placeholder="Your hobbies"
       ></textarea>
 
-      <label>Acting Experience</label>
+      <label>
+        Acting Experience
+      </label>
 
       <textarea
         id="experience"
         placeholder="Your acting experience"
       ></textarea>
 
-      <label>Introduction Video URL</label>
+      <label>
+        Introduction Video URL
+      </label>
 
       <input
         id="intro_video_url"
@@ -391,7 +457,9 @@
         placeholder="Video link"
       >
 
-      <button onclick="saveProfile()">
+      <button
+        onclick="saveProfile()"
+      >
         Save Profile
       </button>
 
@@ -416,6 +484,10 @@
 
 <script>
 
+/* =========================
+   SUPABASE
+========================= */
+
 const SUPABASE_URL =
   "https://xxrmvtpkroqbzoihgfsj.supabase.co";
 
@@ -428,26 +500,33 @@ const supabaseClient =
     SUPABASE_KEY
   );
 
+
 let isSignup = false;
 
 
-// =========================
-// LOGIN / SIGNUP SWITCH
-// =========================
+/* =========================
+   LOGIN / SIGNUP SWITCH
+========================= */
 
 function toggleAuth() {
 
   isSignup = !isSignup;
 
-  document.getElementById("authTitle").innerText =
+  document.getElementById(
+    "authTitle"
+  ).innerText =
     isSignup
       ? "Create Actor Account"
       : "Actor Login";
 
-  document.getElementById("authButton").innerText =
+
+  document.getElementById(
+    "authButton"
+  ).innerText =
     isSignup
       ? "Sign Up"
       : "Login";
+
 
   document.querySelector(
     "#authScreen .secondary"
@@ -456,31 +535,36 @@ function toggleAuth() {
       ? "Already have an account? Login"
       : "Create New Account";
 
+
   document.getElementById(
     "authMessage"
   ).innerText = "";
 }
 
 
-// =========================
-// LOGIN / SIGNUP
-// =========================
+/* =========================
+   LOGIN / SIGNUP
+========================= */
 
 async function login() {
 
   const email =
-    document.getElementById("email")
-      .value
-      .trim();
+    document.getElementById(
+      "email"
+    ).value.trim();
+
 
   const password =
-    document.getElementById("password")
-      .value;
+    document.getElementById(
+      "password"
+    ).value;
+
 
   const message =
     document.getElementById(
       "authMessage"
     );
+
 
   if (!email || !password) {
 
@@ -490,13 +574,18 @@ async function login() {
     return;
   }
 
+
   message.innerText =
     "Please wait...";
 
 
+  /* SIGNUP */
+
   if (isSignup) {
 
-    const { error } =
+    const {
+      error
+    } =
       await supabaseClient.auth.signUp({
 
         email: email,
@@ -507,6 +596,7 @@ async function login() {
 
           emailRedirectTo:
             "https://tanimancasting-cyber.github.io/TMCC/"
+
         }
 
       });
@@ -522,95 +612,113 @@ async function login() {
 
 
     message.innerText =
-      "Account created. Please check your email if confirmation is required.";
+      "Account created successfully. Please login.";
 
+    return;
   }
 
-  else {
 
-    const { error } =
-      await supabaseClient.auth.signInWithPassword({
+  /* LOGIN */
 
-        email: email,
+  const {
+    error
+  } =
+    await supabaseClient.auth.signInWithPassword({
 
-        password: password
+      email: email,
 
-      });
+      password: password
 
-
-    if (error) {
-
-      message.innerText =
-        error.message;
-
-      return;
-    }
+    });
 
 
-    await showProfile();
+  if (error) {
 
+    message.innerText =
+      error.message;
+
+    return;
   }
+
+
+  await showProfile();
 
 }
 
 
-// =========================
-// SHOW PROFILE
-// =========================
-
-// =========================
-// SHOW PROFILE
-// =========================
+/* =========================
+   SHOW PROFILE
+========================= */
 
 async function showProfile() {
 
   const authScreen =
-    document.getElementById("authScreen");
+    document.getElementById(
+      "authScreen"
+    );
+
 
   const profileScreen =
-    document.getElementById("profileScreen");
-
-  authScreen.classList.add("hidden");
-
-  profileScreen.classList.remove("hidden");
+    document.getElementById(
+      "profileScreen"
+    );
 
 
-  // SHOW ACTOR UPDATES
+  authScreen.classList.add(
+    "hidden"
+  );
+
+
+  profileScreen.classList.remove(
+    "hidden"
+  );
+
 
   const actorUpdates =
-    document.getElementById("actorUpdates");
+    document.getElementById(
+      "actorUpdates"
+    );
 
-  if (actorUpdates) {
-    actorUpdates.classList.remove("hidden");
-  }
+
+  actorUpdates.classList.remove(
+    "hidden"
+  );
 
 
   const {
-    data: { user }
+    data: {
+      user
+    }
   } =
     await supabaseClient.auth.getUser();
 
 
   if (!user) {
+
     return;
   }
 
 
-  // ADMIN ACCESS
+  /* ADMIN */
 
   if (
+    user.email &&
     user.email.toLowerCase() ===
     "tanimancasting@gmail.com"
   ) {
 
     document.getElementById(
       "adminUpdates"
-    ).classList.remove("hidden");
+    ).classList.remove(
+      "hidden"
+    );
 
 
     document.getElementById(
       "adminActors"
-    ).classList.remove("hidden");
+    ).classList.remove(
+      "hidden"
+    );
 
 
     await loadActors();
@@ -620,19 +728,27 @@ async function showProfile() {
 
   await loadProfile();
 
+
+  /*
+    Updates table अजून तयार नसेल
+    तरी login बंद होऊ नये.
+  */
+
   await loadUpdates();
 
 }
 
 
-// =========================
-// SAVE PROFILE
-// =========================
+/* =========================
+   SAVE PROFILE
+========================= */
 
 async function saveProfile() {
 
   const {
-    data: { user }
+    data: {
+      user
+    }
   } =
     await supabaseClient.auth.getUser();
 
@@ -652,14 +768,16 @@ async function saveProfile() {
       "profile_photo"
     );
 
+
   const photoFile =
     photoInput.files[0];
 
 
-  let profilePhotoUrl = null;
+  let profilePhotoUrl =
+    null;
 
 
-  // PHOTO UPLOAD
+  /* PHOTO UPLOAD */
 
   if (photoFile) {
 
@@ -694,11 +812,13 @@ async function saveProfile() {
         uploadError
       );
 
+
       document.getElementById(
         "profileMessage"
       ).innerText =
         "Photo upload error: " +
         uploadError.message;
+
 
       return;
     }
@@ -720,9 +840,12 @@ async function saveProfile() {
   }
 
 
+  /* PROFILE DATA */
+
   const profile = {
 
-    id: user.id,
+    id:
+      user.id,
 
     full_name:
       document.getElementById(
@@ -789,7 +912,9 @@ async function saveProfile() {
   }
 
 
-  const { error } =
+  const {
+    error
+  } =
     await supabaseClient
       .from("actors")
       .upsert(
@@ -805,11 +930,15 @@ async function saveProfile() {
 
   if (error) {
 
-    console.error(error);
+    console.error(
+      error
+    );
+
 
     message.innerText =
       "Error: " +
       error.message;
+
 
     return;
   }
@@ -821,19 +950,22 @@ async function saveProfile() {
 }
 
 
-// =========================
-// LOAD PROFILE
-// =========================
+/* =========================
+   LOAD PROFILE
+========================= */
 
 async function loadProfile() {
 
   const {
-    data: { user }
+    data: {
+      user
+    }
   } =
     await supabaseClient.auth.getUser();
 
 
   if (!user) {
+
     return;
   }
 
@@ -854,13 +986,16 @@ async function loadProfile() {
 
   if (error) {
 
-    console.error(error);
+    console.error(
+      error
+    );
 
     return;
   }
 
 
   if (!data) {
+
     return;
   }
 
@@ -921,47 +1056,11 @@ async function loadProfile() {
 }
 
 
-// =========================
-// PUBLISH UPDATE
-// =========================
+/* =========================
+   PUBLISH UPDATE
+========================= */
 
 async function publishUpdate() {
-
-  const title =
-    document.getElementById(
-      "update_title"
-    ).value.trim();
-
-
-  const description =
-    document.getElementById(
-      "update_description"
-    ).value.trim();
-
-
-  const date =
-    document.getElementById(
-      "update_date"
-    ).value;
-
-
-  const location =
-    document.getElementById(
-      "update_location"
-    ).value.trim();
-
-
-  const applyLink =
-    document.getElementById(
-      "update_link"
-    ).value.trim();
-
-
-  const imageFile =
-    document.getElementById(
-      "update_image"
-    ).files[0];
-
 
   const message =
     document.getElementById(
@@ -969,273 +1068,27 @@ async function publishUpdate() {
     );
 
 
-  if (!title) {
+  message.innerText =
+    "Checking updates table...";
 
-    message.innerText =
-      "Please enter a title.";
 
-    return;
-  }
-
+  /*
+    सध्या database मध्ये public.updates
+    table अस्तित्वात नाही.
+    
+    म्हणून login/profile system disturb
+    होऊ नये म्हणून हा clear message देतो.
+  */
 
   message.innerText =
-    "Publishing...";
+    "Updates table is not created yet.";
 
-
-  let imageUrl = null;
-
-
-  if (imageFile) {
-
-    const fileName =
-      Date.now() +
-      "_" +
-      imageFile.name.replace(
-        /\s+/g,
-        "_"
-      );
-
-
-    const {
-      error: uploadError
-    } =
-      await supabaseClient.storage
-        .from("updates")
-        .upload(
-          fileName,
-          imageFile
-        );
-
-
-    if (uploadError) {
-
-      message.innerText =
-        "Photo upload error: " +
-        uploadError.message;
-
-      return;
-    }
-
-
-    const {
-      data: publicData
-    } =
-      supabaseClient.storage
-        .from("updates")
-        .getPublicUrl(
-          fileName
-        );
-
-
-    imageUrl =
-      publicData.publicUrl;
-
-  }
-
-
-  const { error } =
-    await supabaseClient
-      .from("updates")
-      .insert({
-
-        title: title,
-
-        description:
-          description,
-
-        image_url:
-          imageUrl,
-
-        audition_date:
-          date || null,
-
-        location:
-          location,
-
-        apply_link:
-          applyLink,
-
-        created_at:
-          new Date().toISOString()
-
-      });
-
-
-  if (error) {
-
-    console.error(error);
-
-    message.innerText =
-      "Publish error: " +
-      error.message;
-
-    return;
-  }
-
-
-  message.innerText =
-    "Update published successfully!";
-
-
-  document.getElementById(
-async function publishUpdate() {
-
-  const title =
-    document.getElementById("update_title").value.trim();
-
-  const description =
-    document.getElementById("update_description").value.trim();
-
-  const date =
-    document.getElementById("update_date").value;
-
-  const location =
-    document.getElementById("update_location").value.trim();
-
-  const applyLink =
-    document.getElementById("update_link").value.trim();
-
-  const imageFile =
-    document.getElementById("update_image").files[0];
-
-  const message =
-    document.getElementById("updateMessage");
-
-
-  if (!title) {
-
-    message.innerText =
-      "Please enter a title.";
-
-    return;
-  }
-
-
-  message.innerText =
-    "Publishing...";
-
-
-  let imageUrl = null;
-
-
-  if (imageFile) {
-
-    const fileName =
-      Date.now() +
-      "_" +
-      imageFile.name.replace(/\s+/g, "_");
-
-
-    const {
-      error: uploadError
-    } =
-      await supabaseClient.storage
-        .from("updates")
-        .upload(
-          fileName,
-          imageFile
-        );
-
-
-    if (uploadError) {
-
-      message.innerText =
-        "Photo upload error: " +
-        uploadError.message;
-
-      return;
-    }
-
-
-    const {
-      data: publicData
-    } =
-      supabaseClient.storage
-        .from("updates")
-        .getPublicUrl(
-          fileName
-        );
-
-
-    imageUrl =
-      publicData.publicUrl;
-
-  }
-
-
-  const { error } =
-    await supabaseClient
-      .from("Updates")
-      .insert({
-
-        title: title,
-
-        description:
-          description,
-
-        image_url:
-          imageUrl,
-
-        audition_date:
-          date || null,
-
-        location:
-          location,
-
-        apply_link:
-          applyLink,
-
-        created_at:
-          new Date().toISOString()
-
-      });
-
-
-  if (error) {
-
-    console.error(error);
-
-    message.innerText =
-      "Publish error: " +
-      error.message;
-
-    return;
-  }
-
-
-  message.innerText =
-    "Update published successfully!";
-
-
-  document.getElementById(
-    "update_title"
-  ).value = "";
-
-  document.getElementById(
-    "update_description"
-  ).value = "";
-
-  document.getElementById(
-    "update_date"
-  ).value = "";
-
-  document.getElementById(
-    "update_location"
-  ).value = "";
-
-  document.getElementById(
-    "update_link"
-  ).value = "";
-
-  document.getElementById(
-    "update_image"
-  ).value = "";
 }
 
 
-// =========================
-// LOAD ACTORS - ADMIN
-// =========================
+/* =========================
+   LOAD ACTORS - ADMIN
+========================= */
 
 async function loadActors() {
 
@@ -1266,11 +1119,15 @@ async function loadActors() {
 
   if (error) {
 
-    console.error(error);
+    console.error(
+      error
+    );
+
 
     actorsList.innerHTML =
       "Error loading actors: " +
       error.message;
+
 
     return;
   }
@@ -1289,7 +1146,8 @@ async function loadActors() {
 
 
   actorsList.innerHTML =
-    data.map(actor => `
+    data.map(
+      actor => `
 
       <div class="actor-card">
 
@@ -1378,120 +1236,46 @@ async function loadActors() {
 
       </div>
 
-    `).join("");
+    `
+    ).join("");
 
 }
 
-  async function loadUpdates() {
+
+/* =========================
+   LOAD UPDATES
+========================= */
+
+async function loadUpdates() {
 
   const updatesList =
-    document.getElementById("updatesList");
-
-  if (!updatesList) return;
-
-  updatesList.innerHTML =
-    "Loading auditions...";
+    document.getElementById(
+      "updatesList"
+    );
 
 
-  const { data, error } =
-    await supabaseClient
-      .from("updates")
-      .select("*")
-      .order("created_at", {
-        ascending: false
-      });
-
-
-  if (error) {
-
-  console.error(error);
-
-  updatesList.innerHTML =
-    "Error: " + error.message;
-
-  return;
-}
-
-
-  if (!data || data.length === 0) {
-
-    updatesList.innerHTML =
-      "No auditions or updates available yet.";
+  if (!updatesList) {
 
     return;
   }
 
 
+  /*
+    IMPORTANT:
+    public.updates table अजून उपलब्ध नाही.
+    
+    त्यामुळे login करताना error दाखवायचा नाही.
+  */
+
   updatesList.innerHTML =
-    data.map(update => `
+    "No auditions or updates available yet.";
 
-      <div class="actor-card">
+}
 
-        ${
-          update.image_url
-          ? `
-            <img
-              src="${update.image_url}"
-              class="actor-photo"
-              alt="Audition"
-            >
-          `
-          : ""
-        }
 
-        <h3>
-          ${update.title || "Audition"}
-        </h3>
-
-        <p>
-          ${update.description || ""}
-        </p>
-
-        ${
-          update.audition_date
-          ? `
-            <p>
-              <b>Date:</b>
-              ${update.audition_date}
-            </p>
-          `
-          : ""
-        }
-
-        ${
-          update.location
-          ? `
-            <p>
-              <b>Location:</b>
-              ${update.location}
-            </p>
-          `
-          : ""
-        }
-
-        ${
-          update.apply_link
-          ? `
-            <p>
-              <a
-                href="${update.apply_link}"
-                target="_blank"
-              >
-                Apply Now
-              </a>
-            </p>
-          `
-          : ""
-        }
-
-      </div>
-
-    `).join("");
-  }
-
-// =========================
-// LOGOUT
-// =========================
+/* =========================
+   LOGOUT
+========================= */
 
 async function logout() {
 
@@ -1500,6 +1284,13 @@ async function logout() {
 
   document.getElementById(
     "profileScreen"
+  ).classList.add(
+    "hidden"
+  );
+
+
+  document.getElementById(
+    "actorUpdates"
   ).classList.add(
     "hidden"
   );
@@ -1525,17 +1316,29 @@ async function logout() {
     "hidden"
   );
 
+
+  document.getElementById(
+    "email"
+  ).value = "";
+
+
+  document.getElementById(
+    "password"
+  ).value = "";
+
 }
 
 
-// =========================
-// CHECK EXISTING LOGIN
-// =========================
+/* =========================
+   CHECK EXISTING LOGIN
+========================= */
 
 async function checkUser() {
 
   const {
-    data: { user }
+    data: {
+      user
+    }
   } =
     await supabaseClient.auth.getUser();
 
@@ -1549,7 +1352,9 @@ async function checkUser() {
 }
 
 
-// Automatic login check
+/* =========================
+   START
+========================= */
 
 checkUser();
 
