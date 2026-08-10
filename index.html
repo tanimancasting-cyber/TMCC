@@ -1389,31 +1389,114 @@ async function loadActors() {
 /* =========================
    LOAD UPDATES
 ========================= */
-
 async function loadUpdates() {
 
   const updatesList =
-    document.getElementById(
-      "updatesList"
-    );
+    document.getElementById("updatesList");
+
+  if (!updatesList) return;
+
+  updatesList.innerHTML =
+    "Loading auditions...";
 
 
-  if (!updatesList) {
+  const {
+    data,
+    error
+  } =
+    await supabaseClient
+      .from("updates")
+      .select("*")
+      .order("created_at", {
+        ascending: false
+      });
+
+
+  if (error) {
+
+    console.error(error);
+
+    updatesList.innerHTML =
+      "Unable to load auditions.";
 
     return;
   }
 
 
-  /*
-    IMPORTANT:
-    public.updates table अजून उपलब्ध नाही.
-    
-    त्यामुळे login करताना error दाखवायचा नाही.
-  */
+  if (!data || data.length === 0) {
+
+    updatesList.innerHTML =
+      "No auditions or updates available yet.";
+
+    return;
+  }
+
 
   updatesList.innerHTML =
-    "No auditions or updates available yet.";
+    data.map(update => `
 
+      <div class="actor-card">
+
+        ${
+          update.image_url
+          ? `
+            <img
+              src="${update.image_url}"
+              class="actor-photo"
+              alt="Audition"
+            >
+          `
+          : ""
+        }
+
+        <h3>
+          ${update.title || "Audition"}
+        </h3>
+
+        <p>
+          ${update.description || ""}
+        </p>
+
+        ${
+          update.audition_date
+          ? `
+            <p>
+              <b>Date:</b>
+              ${update.audition_date}
+            </p>
+          `
+          : ""
+        }
+
+        ${
+          update.location
+          ? `
+            <p>
+              <b>Location:</b>
+              ${update.location}
+            </p>
+          `
+          : ""
+        }
+
+        ${
+          update.apply_link
+          ? `
+            <p>
+              <a
+                href="${update.apply_link}"
+                target="_blank"
+              >
+                Apply Now
+              </a>
+            </p>
+          `
+          : ""
+        }
+
+      </div>
+
+    `).join("");
 }
 
 
