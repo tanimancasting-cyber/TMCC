@@ -1432,6 +1432,21 @@ async function loadUpdates() {
   }
 
 
+  const {
+    data: {
+      user
+    }
+  } =
+    await supabaseClient.auth.getUser();
+
+
+  const isAdmin =
+    user &&
+    user.email &&
+    user.email.toLowerCase() ===
+    "tanimancasting@gmail.com";
+
+
   updatesList.innerHTML =
     data.map(update => `
 
@@ -1441,28 +1456,31 @@ async function loadUpdates() {
           update.image_url
           ? `
             <a
-  href="${update.image_url}"
-  target="_blank"
-  rel="noopener noreferrer"
->
-  <img
-    src="${update.image_url}"
-    class="actor-photo"
-    alt="Audition"
-    style="cursor:pointer;"
-  >
-</a>
+              href="${update.image_url}"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img
+                src="${update.image_url}"
+                class="actor-photo"
+                alt="Audition"
+                style="cursor:pointer;"
+              >
+            </a>
           `
           : ""
         }
+
 
         <h3>
           ${update.title || "Audition"}
         </h3>
 
+
         <p>
           ${update.description || ""}
         </p>
+
 
         ${
           update.audition_date
@@ -1475,6 +1493,7 @@ async function loadUpdates() {
           : ""
         }
 
+
         ${
           update.location
           ? `
@@ -1485,6 +1504,7 @@ async function loadUpdates() {
           `
           : ""
         }
+
 
         ${
           update.apply_link
@@ -1497,6 +1517,26 @@ async function loadUpdates() {
                 Apply Now
               </a>
             </p>
+          `
+          : ""
+        }
+
+
+        ${
+          isAdmin
+          ? `
+            <button
+              onclick="editUpdate('${update.id}')"
+            >
+              Edit
+            </button>
+
+            <button
+              class="secondary"
+              onclick="deleteUpdate('${update.id}')"
+            >
+              Delete
+            </button>
           `
           : ""
         }
