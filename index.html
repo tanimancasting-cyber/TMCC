@@ -1,49 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>TaniMan Casting Company</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
-
 *{
   box-sizing:border-box;
-  font-family:Arial,Helvetica,sans-serif;
+  font-family:Arial,sans-serif
 }
 
 body{
   margin:0;
   background:#101117;
   color:#fff;
-  padding-bottom:85px;
-}
-
-button,input,textarea,select{
-  font-family:inherit;
+  padding-bottom:85px
 }
 
 .hidden{
-  display:none !important;
+  display:none!important
 }
 
-/* ================= HEADER ================= */
+button,input,textarea,select{
+  font:inherit
+}
 
 .header{
   padding:18px 20px 10px;
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center
 }
 
 .logo-wrap{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:12px
 }
 
 .logo{
@@ -51,30 +46,24 @@ button,input,textarea,select{
   height:58px;
   object-fit:contain;
   border-radius:12px;
-  background:#fff;
-}
-
-.brand{
-  display:flex;
-  flex-direction:column;
+  background:#fff
 }
 
 .brand-name{
   font-size:20px;
-  font-weight:700;
-  letter-spacing:1px;
+  font-weight:700
 }
 
 .brand-sub{
   color:#c9a45c;
   font-size:11px;
   letter-spacing:2px;
-  margin-top:3px;
+  margin-top:3px
 }
 
 .header-icons{
   display:flex;
-  gap:10px;
+  gap:10px
 }
 
 .icon-btn{
@@ -83,58 +72,47 @@ button,input,textarea,select{
   border-radius:50%;
   border:1px solid #444;
   background:#1b1c24;
-  color:white;
-  font-size:20px;
-  cursor:pointer;
+  color:#fff;
+  font-size:20px
 }
-
-/* ================= PAGE ================= */
 
 .page{
   padding:10px 20px 25px;
   max-width:700px;
-  margin:auto;
+  margin:auto
 }
 
-.section-title{
-  font-size:25px;
-  margin:20px 0 14px;
-}
-
-.card{
+.hero,.card{
   background:#1b1c24;
   border:1px solid #292a33;
-  border-radius:18px;
-  padding:18px;
-  margin-bottom:18px;
+  border-radius:20px;
+  padding:20px;
+  margin-bottom:18px
 }
-
-/* ================= HERO ================= */
 
 .hero{
   background:linear-gradient(135deg,#25262f,#171820);
-  border-radius:22px;
-  padding:25px 20px;
-  margin-top:10px;
-  border:1px solid #33343d;
+  padding:25px 20px
 }
 
 .hero h1{
   margin:0;
-  font-size:29px;
+  font-size:29px
 }
 
 .hero p{
   color:#c5c5c8;
-  line-height:1.6;
-  margin-bottom:0;
+  line-height:1.6
 }
 
 .gold{
-  color:#c9a45c;
+  color:#c9a45c
 }
 
-/* ================= AUDITION ================= */
+.section-title{
+  font-size:25px;
+  margin:20px 0 14px
+}
 
 .audition-card{
   background:#fff;
@@ -142,99 +120,71 @@ button,input,textarea,select{
   border-radius:20px;
   overflow:hidden;
   margin-bottom:20px;
-  box-shadow:0 8px 25px rgba(0,0,0,.25);
+  box-shadow:0 8px 25px #0004
 }
 
 .audition-image{
   width:100%;
-  height:auto;
   max-height:520px;
   object-fit:contain;
   display:block;
-  background:#fff;
+  background:#fff
 }
 
 .audition-content{
-  padding:18px;
+  padding:18px
 }
 
 .audition-content h3{
   margin:0 0 10px;
-  font-size:22px;
+  font-size:22px
 }
 
 .audition-content p{
   line-height:1.6;
   color:#444;
-  white-space:pre-line;
+  white-space:pre-line
 }
 
 .info{
   margin:7px 0;
-  color:#333;
+  color:#333
 }
 
-.apply-btn{
-  display:block;
+.apply-btn,.btn{
   width:100%;
-  text-align:center;
-  background:#c99a4a;
-  color:#fff;
-  border:none;
-  text-decoration:none;
-  padding:13px;
-  border-radius:10px;
-  margin-top:15px;
-  font-weight:bold;
-  font-size:16px;
-  cursor:pointer;
-}
-
-/* ================= BUTTONS ================= */
-
-.btn{
-  width:100%;
-  border:none;
+  border:0;
   padding:14px;
   border-radius:11px;
   background:#c99a4a;
-  color:white;
-  font-size:16px;
+  color:#fff;
   font-weight:bold;
   cursor:pointer;
-  margin-top:8px;
+  margin-top:8px
 }
 
 .btn-secondary{
-  background:#30313b;
-}
-
-.btn-danger{
-  background:#a83232;
+  background:#30313b
 }
 
 .small-btn{
   padding:10px 14px;
-  border:none;
+  border:0;
   border-radius:9px;
-  background:#c99a4a;
-  color:white;
-  cursor:pointer;
-  font-weight:bold;
+  background:#c9a45c;
+  color:#fff
 }
 
 .small-danger{
-  background:#a83232;
+  background:#a83232
 }
-
-/* ================= LOGIN ================= */
 
 .auth-page{
   min-height:100vh;
   display:flex;
-  justify-content:center;
   align-items:center;
-  padding:25px;
+  justify-content:center;
+  padding:25px
 }
 
 .auth-box{
@@ -243,7 +193,7 @@ button,input,textarea,select{
   background:#1b1c24;
   padding:28px 22px;
   border-radius:22px;
-  border:1px solid #30313b;
+  border:1px solid #30313b
 }
 
 .auth-logo{
@@ -253,40 +203,39 @@ button,input,textarea,select{
   background:#fff;
   border-radius:18px;
   display:block;
-  margin:0 auto 18px;
+  margin:0 auto 18px
 }
 
 .auth-box h2{
   text-align:center;
-  margin-bottom:25px;
+  margin-bottom:25px
 }
 
 input,textarea,select{
   width:100%;
   background:#282932;
-  color:white;
+  color:#fff;
   border:1px solid #41424b;
   border-radius:10px;
   padding:13px;
-  margin:7px 0 14px;
-  font-size:15px;
+  margin:7px 0 14px
 }
 
 textarea{
   min-height:100px;
-  resize:vertical;
+  resize:vertical
 }
 
 label{
   color:#c8c8ca;
-  font-size:13px;
+  font-size:13px
 }
 
 .message{
   text-align:center;
   color:#c9a45c;
   margin-top:15px;
-  line-height:1.5;
+  line-height:1.5
 }
 
 .forgot{
@@ -294,11 +243,8 @@ label{
   text-align:right;
   color:#c9a45c;
   font-size:14px;
-  cursor:pointer;
-  margin:0 0 8px;
+  margin-bottom:8px
 }
-
-/* ================= BOTTOM NAV ================= */
 
 .bottom-nav{
   position:fixed;
@@ -309,30 +255,25 @@ label{
   background:#050507;
   border-top:1px solid #292a30;
   display:flex;
-  justify-content:space-around;
-  align-items:center;
-  z-index:1000;
+  z-index:1000
 }
 
 .nav-item{
   flex:1;
   text-align:center;
   color:#999;
-  cursor:pointer;
-  font-size:12px;
+  padding-top:10px;
+  font-size:12px
 }
 
 .nav-icon{
   font-size:25px;
-  display:block;
-  margin-bottom:3px;
+  display:block
 }
 
-.nav-item.active{
-  color:#c9a45c;
+.active{
+  color:#c9a45c!important
 }
-
-/* ================= PROFILE ================= */
 
 .profile-photo-preview{
   width:120px;
@@ -341,24 +282,16 @@ label{
   object-fit:cover;
   display:block;
   margin:0 auto 18px;
-  background:#30313b;
+  background:#30313b
 }
-
-.profile-name{
-  text-align:center;
-  font-size:23px;
-  font-weight:bold;
-}
-
-/* ================= OVERLAY ================= */
 
 .overlay{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,.72);
+  background:#000b;
   z-index:2000;
   display:flex;
-  align-items:flex-end;
+  align-items:flex-end
 }
 
 .sheet{
@@ -369,76 +302,69 @@ label{
   border-radius:25px 25px 0 0;
   padding:24px 20px 30px;
   max-height:85vh;
-  overflow:auto;
+  overflow:auto
 }
 
 .sheet-title{
   font-size:23px;
   font-weight:bold;
-  margin-bottom:18px;
+  margin-bottom:18px
 }
 
 .setting-item{
   background:#282932;
   border-radius:12px;
   padding:16px;
-  margin:9px 0;
-  cursor:pointer;
+  margin:9px 0
 }
 
 .setting-item strong{
   display:block;
-  margin-bottom:5px;
+  margin-bottom:5px
 }
 
 .setting-item span{
   color:#aaa;
-  font-size:13px;
+  font-size:13px
 }
-
-/* ================= NOTIFICATIONS ================= */
 
 .notification{
   background:#282932;
   border-radius:13px;
   padding:15px;
-  margin-bottom:10px;
+  margin-bottom:10px
 }
 
 .notification strong{
-  color:#c9a45c;
+  color:#c9a45c
 }
 
-/* ================= ADMIN ================= */
-
 .admin-box{
-  border:1px solid #c9a45c;
+  border:1px solid #c9a45c
 }
 
 .admin-label{
   color:#c9a45c;
   font-size:12px;
   font-weight:bold;
-  letter-spacing:1px;
+  letter-spacing:1px
 }
 
 .admin-actions{
   display:flex;
   gap:8px;
-  margin-top:15px;
+  margin-top:15px
 }
 
 .admin-actions button{
-  flex:1;
+  flex:1
 }
-
-/* ================= ACTORS ================= */
 
 .actor-card{
   background:#282932;
   padding:17px;
   border-radius:15px;
-  margin-bottom:15px;
+  margin-bottom:15px
 }
 
 .actor-photo{
@@ -447,45 +373,39 @@ label{
   border-radius:12px;
   object-fit:cover;
   display:block;
-  margin:0 auto 15px;
+  margin:0 auto 15px
 }
 
 .actor-card p{
   color:#ccc;
-  line-height:1.5;
+  line-height:1.5
 }
 
 .actor-card a{
-  color:#c9a45c;
+  color:#c9a45c
 }
-
-/* ================= EMPTY ================= */
 
 .empty{
   text-align:center;
   padding:30px 15px;
-  color:#999;
+  color:#999
 }
 
+.readonly{
+  opacity:.8
+}
 </style>
 </head>
 
 <body>
 
-
-<!-- =====================================================
-     LOGIN
-===================================================== -->
+<!-- LOGIN -->
 
 <div id="loginPage" class="auth-page">
 
   <div class="auth-box">
 
-    <img
-      src="logo.png"
-      class="auth-logo"
-      alt="TMCC Logo"
-    >
+    <img src="logo.png" class="auth-logo">
 
     <h2 id="authTitle">
       Actor Login
@@ -521,8 +441,8 @@ label{
 
     <button
       class="btn btn-secondary"
-      onclick="toggleAuth()"
       id="toggleButton"
+      onclick="toggleAuth()"
     >
       Create New Account
     </button>
@@ -537,16 +457,9 @@ label{
 </div>
 
 
-<!-- =====================================================
-     MAIN APP
-===================================================== -->
+<!-- APP -->
 
 <div id="app" class="hidden">
-
-
-<!-- =====================================================
-     HEADER
-===================================================== -->
 
 <header class="header">
 
@@ -555,10 +468,9 @@ label{
     <img
       src="logo.png"
       class="logo"
-      alt="TMCC"
     >
 
-    <div class="brand">
+    <div>
 
       <div class="brand-name">
         TaniMan
@@ -571,7 +483,6 @@ label{
     </div>
 
   </div>
-
 
   <div class="header-icons">
 
@@ -594,9 +505,7 @@ label{
 </header>
 
 
-<!-- =====================================================
-     HOME
-===================================================== -->
+<!-- HOME -->
 
 <section
   id="homePage"
@@ -619,26 +528,20 @@ label{
 
   </div>
 
-
   <h2 class="section-title">
     Latest Auditions
   </h2>
 
-
   <div id="homeUpdates">
-
     <div class="empty">
       Loading auditions...
     </div>
-
   </div>
 
 </section>
 
 
-<!-- =====================================================
-     AUDITIONS
-===================================================== -->
+<!-- AUDITIONS -->
 
 <section
   id="auditionsPage"
@@ -649,17 +552,14 @@ label{
     All Auditions
   </h2>
 
-
   <div id="updatesList">
-
     <div class="empty">
       Loading auditions...
     </div>
-
   </div>
 
 
-  <!-- ADMIN PANEL -->
+  <!-- ADMIN -->
 
   <div
     id="adminPanel"
@@ -674,61 +574,33 @@ label{
       Post New Audition
     </h2>
 
+    <label>Title</label>
 
-    <label>
-      Title
-    </label>
+    <input id="update_title">
 
-    <input
-      id="update_title"
-      placeholder="AD Film Casting Call"
-    >
+    <label>Description</label>
 
+    <textarea id="update_description"></textarea>
 
-    <label>
-      Description
-    </label>
-
-    <textarea
-      id="update_description"
-      placeholder="Write audition requirements..."
-    ></textarea>
-
-
-    <label>
-      Audition Date
-    </label>
+    <label>Audition Date</label>
 
     <input
       id="update_date"
       type="date"
     >
 
+    <label>Location</label>
 
-    <label>
-      Location
-    </label>
+    <input id="update_location">
 
-    <input
-      id="update_location"
-      placeholder="Pune / Mumbai / Pan India"
-    >
-
-
-    <label>
-      Apply Link
-    </label>
+    <label>Apply Link</label>
 
     <input
       id="update_link"
       type="url"
-      placeholder="Optional"
     >
 
-
-    <label>
-      Audition Photo
-    </label>
+    <label>Audition Photo</label>
 
     <input
       id="update_image"
@@ -736,24 +608,12 @@ label{
       accept="image/*"
     >
 
-
     <button
       class="btn"
       onclick="publishUpdate()"
-      id="publishButton"
     >
       Publish Audition
     </button>
-
-
-    <button
-      class="btn btn-secondary hidden"
-      onclick="cancelEdit()"
-      id="cancelEditButton"
-    >
-      Cancel Edit
-    </button>
-
 
     <div
       id="updateMessage"
@@ -763,7 +623,7 @@ label{
   </div>
 
 
-  <!-- ADMIN ACTORS -->
+  <!-- ACTORS -->
 
   <div
     id="adminActors"
@@ -778,18 +638,128 @@ label{
       Registered Actors
     </h2>
 
-    <div id="actorsList">
-      Loading actors...
-    </div>
+    <div id="actorsList"></div>
 
   </div>
 
 </section>
 
 
-<!-- =====================================================
-     PROFILE
-===================================================== -->
+<!-- APPLICATION -->
+
+<section
+  id="applicationPage"
+  class="page hidden"
+>
+
+  <div class="card">
+
+    <h2>
+      Audition Application
+    </h2>
+
+    <div
+      id="applicationAuditionName"
+      class="gold"
+    ></div>
+
+    <label>Full Name</label>
+
+    <input
+      id="application_name"
+      class="readonly"
+      readonly
+    >
+
+    <label>Age</label>
+
+    <input
+      id="application_age"
+      class="readonly"
+      readonly
+    >
+
+    <label>Gender</label>
+
+    <input
+      id="application_gender"
+      class="readonly"
+      readonly
+    >
+
+    <label>Height</label>
+
+    <input
+      id="application_height"
+      class="readonly"
+      readonly
+    >
+
+    <label>Contact Number</label>
+
+    <input
+      id="application_contact"
+      class="readonly"
+      readonly
+    >
+
+    <label>Current Location</label>
+
+    <input
+      id="application_location"
+      class="readonly"
+      readonly
+    >
+
+    <label>Hobbies</label>
+
+    <textarea
+      id="application_hobbies"
+      class="readonly"
+      readonly
+    ></textarea>
+
+    <label>Acting Experience</label>
+
+    <textarea
+      id="application_experience"
+      class="readonly"
+      readonly
+    ></textarea>
+
+    <label>Introduction Video</label>
+
+    <input
+      id="application_video"
+      class="readonly"
+      readonly
+    >
+
+    <button
+      class="btn"
+      onclick="submitApplication()"
+    >
+      Submit Application
+    </button>
+
+    <button
+      class="btn btn-secondary"
+      onclick="showPage('auditions')"
+    >
+      Back to Auditions
+    </button>
+
+    <div
+      id="applicationMessage"
+      class="message"
+    ></div>
+
+  </div>
+
+</section>
+
+
+<!-- PROFILE -->
 
 <section
   id="profilePage"
@@ -802,7 +772,6 @@ label{
       My Profile
     </h2>
 
-
     <div id="profilePhotoBox">
 
       <div
@@ -811,7 +780,7 @@ label{
         display:flex;
         align-items:center;
         justify-content:center;
-        color:#999;
+        color:#999
         "
       >
         Photo
@@ -819,10 +788,7 @@ label{
 
     </div>
 
-
-    <label>
-      Profile Photo
-    </label>
+    <label>Profile Photo</label>
 
     <input
       id="profile_photo"
@@ -830,31 +796,16 @@ label{
       accept="image/*"
     >
 
+    <label>Full Name</label>
+    <input id="full_name">
 
-    <label>
-      Full Name
-    </label>
-
-    <input
-      id="full_name"
-      placeholder="Your full name"
-    >
-
-
-    <label>
-      Age
-    </label>
-
+    <label>Age</label>
     <input
       id="age"
       type="number"
-      placeholder="Age"
     >
 
-
-    <label>
-      Gender
-    </label>
+    <label>Gender</label>
 
     <select id="gender">
 
@@ -862,82 +813,45 @@ label{
         Select Gender
       </option>
 
-      <option value="Male">
+      <option>
         Male
       </option>
 
-      <option value="Female">
+      <option>
         Female
       </option>
 
-      <option value="Other">
+      <option>
         Other
       </option>
 
     </select>
 
+    <label>Height</label>
+    <input id="height">
 
-    <label>
-      Height
-    </label>
-
-    <input
-      id="height"
-      placeholder="Example: 5'8"
-    >
-
-
-    <label>
-      Contact Number
-    </label>
+    <label>Contact Number</label>
 
     <input
       id="contact"
       type="tel"
-      placeholder="Contact number"
     >
 
+    <label>Current Location</label>
+    <input id="current_location">
 
-    <label>
-      Current Location
-    </label>
+    <label>Hobbies</label>
+    <textarea id="hobbies"></textarea>
 
-    <input
-      id="current_location"
-      placeholder="Current location"
-    >
+    <label>Acting Experience</label>
+    <textarea id="experience"></textarea>
 
-
-    <label>
-      Hobbies
-    </label>
-
-    <textarea
-      id="hobbies"
-      placeholder="Your hobbies"
-    ></textarea>
-
-
-    <label>
-      Acting Experience
-    </label>
-
-    <textarea
-      id="experience"
-      placeholder="Your acting experience"
-    ></textarea>
-
-
-    <label>
-      Introduction Video URL
-    </label>
+    <label>Introduction Video URL</label>
 
     <input
       id="intro_video_url"
       type="url"
-      placeholder="YouTube / Drive / other video link"
     >
-
 
     <button
       class="btn"
@@ -945,7 +859,6 @@ label{
     >
       Save / Update Profile
     </button>
-
 
     <div
       id="profileMessage"
@@ -957,9 +870,7 @@ label{
 </section>
 
 
-<!-- =====================================================
-     BOTTOM NAV
-===================================================== -->
+<!-- BOTTOM NAV -->
 
 <nav class="bottom-nav">
 
@@ -968,54 +879,34 @@ label{
     class="nav-item active"
     onclick="showPage('home')"
   >
-
-    <span class="nav-icon">
-      ⌂
-    </span>
-
+    <span class="nav-icon">⌂</span>
     Home
-
   </div>
-
 
   <div
     id="navAuditions"
     class="nav-item"
     onclick="showPage('auditions')"
   >
-
-    <span class="nav-icon">
-      🎬
-    </span>
-
+    <span class="nav-icon">🎬</span>
     Auditions
-
   </div>
-
 
   <div
     id="navProfile"
     class="nav-item"
     onclick="showPage('profile')"
   >
-
-    <span class="nav-icon">
-      👤
-    </span>
-
+    <span class="nav-icon">👤</span>
     Profile
-
   </div>
 
 </nav>
 
-
 </div>
 
 
-<!-- =====================================================
-     NOTIFICATIONS
-===================================================== -->
+<!-- NOTIFICATIONS -->
 
 <div
   id="notificationOverlay"
@@ -1032,15 +923,7 @@ label{
       Notifications
     </div>
 
-
-    <div id="notificationsList">
-
-      <div class="empty">
-        No new notifications.
-      </div>
-
-    </div>
-
+    <div id="notificationsList"></div>
 
     <button
       class="btn btn-secondary"
@@ -1054,9 +937,7 @@ label{
 </div>
 
 
-<!-- =====================================================
-     SETTINGS
-===================================================== -->
+<!-- SETTINGS -->
 
 <div
   id="settingsOverlay"
@@ -1073,7 +954,6 @@ label{
       Settings
     </div>
 
-
     <div
       class="setting-item"
       onclick="forgotPassword()"
@@ -1084,11 +964,10 @@ label{
       </strong>
 
       <span>
-        Send a password reset link to your email.
+        Send a password reset link to your registered email.
       </span>
 
     </div>
-
 
     <div
       class="setting-item"
@@ -1100,15 +979,14 @@ label{
       </strong>
 
       <span>
-        View your registered email address.
+        Manage your account settings.
       </span>
 
     </div>
 
-
     <div
       class="setting-item"
-      onclick="closeSettings(); showPage('profile')"
+      onclick="closeSettings();showPage('profile')"
     >
 
       <strong>
@@ -1120,7 +998,6 @@ label{
       </span>
 
     </div>
-
 
     <div
       class="setting-item"
@@ -1137,6 +1014,10 @@ label{
 
     </div>
 
+    <div
+      id="settingsMessage"
+      class="message"
+    ></div>
 
     <button
       class="btn btn-secondary"
@@ -1152,10 +1033,6 @@ label{
 
 <script>
 
-/* =====================================================
-   SUPABASE
-===================================================== */
-
 const SUPABASE_URL =
 "https://xxrmvtpkroqbzoihgfsj.supabase.co";
 
@@ -1168,117 +1045,94 @@ supabase.createClient(
   SUPABASE_KEY
 );
 
+const ADMIN_EMAIL =
+"tanimancasting@gmail.com";
 
 let isSignup = false;
 
 let editingUpdateId = null;
 
-
-/* =====================================================
-   ADMIN
-===================================================== */
-
-const ADMIN_EMAIL =
-"tanimancasting@gmail.com";
+let selectedAuditionId = null;
 
 
-/* =====================================================
-   AUTH TOGGLE
-===================================================== */
+const $ = id =>
+document.getElementById(id);
+
+
+const esc = value =>
+String(value ?? "")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+
+/* AUTH */
 
 function toggleAuth(){
 
   isSignup = !isSignup;
 
-
-  document.getElementById(
-    "authTitle"
-  ).innerText =
+  $("authTitle").textContent =
     isSignup
     ? "Create Actor Account"
     : "Actor Login";
 
-
-  document.getElementById(
-    "authButton"
-  ).innerText =
+  $("authButton").textContent =
     isSignup
     ? "Sign Up"
     : "Login";
 
-
-  document.getElementById(
-    "toggleButton"
-  ).innerText =
+  $("toggleButton").textContent =
     isSignup
     ? "Already have an account? Login"
     : "Create New Account";
 
+  $("forgotPassword")
+    .classList
+    .toggle(
+      "hidden",
+      isSignup
+    );
 
-  document.getElementById(
-    "forgotPassword"
-  ).classList.toggle(
-    "hidden",
-    isSignup
-  );
-
-
-  document.getElementById(
-    "authMessage"
-  ).innerText = "";
+  $("authMessage").textContent = "";
 
 }
 
 
-/* =====================================================
-   LOGIN / SIGNUP
-===================================================== */
-
 async function handleAuth(){
 
   const email =
-    document.getElementById(
-      "email"
-    ).value.trim();
-
+    $("email").value.trim();
 
   const password =
-    document.getElementById(
-      "password"
-    ).value;
+    $("password").value;
 
-
-  const message =
-    document.getElementById(
-      "authMessage"
-    );
+  const msg =
+    $("authMessage");
 
 
   if(!email || !password){
 
-    message.innerText =
+    msg.textContent =
       "Please enter email and password.";
 
     return;
   }
 
 
-  message.innerText =
+  msg.textContent =
     "Please wait...";
 
 
-  /* SIGN UP */
-
   if(isSignup){
 
-    const {
-      error
-    } =
+    const {error} =
       await supabaseClient.auth.signUp({
 
-        email:email,
-
-        password:password,
+        email,
+        password,
 
         options:{
           emailRedirectTo:
@@ -1288,88 +1142,85 @@ async function handleAuth(){
       });
 
 
-    if(error){
-
-      message.innerText =
-        error.message;
-
-      return;
-    }
-
-
-    message.innerText =
-      "Account created successfully. Please login.";
+    msg.textContent =
+      error
+      ? error.message
+      : "Account created successfully. Please login.";
 
     return;
   }
 
 
-  /* LOGIN */
-
-  const {
-    error
-  } =
+  const {error} =
     await supabaseClient.auth
     .signInWithPassword({
 
-      email:email,
-
-      password:password
+      email,
+      password
 
     });
 
 
   if(error){
 
-    message.innerText =
+    msg.textContent =
       error.message;
 
     return;
   }
 
 
-  message.innerText = "";
-
   await startApp();
 
 }
 
 
-/* =====================================================
-   FORGOT PASSWORD
-===================================================== */
+/* FORGOT PASSWORD */
 
 async function forgotPassword(){
 
-  const emailInput =
-    document.getElementById(
-      "email"
-    );
-
-
   const email =
-    emailInput.value.trim();
+    $("email").value.trim();
 
 
   if(!email){
 
-    closeSettings();
+    if(
+      $("settingsOverlay")
+      .classList
+      .contains("hidden")
+    ){
 
+      $("authMessage").textContent =
+        "Enter your registered email address first.";
 
-    alert(
-      "First enter your registered email address."
-    );
+      $("email").focus();
 
+    }
+    else{
 
-    emailInput.focus();
+      $("settingsMessage").textContent =
+        "Enter your registered email address on the login screen first.";
+
+    }
 
     return;
   }
 
 
-  const {
-    error
-  } =
+  const target =
+    $("settingsOverlay")
+    .classList
+    .contains("hidden")
+    ? $("authMessage")
+    : $("settingsMessage");
+
+
+  target.textContent =
+    "Sending password reset link...";
+
+
+  const {error} =
     await supabaseClient.auth
     .resetPasswordForEmail(
       email,
@@ -1380,46 +1231,35 @@ async function forgotPassword(){
     );
 
 
-  if(error){
-
-    alert(
-      "Password reset error: " +
-      error.message
-    );
-
-    return;
-  }
-
-
-  closeSettings();
-
-
-  alert(
-    "Password reset link has been sent to your email."
-  );
+  target.textContent =
+    error
+    ? "Password reset error: " + error.message
+    : "Password reset link sent successfully. Check your email.";
 
 }
 
 
-/* =====================================================
-   START APP
-===================================================== */
+/* ACCOUNT */
+
+function showAccountInfo(){
+
+  $("settingsMessage").textContent =
+    "Your account is active. Account email is kept private here.";
+
+}
+
+
+/* START APP */
 
 async function startApp(){
 
-  document.getElementById(
-    "loginPage"
-  ).classList.add(
-    "hidden"
-  );
+  $("loginPage")
+    .classList
+    .add("hidden");
 
-
-  document.getElementById(
-    "app"
-  ).classList.remove(
-    "hidden"
-  );
-
+  $("app")
+    .classList
+    .remove("hidden");
 
   await loadProfile();
 
@@ -1427,118 +1267,101 @@ async function startApp(){
 
   await loadActors();
 
-
   showPage("home");
 
 }
 
 
-/* =====================================================
-   NAVIGATION
-===================================================== */
+/* NAVIGATION */
 
 function showPage(page){
 
   const pages = {
 
-    home:
-      document.getElementById(
-        "homePage"
-      ),
+    home:$("homePage"),
 
-    auditions:
-      document.getElementById(
-        "auditionsPage"
-      ),
+    auditions:$("auditionsPage"),
 
-    profile:
-      document.getElementById(
-        "profilePage"
-      )
+    application:$("applicationPage"),
+
+    profile:$("profilePage")
 
   };
 
 
-  Object.values(pages).forEach(
-    p =>
-      p.classList.add(
-        "hidden"
-      )
-  );
+  Object.values(pages)
+    .forEach(
+      x =>
+      x.classList.add("hidden")
+    );
 
 
-  pages[page].classList.remove(
-    "hidden"
-  );
+  pages[page]
+    .classList
+    .remove("hidden");
 
 
   document
     .querySelectorAll(".nav-item")
     .forEach(
-      n =>
-        n.classList.remove(
-          "active"
-        )
+      x =>
+      x.classList.remove("active")
     );
 
 
-  if(page === "home"){
-
-    document
-      .getElementById(
-        "navHome"
-      )
-      .classList.add(
-        "active"
-      );
-
-  }
+  if(page === "home")
+    $("navHome")
+      .classList.add("active");
 
 
-  if(page === "auditions"){
-
-    document
-      .getElementById(
-        "navAuditions"
-      )
-      .classList.add(
-        "active"
-      );
-
-  }
+  if(page === "auditions")
+    $("navAuditions")
+      .classList.add("active");
 
 
-  if(page === "profile"){
-
-    document
-      .getElementById(
-        "navProfile"
-      )
-      .classList.add(
-        "active"
-      );
-
-  }
+  if(page === "profile")
+    $("navProfile")
+      .classList.add("active");
 
 }
 
 
-/* =====================================================
-   LOAD PROFILE
-===================================================== */
+/* APPLICATION */
 
-async function loadProfile(){
+async function openApplication(
+  id,
+  title
+){
+
+  selectedAuditionId =
+    id;
+
+  $("applicationAuditionName")
+    .textContent =
+    "Applying for: " + title;
+
+  $("applicationMessage")
+    .textContent =
+    "Loading your profile...";
+
 
   const {
     data:{
       user
     }
   } =
-    await supabaseClient.auth.getUser();
+    await supabaseClient.auth
+    .getUser();
 
 
-  if(!user)
+  if(!user){
+
+    $("applicationMessage")
+      .textContent =
+      "Please login first.";
+
     return;
+  }
 
 
   const {
@@ -1548,103 +1371,263 @@ async function loadProfile(){
     await supabaseClient
     .from("actors")
     .select("*")
-    .eq(
-      "id",
-      user.id
-    )
+    .eq("id",user.id)
     .maybeSingle();
 
 
   if(error){
 
-    console.error(error);
+    $("applicationMessage")
+      .textContent =
+      "Unable to load profile: " +
+      error.message;
 
     return;
   }
+
+
+  if(!data){
+
+    $("applicationMessage")
+      .textContent =
+      "Please complete your profile before applying.";
+
+    showPage("profile");
+
+    return;
+  }
+
+
+  $("application_name").value =
+    data.full_name || "";
+
+  $("application_age").value =
+    data.age ?? "";
+
+  $("application_gender").value =
+    data.gender || "";
+
+  $("application_height").value =
+    data.height || "";
+
+  $("application_contact").value =
+    data.contact || "";
+
+  $("application_location").value =
+    data.current_location || "";
+
+  $("application_hobbies").value =
+    data.hobbies || "";
+
+  $("application_experience").value =
+    data.acting_experience || "";
+
+  $("application_video").value =
+    data.intro_video_url || "";
+
+  $("applicationMessage")
+    .textContent = "";
+
+  showPage("application");
+
+}
+
+
+/* SUBMIT APPLICATION */
+
+async function submitApplication(){
+
+  const message =
+    $("applicationMessage");
+
+
+  const {
+    data:{
+      user
+    }
+  } =
+    await supabaseClient.auth
+    .getUser();
+
+
+  if(!user){
+
+    message.textContent =
+      "Please login first.";
+
+    return;
+  }
+
+
+  if(!selectedAuditionId){
+
+    message.textContent =
+      "Please select an audition first.";
+
+    return;
+  }
+
+
+  message.textContent =
+    "Submitting application...";
+
+
+  const profile = {
+
+    full_name:
+      $("application_name").value,
+
+    age:
+      $("application_age").value,
+
+    gender:
+      $("application_gender").value,
+
+    height:
+      $("application_height").value,
+
+    contact:
+      $("application_contact").value,
+
+    current_location:
+      $("application_location").value,
+
+    hobbies:
+      $("application_hobbies").value,
+
+    acting_experience:
+      $("application_experience").value,
+
+    intro_video_url:
+      $("application_video").value
+
+  };
+
+
+  const {error} =
+    await supabaseClient
+    .from("applications")
+    .insert({
+
+      actor_id:
+        user.id,
+
+      audition_id:
+        selectedAuditionId,
+
+      full_name:
+        profile.full_name,
+
+      email:
+        user.email || null,
+
+      phone:
+        profile.contact,
+
+      profile_data:
+        profile,
+
+      status:
+        "pending"
+
+    });
+
+
+  if(error){
+
+    message.textContent =
+      error.code === "23505"
+      ? "You have already applied for this audition."
+      : "Application error: " +
+        error.message;
+
+    return;
+  }
+
+
+  message.textContent =
+    "Application submitted successfully!";
+
+
+  setTimeout(
+    () =>
+    showPage("auditions"),
+    1200
+  );
+
+}
+
+
+/* LOAD PROFILE */
+
+async function loadProfile(){
+
+  const {
+    data:{
+      user
+    }
+  } =
+    await supabaseClient.auth
+    .getUser();
+
+
+  if(!user)
+    return;
+
+
+  const {
+    data
+  } =
+    await supabaseClient
+    .from("actors")
+    .select("*")
+    .eq("id",user.id)
+    .maybeSingle();
 
 
   if(!data)
     return;
 
 
-  document.getElementById(
-    "full_name"
-  ).value =
-    data.full_name || "";
-
-
-  document.getElementById(
-    "age"
-  ).value =
-    data.age || "";
-
-
-  document.getElementById(
-    "gender"
-  ).value =
-    data.gender || "";
-
-
-  document.getElementById(
-    "height"
-  ).value =
-    data.height || "";
-
-
-  document.getElementById(
-    "contact"
-  ).value =
-    data.contact || "";
-
-
-  document.getElementById(
-    "current_location"
-  ).value =
-    data.current_location || "";
-
-
-  document.getElementById(
-    "hobbies"
-  ).value =
-    data.hobbies || "";
-
-
-  document.getElementById(
-    "experience"
-  ).value =
-    data.acting_experience || "";
-
-
-  document.getElementById(
+  [
+    "full_name",
+    "age",
+    "gender",
+    "height",
+    "contact",
+    "current_location",
+    "hobbies",
     "intro_video_url"
-  ).value =
-    data.intro_video_url || "";
+  ]
+  .forEach(
+    key =>
+    $(key).value =
+      data[key] || ""
+  );
+
+
+  $("experience").value =
+    data.acting_experience || "";
 
 
   if(data.profile_photo_url){
 
-    document.getElementById(
-      "profilePhotoBox"
-    ).innerHTML = `
+    $("profilePhotoBox")
+      .innerHTML =
 
+      `
       <img
-        src="${escapeHtml(
-          data.profile_photo_url
-        )}"
+        src="${esc(data.profile_photo_url)}"
         class="profile-photo-preview"
-        alt="Profile Photo"
       >
-
-    `;
+      `;
 
   }
 
 }
 
 
-/* =====================================================
-   SAVE PROFILE
-===================================================== */
+/* SAVE PROFILE */
 
 async function saveProfile(){
 
@@ -1653,226 +1636,160 @@ async function saveProfile(){
       user
     }
   } =
-    await supabaseClient.auth.getUser();
+    await supabaseClient.auth
+    .getUser();
 
 
-  if(!user){
-
-    alert(
-      "Please login first."
-    );
-
+  if(!user)
     return;
-  }
 
 
-  const message =
-    document.getElementById(
-      "profileMessage"
-    );
-
-
-  message.innerText =
+  $("profileMessage")
+    .textContent =
     "Saving profile...";
 
 
-  const photoFile =
-    document.getElementById(
-      "profile_photo"
-    ).files[0];
+  const file =
+    $("profile_photo")
+    .files[0];
 
 
-  let profilePhotoUrl = null;
+  let photo = null;
 
 
-  if(photoFile){
+  if(file){
 
     const fileName =
       user.id +
       "_" +
       Date.now() +
       "_" +
-      photoFile.name.replace(
+      file.name.replace(
         /\s+/g,
         "_"
       );
 
 
-    const {
-      error:uploadError
-    } =
+    const upload =
       await supabaseClient.storage
       .from("Actor-profiles")
       .upload(
         fileName,
-        photoFile,
+        file,
         {
           upsert:false
         }
       );
 
 
-    if(uploadError){
+    if(upload.error){
 
-      message.innerText =
+      $("profileMessage")
+        .textContent =
         "Photo upload error: " +
-        uploadError.message;
+        upload.error.message;
 
       return;
     }
 
 
-    const {
-      data:publicData
-    } =
-      supabaseClient.storage
+    photo =
+      supabaseClient
+      .storage
       .from("Actor-profiles")
       .getPublicUrl(
         fileName
-      );
-
-
-    profilePhotoUrl =
-      publicData.publicUrl;
+      )
+      .data
+      .publicUrl;
 
   }
 
 
   const profile = {
 
-    id:user.id,
+    id:
+      user.id,
 
     full_name:
-      document.getElementById(
-        "full_name"
-      ).value.trim(),
+      $("full_name")
+      .value
+      .trim(),
 
     age:
-      document.getElementById(
-        "age"
-      ).value
-      ?
-      parseInt(
-        document.getElementById(
-          "age"
-        ).value
-      )
-      :
-      null,
+      $("age").value
+      ? parseInt(
+          $("age").value
+        )
+      : null,
 
     gender:
-      document.getElementById(
-        "gender"
-      ).value,
+      $("gender").value,
 
     height:
-      document.getElementById(
-        "height"
-      ).value.trim(),
+      $("height")
+      .value
+      .trim(),
 
     contact:
-      document.getElementById(
-        "contact"
-      ).value.trim(),
+      $("contact")
+      .value
+      .trim(),
 
     current_location:
-      document.getElementById(
-        "current_location"
-      ).value.trim(),
+      $("current_location")
+      .value
+      .trim(),
 
     hobbies:
-      document.getElementById(
-        "hobbies"
-      ).value.trim(),
+      $("hobbies")
+      .value
+      .trim(),
 
     acting_experience:
-      document.getElementById(
-        "experience"
-      ).value.trim(),
+      $("experience")
+      .value
+      .trim(),
 
     intro_video_url:
-      document.getElementById(
-        "intro_video_url"
-      ).value.trim(),
+      $("intro_video_url")
+      .value
+      .trim(),
 
     updated_at:
-      new Date().toISOString()
+      new Date()
+      .toISOString()
 
   };
 
 
-  if(profilePhotoUrl){
-
+  if(photo)
     profile.profile_photo_url =
-      profilePhotoUrl;
-
-  }
+      photo;
 
 
-  const {
-    error
-  } =
+  const {error} =
     await supabaseClient
     .from("actors")
-    .upsert(
-      profile
-    );
+    .upsert(profile);
 
 
-  if(error){
-
-    console.error(error);
-
-    message.innerText =
-      "Error: " +
-      error.message;
-
-    return;
-  }
+  $("profileMessage")
+    .textContent =
+    error
+    ? "Error: " + error.message
+    : "Profile saved successfully!";
 
 
-  message.innerText =
-    "Profile saved successfully!";
-
-
-  await loadActors();
+  if(!error)
+    await loadActors();
 
 }
 
 
-/* =====================================================
-   LOAD UPDATES
-===================================================== */
+/* LOAD AUDITIONS */
 
 async function loadUpdates(){
-
-  const updatesList =
-    document.getElementById(
-      "updatesList"
-    );
-
-
-  const homeUpdates =
-    document.getElementById(
-      "homeUpdates"
-    );
-
-
-  if(updatesList){
-
-    updatesList.innerHTML =
-      "<div class='empty'>Loading auditions...</div>";
-
-  }
-
-
-  if(homeUpdates){
-
-    homeUpdates.innerHTML =
-      "<div class='empty'>Loading auditions...</div>";
-
-  }
-
 
   const {
     data,
@@ -1891,47 +1808,30 @@ async function loadUpdates(){
 
   if(error){
 
-    console.error(error);
+    $("updatesList")
+      .innerHTML =
+      "<div class='empty'>Unable to load auditions.</div>";
 
-
-    if(updatesList){
-
-      updatesList.innerHTML =
-        "<div class='empty'>Unable to load auditions.</div>";
-
-    }
-
-
-    if(homeUpdates){
-
-      homeUpdates.innerHTML =
-        "<div class='empty'>Unable to load auditions.</div>";
-
-    }
-
+    $("homeUpdates")
+      .innerHTML =
+      "<div class='empty'>Unable to load auditions.</div>";
 
     return;
   }
 
 
-  if(!data || data.length === 0){
+  if(!data || !data.length){
 
     const empty =
       "<div class='empty'>No auditions available yet.</div>";
 
+    $("updatesList")
+      .innerHTML =
+      empty;
 
-    if(updatesList)
-      updatesList.innerHTML =
-        empty;
-
-
-    if(homeUpdates)
-      homeUpdates.innerHTML =
-        empty;
-
-
-    loadNotifications([]);
-
+    $("homeUpdates")
+      .innerHTML =
+      empty;
 
     return;
   }
@@ -1942,67 +1842,151 @@ async function loadUpdates(){
       user
     }
   } =
-    await supabaseClient.auth.getUser();
+    await supabaseClient.auth
+    .getUser();
 
 
-  const isAdmin =
+  const admin =
     user &&
     user.email &&
-    user.email.toLowerCase() ===
-    ADMIN_EMAIL.toLowerCase();
+    user.email
+      .toLowerCase() ===
+    ADMIN_EMAIL
+      .toLowerCase();
 
 
-  if(isAdmin){
+  if(admin){
 
-    document.getElementById(
-      "adminPanel"
-    ).classList.remove(
-      "hidden"
-    );
+    $("adminPanel")
+      .classList
+      .remove("hidden");
 
-
-    document.getElementById(
-      "adminActors"
-    ).classList.remove(
-      "hidden"
-    );
+    $("adminActors")
+      .classList
+      .remove("hidden");
 
   }
 
 
-  const allHTML =
-    data.map(
-      update =>
-        auditionHTML(
-          update,
-          isAdmin
-        )
-    ).join("");
+  const render =
+    update => `
+
+    <article class="audition-card">
+
+      ${
+        update.image_url
+        ?
+        `
+        <img
+          src="${esc(update.image_url)}"
+          class="audition-image"
+        >
+        `
+        :
+        ""
+      }
+
+      <div class="audition-content">
+
+        <h3>
+          ${esc(
+            update.title ||
+            "Casting Call"
+          )}
+        </h3>
+
+        ${
+          update.description
+          ?
+          `
+          <p>
+            ${esc(update.description)}
+          </p>
+          `
+          :
+          ""
+        }
+
+        ${
+          update.audition_date
+          ?
+          `
+          <div class="info">
+            📅 <b>Date:</b>
+            ${esc(update.audition_date)}
+          </div>
+          `
+          :
+          ""
+        }
+
+        ${
+          update.location
+          ?
+          `
+          <div class="info">
+            📍 <b>Location:</b>
+            ${esc(update.location)}
+          </div>
+          `
+          :
+          ""
+        }
+
+        <button
+          class="apply-btn"
+          onclick="openApplication(
+            '${esc(update.id)}',
+            '${esc(update.title || "Casting Call")}'
+          )"
+        >
+          Apply Now
+        </button>
+
+        ${
+          admin
+          ?
+          `
+          <div class="admin-actions">
+
+            <button
+              class="small-btn"
+              onclick="editUpdate('${esc(update.id)}')"
+            >
+              Edit
+            </button>
+
+            <button
+              class="small-btn small-danger"
+              onclick="deleteUpdate('${esc(update.id)}')"
+            >
+              Delete
+            </button>
+
+          </div>
+          `
+          :
+          ""
+        }
+
+      </div>
+
+    </article>
+
+    `;
 
 
-  if(updatesList){
-
-    updatesList.innerHTML =
-      allHTML;
-
-  }
+  $("updatesList")
+    .innerHTML =
+    data.map(render).join("");
 
 
-  if(homeUpdates){
-
-    homeUpdates.innerHTML =
-      data
-      .slice(0,3)
-      .map(
-        update =>
-          auditionHTML(
-            update,
-            false
-          )
-      )
-      .join("");
-
-  }
+  $("homeUpdates")
+    .innerHTML =
+    data
+    .slice(0,3)
+    .map(render)
+    .join("");
 
 
   loadNotifications(data);
@@ -2010,304 +1994,112 @@ async function loadUpdates(){
 }
 
 
-/* =====================================================
-   AUDITION HTML
-===================================================== */
-
-function auditionHTML(
-  update,
-  isAdmin
-){
-
-  return `
-
-  <article class="audition-card">
-
-
-    ${
-      update.image_url
-      ?
-      `
-      <img
-        src="${escapeHtml(
-          update.image_url
-        )}"
-        class="audition-image"
-        alt="Audition"
-      >
-      `
-      :
-      ""
-    }
-
-
-    <div class="audition-content">
-
-
-      <h3>
-        ${escapeHtml(
-          update.title ||
-          "Casting Call"
-        )}
-      </h3>
-
-
-      ${
-        update.description
-        ?
-        `
-        <p>
-          ${escapeHtml(
-            update.description
-          )}
-        </p>
-        `
-        :
-        ""
-      }
-
-
-      ${
-        update.audition_date
-        ?
-        `
-        <div class="info">
-
-          📅
-          <b>Date:</b>
-
-          ${escapeHtml(
-            update.audition_date
-          )}
-
-        </div>
-        `
-        :
-        ""
-      }
-
-
-      ${
-        update.location
-        ?
-        `
-        <div class="info">
-
-          📍
-          <b>Location:</b>
-
-          ${escapeHtml(
-            update.location
-          )}
-
-        </div>
-        `
-        :
-        ""
-      }
-
-
-      <!-- APPLY NOW GOES DIRECTLY TO PROFILE -->
-
-      <button
-        class="apply-btn"
-        onclick="applyNow()"
-      >
-        Apply Now
-      </button>
-
-
-      ${
-        isAdmin
-        ?
-        `
-        <div class="admin-actions">
-
-
-          <button
-            class="small-btn"
-            onclick="editUpdate('${update.id}')"
-          >
-            Edit
-          </button>
-
-
-          <button
-            class="small-btn small-danger"
-            onclick="deleteUpdate('${update.id}')"
-          >
-            Delete
-          </button>
-
-
-        </div>
-        `
-        :
-        ""
-      }
-
-
-    </div>
-
-  </article>
-
-  `;
-
-}
-
-
-/* =====================================================
-   APPLY NOW
-===================================================== */
-
-function applyNow(){
-
-  showPage("profile");
-
-}
-
-
-/* =====================================================
-   PUBLISH / UPDATE AUDITION
-===================================================== */
+/* PUBLISH AUDITION */
 
 async function publishUpdate(){
 
-  const message =
-    document.getElementById(
-      "updateMessage"
-    );
-
+  const msg =
+    $("updateMessage");
 
   const title =
-    document.getElementById(
-      "update_title"
-    ).value.trim();
-
-
-  const description =
-    document.getElementById(
-      "update_description"
-    ).value.trim();
-
-
-  const date =
-    document.getElementById(
-      "update_date"
-    ).value;
-
-
-  const location =
-    document.getElementById(
-      "update_location"
-    ).value.trim();
-
-
-  const applyLink =
-    document.getElementById(
-      "update_link"
-    ).value.trim();
-
-
-  const imageFile =
-    document.getElementById(
-      "update_image"
-    ).files[0];
+    $("update_title")
+    .value
+    .trim();
 
 
   if(!title){
 
-    message.innerText =
+    msg.textContent =
       "Please enter a title.";
 
     return;
   }
 
 
-  message.innerText =
-    editingUpdateId
-    ?
-    "Updating..."
-    :
+  msg.textContent =
     "Publishing...";
 
 
-  let imageUrl = null;
+  const file =
+    $("update_image")
+    .files[0];
 
 
-  if(imageFile){
+  let image = null;
 
-    const fileName =
+
+  if(file){
+
+    const name =
       Date.now() +
       "_" +
-      imageFile.name.replace(
+      file.name.replace(
         /\s+/g,
         "_"
       );
 
 
-    const {
-      error:uploadError
-    } =
+    const upload =
       await supabaseClient.storage
       .from("Updates")
       .upload(
-        fileName,
-        imageFile,
+        name,
+        file,
         {
           upsert:false
         }
       );
 
 
-    if(uploadError){
+    if(upload.error){
 
-      message.innerText =
+      msg.textContent =
         "Photo upload error: " +
-        uploadError.message;
+        upload.error.message;
 
       return;
     }
 
 
-    const {
-      data:publicData
-    } =
+    image =
       supabaseClient.storage
       .from("Updates")
-      .getPublicUrl(
-        fileName
-      );
-
-
-    imageUrl =
-      publicData.publicUrl;
+      .getPublicUrl(name)
+      .data
+      .publicUrl;
 
   }
 
 
-  const updateData = {
+  const data = {
 
     title:title,
 
-    description:description,
+    description:
+      $("update_description")
+      .value
+      .trim(),
 
     audition_date:
-      date || null,
+      $("update_date")
+      .value || null,
 
-    location:location,
+    location:
+      $("update_location")
+      .value
+      .trim(),
 
-    apply_link:applyLink
+    apply_link:
+      $("update_link")
+      .value
+      .trim()
 
   };
 
 
-  if(imageUrl){
-
-    updateData.image_url =
-      imageUrl;
-
-  }
+  if(image)
+    data.image_url =
+      image;
 
 
   let result;
@@ -2318,9 +2110,7 @@ async function publishUpdate(){
     result =
       await supabaseClient
       .from("updates")
-      .update(
-        updateData
-      )
+      .update(data)
       .eq(
         "id",
         editingUpdateId
@@ -2329,28 +2119,25 @@ async function publishUpdate(){
   }
   else{
 
-    updateData.created_at =
-      new Date().toISOString();
-
-
     result =
       await supabaseClient
       .from("updates")
-      .insert(
-        updateData
-      );
+      .insert({
+
+        ...data,
+
+        created_at:
+          new Date()
+          .toISOString()
+
+      });
 
   }
 
 
   if(result.error){
 
-    console.error(
-      result.error
-    );
-
-
-    message.innerText =
+    msg.textContent =
       "Error: " +
       result.error.message;
 
@@ -2358,58 +2145,25 @@ async function publishUpdate(){
   }
 
 
-  message.innerText =
-    editingUpdateId
-    ?
-    "Audition updated successfully!"
-    :
-    "Audition published successfully!";
-
-
   editingUpdateId = null;
 
 
-  document.getElementById(
-    "update_title"
-  ).value = "";
-
-
-  document.getElementById(
-    "update_description"
-  ).value = "";
-
-
-  document.getElementById(
-    "update_date"
-  ).value = "";
-
-
-  document.getElementById(
-    "update_location"
-  ).value = "";
-
-
-  document.getElementById(
-    "update_link"
-  ).value = "";
-
-
-  document.getElementById(
+  [
+    "update_title",
+    "update_description",
+    "update_date",
+    "update_location",
+    "update_link",
     "update_image"
-  ).value = "";
-
-
-  document.getElementById(
-    "publishButton"
-  ).innerText =
-    "Publish Audition";
-
-
-  document.getElementById(
-    "cancelEditButton"
-  ).classList.add(
-    "hidden"
+  ]
+  .forEach(
+    id =>
+    $(id).value = ""
   );
+
+
+  msg.textContent =
+    "Audition saved successfully!";
 
 
   await loadUpdates();
@@ -2417,9 +2171,7 @@ async function publishUpdate(){
 }
 
 
-/* =====================================================
-   EDIT UPDATE
-===================================================== */
+/* EDIT */
 
 async function editUpdate(id){
 
@@ -2430,19 +2182,13 @@ async function editUpdate(id){
     await supabaseClient
     .from("updates")
     .select("*")
-    .eq(
-      "id",
-      id
-    )
+    .eq("id",id)
     .single();
 
 
   if(error){
 
-    alert(
-      "Unable to load audition: " +
-      error.message
-    );
+    alert(error.message);
 
     return;
   }
@@ -2452,148 +2198,46 @@ async function editUpdate(id){
     id;
 
 
-  document.getElementById(
-    "update_title"
-  ).value =
+  $("update_title").value =
     data.title || "";
 
-
-  document.getElementById(
-    "update_description"
-  ).value =
+  $("update_description").value =
     data.description || "";
 
-
-  document.getElementById(
-    "update_date"
-  ).value =
+  $("update_date").value =
     data.audition_date || "";
 
-
-  document.getElementById(
-    "update_location"
-  ).value =
+  $("update_location").value =
     data.location || "";
 
-
-  document.getElementById(
-    "update_link"
-  ).value =
+  $("update_link").value =
     data.apply_link || "";
 
 
-  document.getElementById(
-    "publishButton"
-  ).innerText =
-    "Update Audition";
+  showPage("auditions");
 
 
-  document.getElementById(
-    "cancelEditButton"
-  ).classList.remove(
-    "hidden"
-  );
-
-
-  document.getElementById(
-    "updateMessage"
-  ).innerText =
-    "Editing this audition. Upload a new photo only if you want to replace the existing photo.";
-
-
-  showPage(
-    "auditions"
-  );
-
-
-  document.getElementById(
-    "adminPanel"
-  ).scrollIntoView({
-    behavior:"smooth"
-  });
+  $("adminPanel")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
 
 }
 
 
-/* =====================================================
-   CANCEL EDIT
-===================================================== */
-
-function cancelEdit(){
-
-  editingUpdateId =
-    null;
-
-
-  document.getElementById(
-    "update_title"
-  ).value = "";
-
-
-  document.getElementById(
-    "update_description"
-  ).value = "";
-
-
-  document.getElementById(
-    "update_date"
-  ).value = "";
-
-
-  document.getElementById(
-    "update_location"
-  ).value = "";
-
-
-  document.getElementById(
-    "update_link"
-  ).value = "";
-
-
-  document.getElementById(
-    "update_image"
-  ).value = "";
-
-
-  document.getElementById(
-    "publishButton"
-  ).innerText =
-    "Publish Audition";
-
-
-  document.getElementById(
-    "cancelEditButton"
-  ).classList.add(
-    "hidden"
-  );
-
-
-  document.getElementById(
-    "updateMessage"
-  ).innerText = "";
-
-}
-
-
-/* =====================================================
-   DELETE UPDATE
-===================================================== */
+/* DELETE */
 
 async function deleteUpdate(id){
 
-  const confirmDelete =
-    confirm(
-      "Are you sure you want to delete this audition?"
-    );
-
-
-  if(!confirmDelete)
+  if(
+    !confirm(
+      "Delete this audition?"
+    )
+  )
     return;
 
 
-  const {
-    error
-  } =
+  const {error} =
     await supabaseClient
     .from("updates")
     .delete()
@@ -2603,40 +2247,23 @@ async function deleteUpdate(id){
     );
 
 
-  if(error){
-
-    alert(
-      "Delete error: " +
-      error.message
-    );
-
-    return;
-  }
-
-
-  alert(
-    "Audition deleted successfully."
-  );
-
-
-  await loadUpdates();
+  if(error)
+    alert(error.message);
+  else
+    loadUpdates();
 
 }
 
 
-/* =====================================================
-   LOAD ACTORS
-===================================================== */
+/* ACTORS */
 
 async function loadActors(){
 
-  const actorsList =
-    document.getElementById(
-      "actorsList"
-    );
+  const box =
+    $("actorsList");
 
 
-  if(!actorsList)
+  if(!box)
     return;
 
 
@@ -2645,20 +2272,17 @@ async function loadActors(){
       user
     }
   } =
-    await supabaseClient.auth.getUser();
+    await supabaseClient.auth
+    .getUser();
 
 
-  const isAdmin =
-    user &&
-    user.email &&
-    user.email.toLowerCase() ===
-    ADMIN_EMAIL.toLowerCase();
+  if(
+    user?.email
+      ?.toLowerCase() !==
+    ADMIN_EMAIL.toLowerCase()
+  ){
 
-
-  if(!isAdmin){
-
-    actorsList.innerHTML =
-      "";
+    box.innerHTML = "";
 
     return;
   }
@@ -2681,178 +2305,136 @@ async function loadActors(){
 
   if(error){
 
-    actorsList.innerHTML =
-      "Error loading actors: " +
-      escapeHtml(
-        error.message
-      );
+    box.textContent =
+      error.message;
 
     return;
   }
 
 
-  if(!data || data.length === 0){
+  box.innerHTML =
+    data?.length
 
-    actorsList.innerHTML =
-      "<div class='empty'>No actors registered yet.</div>";
+    ?
 
-    return;
-  }
-
-
-  actorsList.innerHTML =
-    data.map(
+    data
+    .map(
       actor => `
 
       <div class="actor-card">
-
 
         ${
           actor.profile_photo_url
           ?
           `
           <img
-            src="${escapeHtml(
-              actor.profile_photo_url
-            )}"
+            src="${esc(actor.profile_photo_url)}"
             class="actor-photo"
-            alt="Actor"
           >
           `
           :
-          `
-          <div class="empty">
-            No Photo
-          </div>
-          `
+          ""
         }
 
-
         <h3>
-          ${escapeHtml(
+          ${esc(
             actor.full_name ||
             "No Name"
           )}
         </h3>
-
 
         <p>
           <b>Age:</b>
           ${actor.age || "Not provided"}
         </p>
 
-
         <p>
           <b>Gender:</b>
-          ${escapeHtml(
+          ${esc(
             actor.gender ||
             "Not provided"
           )}
         </p>
 
-
         <p>
           <b>Height:</b>
-          ${escapeHtml(
+          ${esc(
             actor.height ||
             "Not provided"
           )}
         </p>
 
-
         <p>
           <b>Contact:</b>
-          ${escapeHtml(
+          ${esc(
             actor.contact ||
             "Not provided"
           )}
         </p>
 
-
         <p>
           <b>Location:</b>
-          ${escapeHtml(
+          ${esc(
             actor.current_location ||
             "Not provided"
           )}
         </p>
 
-
         <p>
           <b>Hobbies:</b>
-          ${escapeHtml(
+          ${esc(
             actor.hobbies ||
             "Not provided"
           )}
         </p>
 
-
         <p>
           <b>Experience:</b>
-          ${escapeHtml(
+          ${esc(
             actor.acting_experience ||
             "Not provided"
           )}
         </p>
 
-
         ${
           actor.intro_video_url
           ?
           `
-          <p>
-
-            <a
-              href="${escapeHtml(
-                actor.intro_video_url
-              )}"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Watch Introduction Video
-            </a>
-
-          </p>
+          <a
+            href="${esc(actor.intro_video_url)}"
+            target="_blank"
+          >
+            Watch Introduction Video
+          </a>
           `
           :
           ""
         }
 
-
       </div>
 
       `
-    ).join("");
+    )
+    .join("")
+
+    :
+
+    "<div class='empty'>No actors registered yet.</div>";
 
 }
 
 
-/* =====================================================
-   NOTIFICATIONS
-===================================================== */
+/* NOTIFICATIONS */
 
 function loadNotifications(data){
 
-  const list =
-    document.getElementById(
-      "notificationsList"
-    );
+  $("notificationsList")
+    .innerHTML =
 
+    data?.length
 
-  if(!list)
-    return;
+    ?
 
-
-  if(!data || data.length === 0){
-
-    list.innerHTML =
-      "<div class='empty'>No new notifications.</div>";
-
-    return;
-  }
-
-
-  list.innerHTML =
     data
     .slice(0,10)
     .map(
@@ -2865,7 +2447,7 @@ function loadNotifications(data){
         </strong>
 
         <div>
-          ${escapeHtml(
+          ${esc(
             item.title ||
             "New audition available"
           )}
@@ -2874,159 +2456,98 @@ function loadNotifications(data){
       </div>
 
       `
-    ).join("");
+    )
+    .join("")
+
+    :
+
+    "<div class='empty'>No new notifications.</div>";
 
 }
 
-
-/* =====================================================
-   OPEN NOTIFICATIONS
-===================================================== */
 
 function openNotifications(){
 
-  document.getElementById(
-    "notificationOverlay"
-  ).classList.remove(
-    "hidden"
-  );
+  $("notificationOverlay")
+    .classList
+    .remove("hidden");
 
 }
 
-
-/* =====================================================
-   CLOSE NOTIFICATIONS
-===================================================== */
 
 function closeNotifications(event){
 
   if(
     event &&
     event.target !==
-    document.getElementById(
-      "notificationOverlay"
-    )
-  ){
-
+    $("notificationOverlay")
+  )
     return;
 
-  }
 
-
-  document.getElementById(
-    "notificationOverlay"
-  ).classList.add(
-    "hidden"
-  );
+  $("notificationOverlay")
+    .classList
+    .add("hidden");
 
 }
 
 
-/* =====================================================
-   SETTINGS
-===================================================== */
+/* SETTINGS */
 
 function openSettings(){
 
-  document.getElementById(
-    "settingsOverlay"
-  ).classList.remove(
-    "hidden"
-  );
+  $("settingsMessage")
+    .textContent = "";
+
+  $("settingsOverlay")
+    .classList
+    .remove("hidden");
 
 }
 
-
-/* =====================================================
-   CLOSE SETTINGS
-===================================================== */
 
 function closeSettings(event){
 
   if(
     event &&
     event.target !==
-    document.getElementById(
-      "settingsOverlay"
-    )
-  ){
-
+    $("settingsOverlay")
+  )
     return;
 
-  }
 
-
-  document.getElementById(
-    "settingsOverlay"
-  ).classList.add(
-    "hidden"
-  );
+  $("settingsOverlay")
+    .classList
+    .add("hidden");
 
 }
 
 
-/* =====================================================
-   ACCOUNT INFO
-===================================================== */
-
-async function showAccountInfo(){
-
-  const {
-    data:{
-      user
-    }
-  } =
-    await supabaseClient.auth.getUser();
-
-
-  if(!user)
-    return;
-
-
-  alert(
-    "Registered Email:\n\n" +
-    user.email
-  );
-
-}
-
-
-/* =====================================================
-   LOGOUT
-===================================================== */
+/* LOGOUT */
 
 async function logout(){
 
-  await supabaseClient.auth.signOut();
+  await supabaseClient
+    .auth
+    .signOut();
 
 
-  document.getElementById(
-    "app"
-  ).classList.add(
-    "hidden"
-  );
+  $("app")
+    .classList
+    .add("hidden");
 
 
-  document.getElementById(
-    "loginPage"
-  ).classList.remove(
-    "hidden"
-  );
+  $("loginPage")
+    .classList
+    .remove("hidden");
 
 
-  document.getElementById(
-    "email"
-  ).value = "";
+  $("email").value = "";
 
+  $("password").value = "";
 
-  document.getElementById(
-    "password"
-  ).value = "";
-
-
-  document.getElementById(
-    "authMessage"
-  ).innerText = "";
+  $("authMessage")
+    .textContent = "";
 
 
   closeSettings();
@@ -3034,72 +2555,26 @@ async function logout(){
 }
 
 
-/* =====================================================
-   ESCAPE HTML
-===================================================== */
+/* AUTO LOGIN */
 
-function escapeHtml(value){
-
-  return String(value)
-
-    .replace(
-      /&/g,
-      "&amp;"
-    )
-
-    .replace(
-      /</g,
-      "&lt;"
-    )
-
-    .replace(
-      />/g,
-      "&gt;"
-    )
-
-    .replace(
-      /"/g,
-      "&quot;"
-    )
-
-    .replace(
-      /'/g,
-      "&#039;"
-    );
-
-}
-
-
-/* =====================================================
-   CHECK EXISTING LOGIN
-===================================================== */
-
-async function checkUser(){
+(async()=>{
 
   const {
     data:{
       user
     }
   } =
-    await supabaseClient.auth.getUser();
+    await supabaseClient
+    .auth
+    .getUser();
 
 
-  if(user){
+  if(user)
+    startApp();
 
-    await startApp();
-
-  }
-
-}
-
-
-/* =====================================================
-   START
-===================================================== */
-
-checkUser();
+})();
 
 </script>
 
 </body>
-      </html>
+    </html>
