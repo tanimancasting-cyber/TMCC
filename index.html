@@ -1440,11 +1440,18 @@ async function loadUpdates() {
         ${
           update.image_url
           ? `
-            <img
-              src="${update.image_url}"
-              class="actor-photo"
-              alt="Audition"
-            >
+            <a
+  href="${update.image_url}"
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  <img
+    src="${update.image_url}"
+    class="actor-photo"
+    alt="Audition"
+    style="cursor:pointer;"
+  >
+</a>
           `
           : ""
         }
