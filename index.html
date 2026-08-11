@@ -1,14 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>TaniMan Casting Company</title>
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<!-- TMCC PWA -->
+<link rel="manifest" href="/TMCC/manifest.json">
+
+<meta name="description"
+      content="TaniMan Casting Company">
+
+<meta name="theme-color"
+      content="#101117">
+
+<link rel="apple-touch-icon"
+      href="/TMCC/logo.png">
+
+<title>TMCC</title>
 
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <style>
+
 *{
   box-sizing:border-box;
   font-family:Arial,Helvetica,sans-serif;
@@ -171,6 +187,7 @@ button,input,textarea,select{
   background:#c99a4a;
   color:#fff;
   border:none;
+  text-decoration:none;
   padding:13px;
   border-radius:10px;
   margin-top:15px;
@@ -204,7 +221,7 @@ button,input,textarea,select{
   padding:10px 14px;
   border:none;
   border-radius:9px;
-  background:#c9a45c;
+  background:#c99a4a;
   color:white;
   cursor:pointer;
   font-weight:bold;
@@ -434,8 +451,7 @@ label{
   line-height:1.5;
 }
 
-.actor-card a,
-.application-card a{
+.actor-card a{
   color:#c9a45c;
 }
 
@@ -454,24 +470,12 @@ label{
 
 .status{
   display:inline-block;
-  padding:7px 11px;
+  padding:6px 10px;
   border-radius:8px;
   background:#c99a4a;
   font-size:12px;
   font-weight:bold;
   margin-bottom:10px;
-}
-
-.status.Accepted{
-  background:#238b57;
-}
-
-.status.Rejected{
-  background:#a83232;
-}
-
-.status.Pending{
-  background:#c99a4a;
 }
 
 .empty{
@@ -480,72 +484,80 @@ label{
   color:#999;
 }
 
-.my-app-card{
-  background:#282932;
-  padding:17px;
-  border-radius:15px;
-  margin-bottom:15px;
-}
-
-.my-app-card h3{
-  margin-top:0;
-}
-
 .success-box{
   text-align:center;
   padding:20px;
   color:#c9a45c;
 }
+
 </style>
 </head>
 
 <body>
 
-<!-- ================= LOGIN ================= -->
+<!-- LOGIN -->
 
 <div id="loginPage" class="auth-page">
 
   <div class="auth-box">
 
-    <img src="logo.png" class="auth-logo" alt="TaniMan">
+    <img
+      src="logo.png"
+      class="auth-logo"
+      alt="TMCC">
 
-    <h2 id="authTitle">Actor Login</h2>
+    <h2 id="authTitle">
+      Actor Login
+    </h2>
 
-    <input id="email"
+    <input
+      id="email"
       type="email"
       placeholder="Email address">
 
-    <input id="password"
+    <input
+      id="password"
       type="password"
       placeholder="Password">
 
-    <div id="forgotPassword"
+    <div
+      id="forgotPassword"
       class="forgot"
       onclick="forgotPassword()">
+
       Forgot Password?
+
     </div>
 
-    <button class="btn"
+    <button
+      class="btn"
       id="authButton"
       onclick="handleAuth()">
+
       Login
+
     </button>
 
-    <button class="btn btn-secondary"
+    <button
+      class="btn btn-secondary"
       onclick="toggleAuth()"
       id="toggleButton">
+
       Create New Account
+
     </button>
 
-    <div id="authMessage"
+    <div
+      id="authMessage"
       class="message">
     </div>
 
   </div>
+
 </div>
 
 
-<!-- ================= MAIN APP ================= -->
+<!-- MAIN APP -->
 
 <div id="app" class="hidden">
 
@@ -553,14 +565,15 @@ label{
 
   <div class="logo-wrap">
 
-    <img src="logo.png"
+    <img
+      src="logo.png"
       class="logo"
       alt="TMCC">
 
     <div class="brand">
 
       <div class="brand-name">
-        TaniMan
+        TMCC
       </div>
 
       <div class="brand-sub">
@@ -573,14 +586,20 @@ label{
 
   <div class="header-icons">
 
-    <button class="icon-btn"
+    <button
+      class="icon-btn"
       onclick="openNotifications()">
+
       🔔
+
     </button>
 
-    <button class="icon-btn"
+    <button
+      class="icon-btn"
       onclick="openSettings()">
+
       ⚙️
+
     </button>
 
   </div>
@@ -588,16 +607,18 @@ label{
 </header>
 
 
-<!-- ================= HOME ================= -->
+<!-- HOME -->
 
-<section id="homePage" class="page">
+<section
+  id="homePage"
+  class="page">
 
   <div class="hero">
 
     <h1>
       Welcome to
       <span class="gold">
-        TaniMan
+        TMCC
       </span>
     </h1>
 
@@ -613,17 +634,20 @@ label{
   </h2>
 
   <div id="homeUpdates">
+
     <div class="empty">
       Loading auditions...
     </div>
+
   </div>
 
 </section>
 
 
-<!-- ================= AUDITIONS ================= -->
+<!-- AUDITIONS -->
 
-<section id="auditionsPage"
+<section
+  id="auditionsPage"
   class="page hidden">
 
   <h2 class="section-title">
@@ -631,15 +655,18 @@ label{
   </h2>
 
   <div id="updatesList">
+
     <div class="empty">
       Loading auditions...
     </div>
+
   </div>
 
 
   <!-- ADMIN POST -->
 
-  <div id="adminPanel"
+  <div
+    id="adminPanel"
     class="card admin-box hidden">
 
     <div class="admin-label">
@@ -650,44 +677,67 @@ label{
       Post New Audition
     </h2>
 
-    <label>Title</label>
+    <label>
+      Title
+    </label>
 
-    <input id="update_title"
+    <input
+      id="update_title"
       placeholder="AD Film Casting Call">
 
-    <label>Description</label>
+    <label>
+      Description
+    </label>
 
-    <textarea id="update_description"
-      placeholder="Write audition requirements..."></textarea>
+    <textarea
+      id="update_description"
+      placeholder="Write audition requirements...">
+    </textarea>
 
-    <label>Audition Date</label>
+    <label>
+      Audition Date
+    </label>
 
-    <input id="update_date"
+    <input
+      id="update_date"
       type="date">
 
-    <label>Location</label>
+    <label>
+      Location
+    </label>
 
-    <input id="update_location"
+    <input
+      id="update_location"
       placeholder="Pune / Mumbai / Pan India">
 
-    <label>Apply Link</label>
+    <label>
+      Apply Link
+    </label>
 
-    <input id="update_link"
+    <input
+      id="update_link"
       type="url"
       placeholder="Optional external link">
 
-    <label>Audition Photo</label>
+    <label>
+      Audition Photo
+    </label>
 
-    <input id="update_image"
+    <input
+      id="update_image"
       type="file"
       accept="image/*">
 
-    <button class="btn"
+    <button
+      class="btn"
       onclick="publishUpdate()">
+
       Publish Audition
+
     </button>
 
-    <div id="updateMessage"
+    <div
+      id="updateMessage"
       class="message">
     </div>
 
@@ -696,7 +746,8 @@ label{
 
   <!-- ADMIN ACTORS -->
 
-  <div id="adminActors"
+  <div
+    id="adminActors"
     class="card hidden">
 
     <div class="admin-label">
@@ -716,7 +767,8 @@ label{
 
   <!-- ADMIN APPLICATIONS -->
 
-  <div id="adminApplications"
+  <div
+    id="adminApplications"
     class="card hidden">
 
     <div class="admin-label">
@@ -733,28 +785,13 @@ label{
 
   </div>
 
-
-  <!-- MY APPLICATIONS -->
-
-  <div id="myApplications"
-    class="card">
-
-    <h2>
-      My Applications
-    </h2>
-
-    <div id="myApplicationsList">
-      Loading applications...
-    </div>
-
-  </div>
-
 </section>
 
 
-<!-- ================= PROFILE ================= -->
+<!-- PROFILE -->
 
-<section id="profilePage"
+<section
+  id="profilePage"
   class="page hidden">
 
   <div class="card">
@@ -765,9 +802,12 @@ label{
 
     <div id="profilePhotoBox">
 
-      <div class="profile-photo-preview"
+      <div
+        class="profile-photo-preview"
         style="display:flex;align-items:center;justify-content:center;color:#999;">
+
         Photo
+
       </div>
 
     </div>
@@ -776,7 +816,8 @@ label{
       Profile Photo
     </label>
 
-    <input id="profile_photo"
+    <input
+      id="profile_photo"
       type="file"
       accept="image/*">
 
@@ -784,14 +825,16 @@ label{
       Full Name
     </label>
 
-    <input id="full_name"
+    <input
+      id="full_name"
       placeholder="Your full name">
 
     <label>
       Age
     </label>
 
-    <input id="age"
+    <input
+      id="age"
       type="number"
       placeholder="Age">
 
@@ -823,14 +866,16 @@ label{
       Height
     </label>
 
-    <input id="height"
+    <input
+      id="height"
       placeholder="Example: 5'8">
 
     <label>
       Contact Number
     </label>
 
-    <input id="contact"
+    <input
+      id="contact"
       type="tel"
       placeholder="Contact number">
 
@@ -838,53 +883,48 @@ label{
       Current Location
     </label>
 
-    <input id="current_location"
+    <input
+      id="current_location"
       placeholder="Current location">
 
     <label>
       Hobbies
     </label>
 
-    <textarea id="hobbies"
-      placeholder="Your hobbies"></textarea>
+    <textarea
+      id="hobbies"
+      placeholder="Your hobbies">
+    </textarea>
 
     <label>
       Acting Experience
     </label>
 
-    <textarea id="experience"
-      placeholder="Your acting experience"></textarea>
+    <textarea
+      id="experience"
+      placeholder="Your acting experience">
+    </textarea>
 
     <label>
       Introduction Video URL
     </label>
 
-    <input id="intro_video_url"
+    <input
+      id="intro_video_url"
       type="url"
       placeholder="YouTube / Drive / other video link">
 
-    <button class="btn"
+    <button
+      class="btn"
       onclick="saveProfile()">
+
       Save / Update Profile
+
     </button>
 
-    <div id="profileMessage"
+    <div
+      id="profileMessage"
       class="message">
-    </div>
-
-  </div>
-
-
-  <!-- MY APPLICATIONS -->
-
-  <div class="card">
-
-    <h2>
-      My Applications
-    </h2>
-
-    <div id="profileApplicationsList">
-      Loading...
     </div>
 
   </div>
@@ -892,11 +932,12 @@ label{
 </section>
 
 
-<!-- ================= BOTTOM NAV ================= -->
+<!-- BOTTOM NAV -->
 
 <nav class="bottom-nav">
 
-  <div id="navHome"
+  <div
+    id="navHome"
     class="nav-item active"
     onclick="showPage('home')">
 
@@ -908,7 +949,8 @@ label{
 
   </div>
 
-  <div id="navAuditions"
+  <div
+    id="navAuditions"
     class="nav-item"
     onclick="showPage('auditions')">
 
@@ -920,7 +962,8 @@ label{
 
   </div>
 
-  <div id="navProfile"
+  <div
+    id="navProfile"
     class="nav-item"
     onclick="showPage('profile')">
 
@@ -937,18 +980,23 @@ label{
 </div>
 
 
-<!-- ================= NOTIFICATIONS ================= -->
+<!-- NOTIFICATIONS -->
 
-<div id="notificationOverlay"
+<div
+  id="notificationOverlay"
   class="overlay hidden"
   onclick="closeNotifications(event)">
 
-  <div class="sheet"
+  <div
+    class="sheet"
     onclick="event.stopPropagation()">
 
-    <button class="close-btn"
+    <button
+      class="close-btn"
       onclick="closeNotifications()">
+
       ×
+
     </button>
 
     <div class="sheet-title">
@@ -963,34 +1011,44 @@ label{
 
     </div>
 
-    <button class="btn btn-secondary"
+    <button
+      class="btn btn-secondary"
       onclick="closeNotifications()">
+
       Close
+
     </button>
 
   </div>
+
 </div>
 
 
-<!-- ================= SETTINGS ================= -->
+<!-- SETTINGS -->
 
-<div id="settingsOverlay"
+<div
+  id="settingsOverlay"
   class="overlay hidden"
   onclick="closeSettings(event)">
 
-  <div class="sheet"
+  <div
+    class="sheet"
     onclick="event.stopPropagation()">
 
-    <button class="close-btn"
+    <button
+      class="close-btn"
       onclick="closeSettings()">
+
       ×
+
     </button>
 
     <div class="sheet-title">
       Settings
     </div>
 
-    <div class="setting-item"
+    <div
+      class="setting-item"
       onclick="forgotPassword()">
 
       <strong>
@@ -998,12 +1056,27 @@ label{
       </strong>
 
       <span>
-        Send a password reset link.
+        Send a password reset link to your email.
       </span>
 
     </div>
 
-    <div class="setting-item"
+    <div
+      class="setting-item"
+      onclick="showAccountInfo()">
+
+      <strong>
+        👤 Account
+      </strong>
+
+      <span>
+        View your registered email address.
+      </span>
+
+    </div>
+
+    <div
+      class="setting-item"
       onclick="closeSettings();showPage('profile')">
 
       <strong>
@@ -1011,12 +1084,13 @@ label{
       </strong>
 
       <span>
-        Update your actor profile.
+        Update your actor profile and information.
       </span>
 
     </div>
 
-    <div class="setting-item"
+    <div
+      class="setting-item"
       onclick="logout()">
 
       <strong>
@@ -1029,27 +1103,85 @@ label{
 
     </div>
 
-    <button class="btn btn-secondary"
+    <button
+      class="btn btn-secondary"
       onclick="closeSettings()">
+
       Close
+
     </button>
 
   </div>
+
 </div>
 
 
-<!-- ================= FORGOT PASSWORD ================= -->
+<!-- ACCOUNT MODAL -->
 
-<div id="forgotOverlay"
+<div
+  id="accountOverlay"
+  class="overlay hidden"
+  onclick="closeAccount(event)">
+
+  <div
+    class="sheet"
+    onclick="event.stopPropagation()">
+
+    <button
+      class="close-btn"
+      onclick="closeAccount()">
+
+      ×
+
+    </button>
+
+    <div class="sheet-title">
+      Account
+    </div>
+
+    <div class="card">
+
+      <label>
+        Registered Email
+      </label>
+
+      <div
+        id="accountEmail"
+        style="font-size:17px;margin-top:10px;word-break:break-all;">
+      </div>
+
+    </div>
+
+    <button
+      class="btn btn-secondary"
+      onclick="closeAccount()">
+
+      Close
+
+    </button>
+
+  </div>
+
+</div>
+
+
+<!-- FORGOT PASSWORD -->
+
+<div
+  id="forgotOverlay"
   class="overlay hidden"
   onclick="closeForgot(event)">
 
-  <div class="sheet"
+  <div
+    class="sheet"
     onclick="event.stopPropagation()">
 
-    <button class="close-btn"
+    <button
+      class="close-btn"
       onclick="closeForgot()">
+
       ×
+
     </button>
 
     <div class="sheet-title">
@@ -1057,43 +1189,53 @@ label{
     </div>
 
     <p style="color:#aaa;line-height:1.5;">
-      Enter your registered email address
-      and we will send a reset link.
+      Enter your registered email address and we will send you a password reset link.
     </p>
 
     <label>
       Email Address
     </label>
 
-    <input id="resetEmail"
+    <input
+      id="resetEmail"
       type="email"
       placeholder="your@email.com">
 
-    <button class="btn"
+    <button
+      class="btn"
       onclick="sendResetEmail()">
+
       Send Reset Link
+
     </button>
 
-    <div id="resetMessage"
+    <div
+      id="resetMessage"
       class="message">
     </div>
 
   </div>
+
 </div>
 
 
-<!-- ================= APPLICATION FORM ================= -->
+<!-- APPLICATION FORM -->
 
-<div id="applicationOverlay"
+<div
+  id="applicationOverlay"
   class="overlay hidden"
   onclick="closeApplication(event)">
 
-  <div class="sheet"
+  <div
+    class="sheet"
     onclick="event.stopPropagation()">
 
-    <button class="close-btn"
+    <button
+      class="close-btn"
       onclick="closeApplication()">
+
       ×
+
     </button>
 
     <div class="sheet-title">
@@ -1108,14 +1250,16 @@ label{
       Full Name
     </label>
 
-    <input id="application_name"
+    <input
+      id="application_name"
       placeholder="Your full name">
 
     <label>
       Age
     </label>
 
-    <input id="application_age"
+    <input
+      id="application_age"
       type="number"
       placeholder="Your age">
 
@@ -1123,7 +1267,8 @@ label{
       Contact Number
     </label>
 
-    <input id="application_contact"
+    <input
+      id="application_contact"
       type="tel"
       placeholder="Contact number">
 
@@ -1131,7 +1276,8 @@ label{
       Introduction Video URL
     </label>
 
-    <input id="application_video"
+    <input
+      id="application_video"
       type="url"
       placeholder="YouTube / Drive video link">
 
@@ -1139,19 +1285,26 @@ label{
       Message / Experience
     </label>
 
-    <textarea id="application_message"
-      placeholder="Tell us about yourself..."></textarea>
+    <textarea
+      id="application_message"
+      placeholder="Tell us about yourself...">
+    </textarea>
 
-    <button class="btn"
+    <button
+      class="btn"
       onclick="submitApplication()">
+
       Submit Application
+
     </button>
 
-    <div id="applicationMessage"
+    <div
+      id="applicationMessage"
       class="message">
     </div>
 
   </div>
+
 </div>
 
 
@@ -1173,12 +1326,12 @@ supabase.createClient(
   SUPABASE_KEY
 );
 
-const ADMIN_EMAIL =
-"tanimancasting@gmail.com";
-
 let isSignup = false;
 let editingUpdateId = null;
 let selectedAuditionId = null;
+
+const ADMIN_EMAIL =
+"tanimancasting@gmail.com";
 
 
 /* =====================================================
@@ -1205,13 +1358,9 @@ function toggleAuth(){
     : "Create New Account";
 
   document.getElementById("forgotPassword")
-    .classList.toggle(
-      "hidden",
-      isSignup
-    );
+    .classList.toggle("hidden",isSignup);
 
-  document.getElementById("authMessage")
-    .innerText = "";
+  document.getElementById("authMessage").innerText = "";
 }
 
 
@@ -1222,12 +1371,10 @@ function toggleAuth(){
 async function handleAuth(){
 
   const email =
-    document.getElementById("email")
-    .value.trim();
+    document.getElementById("email").value.trim();
 
   const password =
-    document.getElementById("password")
-    .value;
+    document.getElementById("password").value;
 
   const message =
     document.getElementById("authMessage");
@@ -1307,13 +1454,14 @@ function forgotPassword(){
 
   closeSettings();
 
-  document.getElementById("resetEmail")
-    .value =
-    document.getElementById("email")
-    .value.trim();
+  const currentEmail =
+    document.getElementById("email").value.trim();
 
-  document.getElementById("resetMessage")
-    .innerText = "";
+  document.getElementById("resetEmail").value =
+    currentEmail;
+
+  document.getElementById("resetMessage").innerText =
+    "";
 
   document.getElementById("forgotOverlay")
     .classList.remove("hidden");
@@ -1353,14 +1501,14 @@ async function sendResetEmail(){
   if(error){
 
     message.innerText =
-      "Error: " +
-      error.message;
+      "Error: " + error.message;
 
     return;
   }
 
   message.innerText =
     "Password reset link sent successfully.";
+
 }
 
 
@@ -1369,9 +1517,7 @@ function closeForgot(event){
   if(
     event &&
     event.target !==
-    document.getElementById(
-      "forgotOverlay"
-    )
+    document.getElementById("forgotOverlay")
   )
     return;
 
@@ -1393,10 +1539,12 @@ async function startApp(){
     .classList.remove("hidden");
 
   await loadProfile();
+
   await loadUpdates();
+
   await loadActors();
+
   await loadApplications();
-  await loadMyApplications();
 
   showPage("home");
 }
@@ -1421,13 +1569,11 @@ function showPage(page){
 
   };
 
-  Object.values(pages)
-    .forEach(
-      p => p.classList.add("hidden")
-    );
+  Object.values(pages).forEach(
+    p => p.classList.add("hidden")
+  );
 
-  pages[page]
-    .classList.remove("hidden");
+  pages[page].classList.remove("hidden");
 
   document.querySelectorAll(".nav-item")
     .forEach(
@@ -1445,9 +1591,6 @@ function showPage(page){
   if(page === "profile")
     document.getElementById("navProfile")
       .classList.add("active");
-
-  if(page === "profile")
-    loadMyApplications();
 }
 
 
@@ -1462,8 +1605,7 @@ async function loadProfile(){
   } =
     await supabaseClient.auth.getUser();
 
-  if(!user)
-    return;
+  if(!user) return;
 
   const {
     data,
@@ -1481,8 +1623,7 @@ async function loadProfile(){
     return;
   }
 
-  if(!data)
-    return;
+  if(!data) return;
 
   document.getElementById("full_name").value =
     data.full_name || "";
@@ -1544,19 +1685,17 @@ async function saveProfile(){
   }
 
   const message =
-    document.getElementById(
-      "profileMessage"
-    );
+    document.getElementById("profileMessage");
 
   message.innerText =
     "Saving profile...";
 
   const photoFile =
-    document.getElementById(
-      "profile_photo"
-    ).files[0];
+    document.getElementById("profile_photo")
+    .files[0];
 
   let profilePhotoUrl = null;
+
 
   if(photoFile){
 
@@ -1565,10 +1704,7 @@ async function saveProfile(){
       "_" +
       Date.now() +
       "_" +
-      photoFile.name.replace(
-        /\s+/g,
-        "_"
-      );
+      photoFile.name.replace(/\s+/g,"_");
 
     const {error:uploadError} =
       await supabaseClient.storage
@@ -1597,14 +1733,14 @@ async function saveProfile(){
       publicData.publicUrl;
   }
 
+
   const profile = {
 
     id:user.id,
 
     full_name:
-      document.getElementById(
-        "full_name"
-      ).value.trim(),
+      document.getElementById("full_name")
+      .value.trim(),
 
     age:
       document.getElementById("age").value
@@ -1616,47 +1752,41 @@ async function saveProfile(){
       null,
 
     gender:
-      document.getElementById(
-        "gender"
-      ).value,
+      document.getElementById("gender").value,
 
     height:
-      document.getElementById(
-        "height"
-      ).value.trim(),
+      document.getElementById("height")
+      .value.trim(),
 
     contact:
-      document.getElementById(
-        "contact"
-      ).value.trim(),
+      document.getElementById("contact")
+      .value.trim(),
 
     current_location:
-      document.getElementById(
-        "current_location"
-      ).value.trim(),
+      document.getElementById("current_location")
+      .value.trim(),
 
     hobbies:
-      document.getElementById(
-        "hobbies"
-      ).value.trim(),
+      document.getElementById("hobbies")
+      .value.trim(),
 
     acting_experience:
-      document.getElementById(
-        "experience"
-      ).value.trim(),
+      document.getElementById("experience")
+      .value.trim(),
 
     intro_video_url:
-      document.getElementById(
-        "intro_video_url"
-      ).value.trim(),
+      document.getElementById("intro_video_url")
+      .value.trim(),
 
     updated_at:
       new Date().toISOString()
+
   };
 
   if(profilePhotoUrl)
     profile.profile_photo_url =
       profilePhotoUrl;
+
 
   const {error} =
     await supabaseClient
@@ -1666,8 +1796,7 @@ async function saveProfile(){
   if(error){
 
     message.innerText =
-      "Error: " +
-      error.message;
+      "Error: " + error.message;
 
     return;
   }
@@ -1680,26 +1809,23 @@ async function saveProfile(){
 
 
 /* =====================================================
-   LOAD AUDITIONS
+   LOAD UPDATES
 ===================================================== */
 
 async function loadUpdates(){
 
   const updatesList =
-    document.getElementById(
-      "updatesList"
-    );
+    document.getElementById("updatesList");
 
   const homeUpdates =
-    document.getElementById(
-      "homeUpdates"
-    );
+    document.getElementById("homeUpdates");
 
   updatesList.innerHTML =
     "<div class='empty'>Loading auditions...</div>";
 
   homeUpdates.innerHTML =
     "<div class='empty'>Loading auditions...</div>";
+
 
   const {
     data,
@@ -1713,6 +1839,7 @@ async function loadUpdates(){
       {ascending:false}
     );
 
+
   if(error){
 
     updatesList.innerHTML =
@@ -1723,6 +1850,7 @@ async function loadUpdates(){
 
     return;
   }
+
 
   if(!data || data.length === 0){
 
@@ -1735,10 +1863,12 @@ async function loadUpdates(){
     return;
   }
 
+
   const {
     data:{user}
   } =
     await supabaseClient.auth.getUser();
+
 
   const isAdmin =
     user &&
@@ -1746,39 +1876,34 @@ async function loadUpdates(){
     user.email.toLowerCase() ===
     ADMIN_EMAIL.toLowerCase();
 
+
   if(isAdmin){
 
-    document.getElementById(
-      "adminPanel"
-    ).classList.remove("hidden");
+    document.getElementById("adminPanel")
+      .classList.remove("hidden");
 
-    document.getElementById(
-      "adminActors"
-    ).classList.remove("hidden");
+    document.getElementById("adminActors")
+      .classList.remove("hidden");
 
-    document.getElementById(
-      "adminApplications"
-    ).classList.remove("hidden");
+    document.getElementById("adminApplications")
+      .classList.remove("hidden");
   }
+
 
   updatesList.innerHTML =
     data.map(
       update =>
-        auditionHTML(
-          update,
-          isAdmin
-        )
+        auditionHTML(update,isAdmin)
     ).join("");
+
 
   homeUpdates.innerHTML =
     data.slice(0,3)
     .map(
       update =>
-        auditionHTML(
-          update,
-          false
-        )
+        auditionHTML(update,false)
     ).join("");
+
 
   loadNotifications(data);
 }
@@ -1788,10 +1913,7 @@ async function loadUpdates(){
    AUDITION HTML
 ===================================================== */
 
-function auditionHTML(
-  update,
-  isAdmin
-){
+function auditionHTML(update,isAdmin){
 
   return `
 
@@ -1814,8 +1936,7 @@ function auditionHTML(
 
       <h3>
         ${escapeHtml(
-          update.title ||
-          "Casting Call"
+          update.title || "Casting Call"
         )}
       </h3>
 
@@ -1824,9 +1945,7 @@ function auditionHTML(
         ?
         `
         <p>
-          ${escapeHtml(
-            update.description
-          )}
+          ${escapeHtml(update.description)}
         </p>
         `
         :
@@ -1839,9 +1958,7 @@ function auditionHTML(
         `
         <div class="info">
           📅 <b>Date:</b>
-          ${escapeHtml(
-            update.audition_date
-          )}
+          ${escapeHtml(update.audition_date)}
         </div>
         `
         :
@@ -1854,9 +1971,7 @@ function auditionHTML(
         `
         <div class="info">
           📍 <b>Location:</b>
-          ${escapeHtml(
-            update.location
-          )}
+          ${escapeHtml(update.location)}
         </div>
         `
         :
@@ -1880,13 +1995,17 @@ function auditionHTML(
           <button
             class="small-btn"
             onclick="editUpdate('${update.id}')">
+
             Edit
+
           </button>
 
           <button
             class="small-btn small-danger"
             onclick="deleteUpdate('${update.id}')">
+
             Delete
+
           </button>
 
         </div>
@@ -1904,15 +2023,12 @@ function auditionHTML(
 
 
 /* =====================================================
-   OPEN APPLICATION
+   APPLICATION FORM
 ===================================================== */
 
-async function openApplication(
-  updateId
-){
+async function openApplication(updateId){
 
-  selectedAuditionId =
-    updateId;
+  selectedAuditionId = updateId;
 
   const {
     data:{user}
@@ -1925,6 +2041,7 @@ async function openApplication(
     return;
   }
 
+
   const {
     data:profile
   } =
@@ -1934,41 +2051,31 @@ async function openApplication(
     .eq("id",user.id)
     .maybeSingle();
 
+
   if(profile){
 
-    document.getElementById(
-      "application_name"
-    ).value =
+    document.getElementById("application_name").value =
       profile.full_name || "";
 
-    document.getElementById(
-      "application_age"
-    ).value =
+    document.getElementById("application_age").value =
       profile.age || "";
 
-    document.getElementById(
-      "application_contact"
-    ).value =
+    document.getElementById("application_contact").value =
       profile.contact || "";
 
-    document.getElementById(
-      "application_video"
-    ).value =
+    document.getElementById("application_video").value =
       profile.intro_video_url || "";
 
-    document.getElementById(
-      "application_message"
-    ).value =
+    document.getElementById("application_message").value =
       profile.acting_experience || "";
   }
 
-  document.getElementById(
-    "applicationMessage"
-  ).innerText = "";
 
-  document.getElementById(
-    "applicationOverlay"
-  ).classList.remove("hidden");
+  document.getElementById("applicationMessage")
+    .innerText = "";
+
+  document.getElementById("applicationOverlay")
+    .classList.remove("hidden");
 }
 
 
@@ -1977,15 +2084,12 @@ function closeApplication(event){
   if(
     event &&
     event.target !==
-    document.getElementById(
-      "applicationOverlay"
-    )
+    document.getElementById("applicationOverlay")
   )
     return;
 
-  document.getElementById(
-    "applicationOverlay"
-  ).classList.add("hidden");
+  document.getElementById("applicationOverlay")
+    .classList.add("hidden");
 }
 
 
@@ -2000,11 +2104,13 @@ async function submitApplication(){
   } =
     await supabaseClient.auth.getUser();
 
+
   if(!user){
 
     alert("Please login first.");
     return;
   }
+
 
   if(!selectedAuditionId){
 
@@ -2012,35 +2118,31 @@ async function submitApplication(){
     return;
   }
 
+
   const message =
-    document.getElementById(
-      "applicationMessage"
-    );
+    document.getElementById("applicationMessage");
+
 
   const name =
-    document.getElementById(
-      "application_name"
-    ).value.trim();
+    document.getElementById("application_name")
+    .value.trim();
 
   const age =
-    document.getElementById(
-      "application_age"
-    ).value;
+    document.getElementById("application_age")
+    .value;
 
   const contact =
-    document.getElementById(
-      "application_contact"
-    ).value.trim();
+    document.getElementById("application_contact")
+    .value.trim();
 
   const video =
-    document.getElementById(
-      "application_video"
-    ).value.trim();
+    document.getElementById("application_video")
+    .value.trim();
 
   const applicationMessage =
-    document.getElementById(
-      "application_message"
-    ).value.trim();
+    document.getElementById("application_message")
+    .value.trim();
+
 
   if(!name){
 
@@ -2050,6 +2152,7 @@ async function submitApplication(){
     return;
   }
 
+
   if(!contact){
 
     message.innerText =
@@ -2058,15 +2161,16 @@ async function submitApplication(){
     return;
   }
 
+
   message.innerText =
     "Submitting application...";
+
 
   const application = {
 
     actor_id:user.id,
 
-    update_id:
-      parseInt(selectedAuditionId),
+    update_id:selectedAuditionId,
 
     full_name:name,
 
@@ -2089,10 +2193,12 @@ async function submitApplication(){
       new Date().toISOString()
   };
 
+
   const {error} =
     await supabaseClient
     .from("applications")
     .insert(application);
+
 
   if(error){
 
@@ -2105,54 +2211,48 @@ async function submitApplication(){
     return;
   }
 
+
   message.innerText =
     "Application submitted successfully!";
-
-  await loadMyApplications();
-  await loadApplications();
 
   setTimeout(
     () => closeApplication(),
     1500
   );
+
+
+  await loadApplications();
 }
 
 
 /* =====================================================
-   ADMIN PUBLISH AUDITION
+   PUBLISH UPDATE
 ===================================================== */
 
 async function publishUpdate(){
 
   const message =
-    document.getElementById(
-      "updateMessage"
-    );
+    document.getElementById("updateMessage");
 
   const title =
-    document.getElementById(
-      "update_title"
-    ).value.trim();
+    document.getElementById("update_title")
+    .value.trim();
 
   const description =
-    document.getElementById(
-      "update_description"
-    ).value.trim();
+    document.getElementById("update_description")
+    .value.trim();
 
   const date =
-    document.getElementById(
-      "update_date"
-    ).value;
+    document.getElementById("update_date").value;
 
   const location =
-    document.getElementById(
-      "update_location"
-    ).value.trim();
+    document.getElementById("update_location")
+    .value.trim();
 
   const imageFile =
-    document.getElementById(
-      "update_image"
-    ).files[0];
+    document.getElementById("update_image")
+    .files[0];
+
 
   if(!title){
 
@@ -2162,6 +2262,7 @@ async function publishUpdate(){
     return;
   }
 
+
   message.innerText =
     editingUpdateId
     ?
@@ -2169,17 +2270,17 @@ async function publishUpdate(){
     :
     "Publishing...";
 
+
   let imageUrl = null;
+
 
   if(imageFile){
 
     const fileName =
       Date.now() +
       "_" +
-      imageFile.name.replace(
-        /\s+/g,
-        "_"
-      );
+      imageFile.name.replace(/\s+/g,"_");
+
 
     const {error:uploadError} =
       await supabaseClient.storage
@@ -2190,6 +2291,7 @@ async function publishUpdate(){
         {upsert:false}
       );
 
+
     if(uploadError){
 
       message.innerText =
@@ -2199,6 +2301,7 @@ async function publishUpdate(){
       return;
     }
 
+
     const {data:publicData} =
       supabaseClient.storage
       .from("Updates")
@@ -2207,6 +2310,7 @@ async function publishUpdate(){
     imageUrl =
       publicData.publicUrl;
   }
+
 
   const updateData = {
 
@@ -2218,13 +2322,17 @@ async function publishUpdate(){
       date || null,
 
     location:location
+
   };
+
 
   if(imageUrl)
     updateData.image_url =
       imageUrl;
 
+
   let result;
+
 
   if(editingUpdateId){
 
@@ -2232,12 +2340,10 @@ async function publishUpdate(){
       await supabaseClient
       .from("updates")
       .update(updateData)
-      .eq(
-        "id",
-        editingUpdateId
-      );
+      .eq("id",editingUpdateId);
 
-  }else{
+  }
+  else{
 
     updateData.created_at =
       new Date().toISOString();
@@ -2248,6 +2354,7 @@ async function publishUpdate(){
       .insert(updateData);
   }
 
+
   if(result.error){
 
     message.innerText =
@@ -2257,6 +2364,7 @@ async function publishUpdate(){
     return;
   }
 
+
   message.innerText =
     editingUpdateId
     ?
@@ -2264,38 +2372,22 @@ async function publishUpdate(){
     :
     "Audition published successfully!";
 
+
   editingUpdateId = null;
 
-  document.getElementById(
-    "update_title"
-  ).value = "";
-
-  document.getElementById(
-    "update_description"
-  ).value = "";
-
-  document.getElementById(
-    "update_date"
-  ).value = "";
-
-  document.getElementById(
-    "update_location"
-  ).value = "";
-
-  document.getElementById(
-    "update_link"
-  ).value = "";
-
-  document.getElementById(
-    "update_image"
-  ).value = "";
+  document.getElementById("update_title").value = "";
+  document.getElementById("update_description").value = "";
+  document.getElementById("update_date").value = "";
+  document.getElementById("update_location").value = "";
+  document.getElementById("update_link").value = "";
+  document.getElementById("update_image").value = "";
 
   await loadUpdates();
 }
 
 
 /* =====================================================
-   EDIT AUDITION
+   EDIT UPDATE
 ===================================================== */
 
 async function editUpdate(id){
@@ -2310,6 +2402,7 @@ async function editUpdate(id){
     .eq("id",id)
     .single();
 
+
   if(error){
 
     alert(
@@ -2320,45 +2413,36 @@ async function editUpdate(id){
     return;
   }
 
+
   editingUpdateId = id;
 
-  document.getElementById(
-    "update_title"
-  ).value =
+  document.getElementById("update_title").value =
     data.title || "";
 
-  document.getElementById(
-    "update_description"
-  ).value =
+  document.getElementById("update_description").value =
     data.description || "";
 
-  document.getElementById(
-    "update_date"
-  ).value =
+  document.getElementById("update_date").value =
     data.audition_date || "";
 
-  document.getElementById(
-    "update_location"
-  ).value =
+  document.getElementById("update_location").value =
     data.location || "";
 
   showPage("auditions");
 
-  document.getElementById(
-    "adminPanel"
-  ).scrollIntoView({
-    behavior:"smooth"
-  });
+  document.getElementById("adminPanel")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
 
-  document.getElementById(
-    "updateMessage"
-  ).innerText =
+  document.getElementById("updateMessage")
+    .innerText =
     "Editing this audition.";
 }
 
 
 /* =====================================================
-   DELETE AUDITION
+   DELETE UPDATE
 ===================================================== */
 
 async function deleteUpdate(id){
@@ -2370,11 +2454,13 @@ async function deleteUpdate(id){
   )
     return;
 
+
   const {error} =
     await supabaseClient
     .from("updates")
     .delete()
     .eq("id",id);
+
 
   if(error){
 
@@ -2386,6 +2472,7 @@ async function deleteUpdate(id){
     return;
   }
 
+
   alert(
     "Audition deleted successfully."
   );
@@ -2395,23 +2482,23 @@ async function deleteUpdate(id){
 
 
 /* =====================================================
-   LOAD ACTORS - ADMIN
+   LOAD ACTORS
 ===================================================== */
 
 async function loadActors(){
 
   const actorsList =
-    document.getElementById(
-      "actorsList"
-    );
+    document.getElementById("actorsList");
 
   if(!actorsList)
     return;
+
 
   const {
     data:{user}
   } =
     await supabaseClient.auth.getUser();
+
 
   const isAdmin =
     user &&
@@ -2419,11 +2506,13 @@ async function loadActors(){
     user.email.toLowerCase() ===
     ADMIN_EMAIL.toLowerCase();
 
+
   if(!isAdmin){
 
     actorsList.innerHTML = "";
     return;
   }
+
 
   const {
     data,
@@ -2437,6 +2526,7 @@ async function loadActors(){
       {ascending:false}
     );
 
+
   if(error){
 
     actorsList.innerHTML =
@@ -2446,6 +2536,7 @@ async function loadActors(){
     return;
   }
 
+
   if(!data || data.length === 0){
 
     actorsList.innerHTML =
@@ -2453,6 +2544,7 @@ async function loadActors(){
 
     return;
   }
+
 
   actorsList.innerHTML =
     data.map(
@@ -2465,9 +2557,7 @@ async function loadActors(){
           ?
           `
           <img
-            src="${escapeHtml(
-              actor.profile_photo_url
-            )}"
+            src="${escapeHtml(actor.profile_photo_url)}"
             class="actor-photo">
           `
           :
@@ -2480,8 +2570,7 @@ async function loadActors(){
 
         <h3>
           ${escapeHtml(
-            actor.full_name ||
-            "No Name"
+            actor.full_name || "No Name"
           )}
         </h3>
 
@@ -2493,48 +2582,42 @@ async function loadActors(){
         <p>
           <b>Gender:</b>
           ${escapeHtml(
-            actor.gender ||
-            "Not provided"
+            actor.gender || "Not provided"
           )}
         </p>
 
         <p>
           <b>Height:</b>
           ${escapeHtml(
-            actor.height ||
-            "Not provided"
+            actor.height || "Not provided"
           )}
         </p>
 
         <p>
           <b>Contact:</b>
           ${escapeHtml(
-            actor.contact ||
-            "Not provided"
+            actor.contact || "Not provided"
           )}
         </p>
 
         <p>
           <b>Location:</b>
           ${escapeHtml(
-            actor.current_location ||
-            "Not provided"
+            actor.current_location || "Not provided"
           )}
         </p>
 
         <p>
           <b>Hobbies:</b>
           ${escapeHtml(
-            actor.hobbies ||
-            "Not provided"
+            actor.hobbies || "Not provided"
           )}
         </p>
 
         <p>
           <b>Experience:</b>
           ${escapeHtml(
-            actor.acting_experience ||
-            "Not provided"
+            actor.acting_experience || "Not provided"
           )}
         </p>
 
@@ -2543,11 +2626,11 @@ async function loadActors(){
           ?
           `
           <a
-            href="${escapeHtml(
-              actor.intro_video_url
-            )}"
+            href="${escapeHtml(actor.intro_video_url)}"
             target="_blank">
+
             Watch Introduction Video
+
           </a>
           `
           :
@@ -2562,23 +2645,23 @@ async function loadActors(){
 
 
 /* =====================================================
-   LOAD APPLICATIONS - ADMIN
+   LOAD APPLICATIONS
 ===================================================== */
 
 async function loadApplications(){
 
   const list =
-    document.getElementById(
-      "applicationsList"
-    );
+    document.getElementById("applicationsList");
 
   if(!list)
     return;
+
 
   const {
     data:{user}
   } =
     await supabaseClient.auth.getUser();
+
 
   const isAdmin =
     user &&
@@ -2586,11 +2669,13 @@ async function loadApplications(){
     user.email.toLowerCase() ===
     ADMIN_EMAIL.toLowerCase();
 
+
   if(!isAdmin){
 
     list.innerHTML = "";
     return;
   }
+
 
   const {
     data,
@@ -2604,6 +2689,7 @@ async function loadApplications(){
       {ascending:false}
     );
 
+
   if(error){
 
     list.innerHTML =
@@ -2613,6 +2699,7 @@ async function loadApplications(){
     return;
   }
 
+
   if(!data || data.length === 0){
 
     list.innerHTML =
@@ -2621,27 +2708,21 @@ async function loadApplications(){
     return;
   }
 
+
   list.innerHTML =
     data.map(
       app => `
 
       <div class="application-card">
 
-        <div class="status ${escapeHtml(
-          app.status || "Pending"
-        )}">
-
-          ${escapeHtml(
-            app.status || "Pending"
-          )}
-
+        <div class="status">
+          ${escapeHtml(app.status || "Pending")}
         </div>
 
         <p>
           <b>Name:</b>
           ${escapeHtml(
-            app.full_name ||
-            "Not provided"
+            app.full_name || "Not provided"
           )}
         </p>
 
@@ -2653,8 +2734,7 @@ async function loadApplications(){
         <p>
           <b>Contact:</b>
           ${escapeHtml(
-            app.contact ||
-            "Not provided"
+            app.contact || "Not provided"
           )}
         </p>
 
@@ -2663,13 +2743,15 @@ async function loadApplications(){
           ?
           `
           <p>
+
             <a
-              href="${escapeHtml(
-                app.intro_video_url
-              )}"
+              href="${escapeHtml(app.intro_video_url)}"
               target="_blank">
+
               Watch Introduction Video
+
             </a>
+
           </p>
           `
           :
@@ -2681,240 +2763,28 @@ async function loadApplications(){
           ?
           `
           <p>
+
             <b>Message:</b><br>
-            ${escapeHtml(
-              app.message
-            )}
+
+            ${escapeHtml(app.message)}
+
           </p>
           `
           :
           ""
         }
 
-        <div class="admin-actions">
+        <p style="font-size:12px;color:#888;">
 
-          <button
-            class="small-btn"
-            onclick="updateApplicationStatus(
-              '${app.id}',
-              'Accepted'
-            )">
+          Application ID:
+          ${escapeHtml(app.id)}
 
-            ✓ Accept
-
-          </button>
-
-          <button
-            class="small-btn small-danger"
-            onclick="updateApplicationStatus(
-              '${app.id}',
-              'Rejected'
-            )">
-
-            ✕ Reject
-
-          </button>
-
-        </div>
-
-      </div>
-
-      `
-    ).join("");
-}
-
-
-/* =====================================================
-   ACCEPT / REJECT APPLICATION
-===================================================== */
-
-async function updateApplicationStatus(
-  applicationId,
-  newStatus
-){
-
-  const {
-    data:{user}
-  } =
-    await supabaseClient.auth.getUser();
-
-  if(!user){
-
-    alert("Please login first.");
-    return;
-  }
-
-  if(
-    user.email.toLowerCase() !==
-    ADMIN_EMAIL.toLowerCase()
-  ){
-
-    alert(
-      "Admin access required."
-    );
-
-    return;
-  }
-
-  const confirmMessage =
-    newStatus === "Accepted"
-    ?
-    "Accept this application?"
-    :
-    "Reject this application?";
-
-  if(!confirm(confirmMessage))
-    return;
-
-  const {error} =
-    await supabaseClient
-    .from("applications")
-    .update({
-      status:newStatus
-    })
-    .eq(
-      "id",
-      applicationId
-    );
-
-  if(error){
-
-    alert(
-      "Status update error: " +
-      error.message
-    );
-
-    return;
-  }
-
-  alert(
-    "Application " +
-    newStatus.toLowerCase() +
-    " successfully."
-  );
-
-  await loadApplications();
-  await loadMyApplications();
-}
-
-
-/* =====================================================
-   LOAD MY APPLICATIONS - ACTOR
-===================================================== */
-
-async function loadMyApplications(){
-
-  const list =
-    document.getElementById(
-      "profileApplicationsList"
-    );
-
-  const auditionList =
-    document.getElementById(
-      "myApplicationsList"
-    );
-
-  const {
-    data:{user}
-  } =
-    await supabaseClient.auth.getUser();
-
-  if(!user)
-    return;
-
-  const {
-    data,
-    error
-  } =
-    await supabaseClient
-    .from("applications")
-    .select("*")
-    .eq(
-      "actor_id",
-      user.id
-    )
-    .order(
-      "created_at",
-      {ascending:false}
-    );
-
-  if(error){
-
-    if(list)
-      list.innerHTML =
-        "<div class='empty'>Unable to load applications.</div>";
-
-    if(auditionList)
-      auditionList.innerHTML =
-        "<div class='empty'>Unable to load applications.</div>";
-
-    return;
-  }
-
-  if(!data || data.length === 0){
-
-    const empty =
-      "<div class='empty'>You have not applied to any audition yet.</div>";
-
-    if(list)
-      list.innerHTML = empty;
-
-    if(auditionList)
-      auditionList.innerHTML = empty;
-
-    return;
-  }
-
-  const html =
-    data.map(
-      app => `
-
-      <div class="my-app-card">
-
-        <div class="status ${escapeHtml(
-          app.status || "Pending"
-        )}">
-
-          ${escapeHtml(
-            app.status || "Pending"
-          )}
-
-        </div>
-
-        <h3>
-          Application
-        </h3>
-
-        <p style="color:#ccc;">
-          <b>Name:</b>
-          ${escapeHtml(
-            app.full_name ||
-            "Not provided"
-          )}
-        </p>
-
-        <p style="color:#ccc;">
-          <b>Contact:</b>
-          ${escapeHtml(
-            app.contact ||
-            "Not provided"
-          )}
-        </p>
-
-        <p style="color:#aaa;font-size:13px;">
-          Application submitted successfully.
         </p>
 
       </div>
 
       `
     ).join("");
-
-  if(list)
-    list.innerHTML = html;
-
-  if(auditionList)
-    auditionList.innerHTML = html;
 }
 
 
@@ -2929,8 +2799,6 @@ function loadNotifications(data){
       "notificationsList"
     );
 
-  if(!list)
-    return;
 
   if(!data || data.length === 0){
 
@@ -2939,6 +2807,7 @@ function loadNotifications(data){
 
     return;
   }
+
 
   list.innerHTML =
     data.slice(0,10)
@@ -2984,6 +2853,7 @@ function closeNotifications(event){
   )
     return;
 
+
   document.getElementById(
     "notificationOverlay"
   ).classList.add("hidden");
@@ -3013,8 +2883,55 @@ function closeSettings(event){
   )
     return;
 
+
   document.getElementById(
     "settingsOverlay"
+  ).classList.add("hidden");
+}
+
+
+/* =====================================================
+   ACCOUNT
+===================================================== */
+
+async function showAccountInfo(){
+
+  closeSettings();
+
+  const {
+    data:{user}
+  } =
+    await supabaseClient.auth.getUser();
+
+
+  if(!user)
+    return;
+
+
+  document.getElementById(
+    "accountEmail"
+  ).innerText =
+    user.email || "Not available";
+
+
+  document.getElementById(
+    "accountOverlay"
+  ).classList.remove("hidden");
+}
+
+
+function closeAccount(event){
+
+  if(
+    event &&
+    event.target !==
+    document.getElementById("accountOverlay")
+  )
+    return;
+
+
+  document.getElementById(
+    "accountOverlay"
   ).classList.add("hidden");
 }
 
@@ -3033,15 +2950,9 @@ async function logout(){
   document.getElementById("loginPage")
     .classList.remove("hidden");
 
-  document.getElementById("email")
-    .value = "";
-
-  document.getElementById("password")
-    .value = "";
-
-  document.getElementById(
-    "authMessage"
-  ).innerText = "";
+  document.getElementById("email").value = "";
+  document.getElementById("password").value = "";
+  document.getElementById("authMessage").innerText = "";
 
   closeSettings();
 }
@@ -3054,26 +2965,11 @@ async function logout(){
 function escapeHtml(value){
 
   return String(value)
-    .replace(
-      /&/g,
-      "&amp;"
-    )
-    .replace(
-      /</g,
-      "&lt;"
-    )
-    .replace(
-      />/g,
-      "&gt;"
-    )
-    .replace(
-      /"/g,
-      "&quot;"
-    )
-    .replace(
-      /'/g,
-      "&#039;"
-    );
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
 }
 
 
@@ -3088,11 +2984,48 @@ async function checkUser(){
   } =
     await supabaseClient.auth.getUser();
 
+
   if(user){
 
     await startApp();
 
   }
+
+}
+
+
+/* =====================================================
+   PWA SERVICE WORKER
+===================================================== */
+
+if("serviceWorker" in navigator){
+
+  window.addEventListener(
+    "load",
+    function(){
+
+      navigator.serviceWorker
+        .register("/TMCC/sw.js")
+
+        .then(function(){
+
+          console.log(
+            "TMCC Service Worker Registered"
+          );
+
+        })
+
+        .catch(function(error){
+
+          console.error(
+            "TMCC Service Worker Error:",
+            error
+          );
+
+        });
+
+    }
+  );
 
 }
 
@@ -3106,4 +3039,4 @@ checkUser();
 </script>
 
 </body>
-      </html>
+  </html>
