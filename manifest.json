@@ -1,0 +1,19 @@
+{
+  "name": "TaniMan Casting Company",
+  "short_name": "TaniMan",
+  "description": "TaniMan Casting Company - Casting, Auditions and Actor Applications",
+  "start_url": "/TMCC/",
+  "scope": "/TMCC/",
+  "display": "standalone",
+  "background_color": "#101117",
+  "theme_color": "#101117",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
