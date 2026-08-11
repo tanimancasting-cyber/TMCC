@@ -1,7 +1,7 @@
 {
   "name": "TMCC",
   "short_name": "TMCC",
-  "description": "TaniMan Casting Company - Casting, Auditions and Actor Applications",
+  "description": "TaniMan Casting Company",
   "start_url": "/TMCC/",
   "scope": "/TMCC/",
   "display": "standalone",
