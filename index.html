@@ -7,7 +7,6 @@
 <meta name="viewport"
       content="width=device-width, initial-scale=1.0">
 
-<!-- TMCC PWA -->
 <link rel="manifest" href="/TMCC/manifest.json">
 
 <meta name="description"
@@ -499,60 +498,49 @@ label{
 
 <div id="loginPage" class="auth-page">
 
-  <div class="auth-box">
+<div class="auth-box">
 
-    <img
-      src="logo.png"
-      class="auth-logo"
-      alt="TMCC">
+<img src="logo.png" class="auth-logo" alt="TMCC">
 
-    <h2 id="authTitle">
-      Actor Login
-    </h2>
+<h2 id="authTitle">Actor Login</h2>
 
-    <input
-      id="email"
-      type="email"
-      placeholder="Email address">
+<input id="email"
+       type="email"
+       placeholder="Email address">
 
-    <input
-      id="password"
-      type="password"
-      placeholder="Password">
+<input id="password"
+       type="password"
+       placeholder="Password">
 
-    <div
-      id="forgotPassword"
-      class="forgot"
-      onclick="forgotPassword()">
+<div id="forgotPassword"
+     class="forgot"
+     onclick="forgotPassword()">
 
-      Forgot Password?
+Forgot Password?
 
-    </div>
+</div>
 
-    <button
-      class="btn"
-      id="authButton"
-      onclick="handleAuth()">
+<button class="btn"
+        id="authButton"
+        onclick="handleAuth()">
 
-      Login
+Login
 
-    </button>
+</button>
 
-    <button
-      class="btn btn-secondary"
-      onclick="toggleAuth()"
-      id="toggleButton">
+<button class="btn btn-secondary"
+        onclick="toggleAuth()"
+        id="toggleButton">
 
-      Create New Account
+Create New Account
 
-    </button>
+</button>
 
-    <div
-      id="authMessage"
-      class="message">
-    </div>
+<div id="authMessage"
+     class="message">
+</div>
 
-  </div>
+</div>
 
 </div>
 
@@ -563,371 +551,326 @@ label{
 
 <header class="header">
 
-  <div class="logo-wrap">
+<div class="logo-wrap">
 
-    <img
-      src="logo.png"
-      class="logo"
-      alt="TMCC">
+<img src="logo.png"
+     class="logo"
+     alt="TMCC">
 
-    <div class="brand">
+<div class="brand">
 
-      <div class="brand-name">
-        TMCC
-      </div>
+<div class="brand-name">
+TMCC
+</div>
 
-      <div class="brand-sub">
-        CASTING COMPANY
-      </div>
+<div class="brand-sub">
+CASTING COMPANY
+</div>
 
-    </div>
+</div>
 
-  </div>
+</div>
 
-  <div class="header-icons">
+<div class="header-icons">
 
-    <button
-      class="icon-btn"
-      onclick="openNotifications()">
+<button class="icon-btn"
+        onclick="openNotifications()">
+🔔
+</button>
 
-      🔔
+<button class="icon-btn"
+        onclick="openSettings()">
+⚙️
+</button>
 
-    </button>
-
-    <button
-      class="icon-btn"
-      onclick="openSettings()">
-
-      ⚙️
-
-    </button>
-
-  </div>
+</div>
 
 </header>
 
 
 <!-- HOME -->
 
-<section
-  id="homePage"
-  class="page">
+<section id="homePage"
+         class="page">
 
-  <div class="hero">
+<div class="hero">
 
-    <h1>
-      Welcome to
-      <span class="gold">
-        TMCC
-      </span>
-    </h1>
+<h1>
+Welcome to
+<span class="gold">
+TMCC
+</span>
+</h1>
 
-    <p>
-      Your gateway to professional casting
-      opportunities, auditions and actor profiles.
-    </p>
+<p>
+Your gateway to professional casting
+opportunities, auditions and actor profiles.
+</p>
 
-  </div>
+</div>
 
-  <h2 class="section-title">
-    Latest Auditions
-  </h2>
+<h2 class="section-title">
+Latest Auditions
+</h2>
 
-  <div id="homeUpdates">
+<div id="homeUpdates">
 
-    <div class="empty">
-      Loading auditions...
-    </div>
+<div class="empty">
+Loading auditions...
+</div>
 
-  </div>
+</div>
 
 </section>
 
 
 <!-- AUDITIONS -->
 
-<section
-  id="auditionsPage"
-  class="page hidden">
+<section id="auditionsPage"
+         class="page hidden">
 
-  <h2 class="section-title">
-    All Auditions
-  </h2>
+<h2 class="section-title">
+All Auditions
+</h2>
 
-  <div id="updatesList">
+<div id="updatesList">
 
-    <div class="empty">
-      Loading auditions...
-    </div>
+<div class="empty">
+Loading auditions...
+</div>
 
-  </div>
-
-
-  <!-- ADMIN POST -->
-
-  <div
-    id="adminPanel"
-    class="card admin-box hidden">
-
-    <div class="admin-label">
-      ADMIN PANEL
-    </div>
-
-    <h2>
-      Post New Audition
-    </h2>
-
-    <label>
-      Title
-    </label>
-
-    <input
-      id="update_title"
-      placeholder="AD Film Casting Call">
-
-    <label>
-      Description
-    </label>
-
-    <textarea
-      id="update_description"
-      placeholder="Write audition requirements...">
-    </textarea>
-
-    <label>
-      Audition Date
-    </label>
-
-    <input
-      id="update_date"
-      type="date">
-
-    <label>
-      Location
-    </label>
-
-    <input
-      id="update_location"
-      placeholder="Pune / Mumbai / Pan India">
-
-    <label>
-      Apply Link
-    </label>
-
-    <input
-      id="update_link"
-      type="url"
-      placeholder="Optional external link">
-
-    <label>
-      Audition Photo
-    </label>
-
-    <input
-      id="update_image"
-      type="file"
-      accept="image/*">
-
-    <button
-      class="btn"
-      onclick="publishUpdate()">
-
-      Publish Audition
-
-    </button>
-
-    <div
-      id="updateMessage"
-      class="message">
-    </div>
-
-  </div>
+</div>
 
 
-  <!-- ADMIN ACTORS -->
+<!-- ADMIN PANEL -->
 
-  <div
-    id="adminActors"
-    class="card hidden">
+<div id="adminPanel"
+     class="card admin-box hidden">
 
-    <div class="admin-label">
-      ADMIN
-    </div>
+<div class="admin-label">
+ADMIN PANEL
+</div>
 
-    <h2>
-      Registered Actors
-    </h2>
+<h2>
+Post New Audition
+</h2>
 
-    <div id="actorsList">
-      Loading actors...
-    </div>
+<label>Title</label>
 
-  </div>
+<input id="update_title"
+       placeholder="AD Film Casting Call">
+
+<label>Description</label>
+
+<textarea id="update_description"
+          placeholder="Write audition requirements...">
+</textarea>
+
+<label>Audition Date</label>
+
+<input id="update_date"
+       type="date">
+
+<label>Location</label>
+
+<input id="update_location"
+       placeholder="Pune / Mumbai / Pan India">
+
+<label>Apply Link</label>
+
+<input id="update_link"
+       type="url"
+       placeholder="Optional external link">
+
+<label>Audition Photo</label>
+
+<input id="update_image"
+       type="file"
+       accept="image/*">
+
+<button class="btn"
+        onclick="publishUpdate()">
+
+Publish Audition
+
+</button>
+
+<div id="updateMessage"
+     class="message">
+</div>
+
+</div>
 
 
-  <!-- ADMIN APPLICATIONS -->
+<!-- ADMIN ACTORS -->
 
-  <div
-    id="adminApplications"
-    class="card hidden">
+<div id="adminActors"
+     class="card hidden">
 
-    <div class="admin-label">
-      ADMIN
-    </div>
+<div class="admin-label">
+ADMIN
+</div>
 
-    <h2>
-      Applications
-    </h2>
+<h2>
+Registered Actors
+</h2>
 
-    <div id="applicationsList">
-      Loading applications...
-    </div>
+<div id="actorsList">
+Loading actors...
+</div>
 
-  </div>
+</div>
+
+
+<!-- ADMIN APPLICATIONS -->
+
+<div id="adminApplications"
+     class="card hidden">
+
+<div class="admin-label">
+ADMIN
+</div>
+
+<h2>
+Applications
+</h2>
+
+<div id="applicationsList">
+Loading applications...
+</div>
+
+</div>
 
 </section>
 
 
 <!-- PROFILE -->
 
-<section
-  id="profilePage"
-  class="page hidden">
+<section id="profilePage"
+         class="page hidden">
 
-  <div class="card">
+<div class="card">
 
-    <h2>
-      My Profile
-    </h2>
+<h2>
+My Profile
+</h2>
 
-    <div id="profilePhotoBox">
+<div id="profilePhotoBox">
 
-      <div
-        class="profile-photo-preview"
-        style="display:flex;align-items:center;justify-content:center;color:#999;">
+<div class="profile-photo-preview"
+     style="display:flex;align-items:center;justify-content:center;color:#999;">
 
-        Photo
+Photo
 
-      </div>
+</div>
 
-    </div>
+</div>
 
-    <label>
-      Profile Photo
-    </label>
+<label>
+Profile Photo
+</label>
 
-    <input
-      id="profile_photo"
-      type="file"
-      accept="image/*">
+<input id="profile_photo"
+       type="file"
+       accept="image/*">
 
-    <label>
-      Full Name
-    </label>
+<label>
+Full Name
+</label>
 
-    <input
-      id="full_name"
-      placeholder="Your full name">
+<input id="full_name"
+       placeholder="Your full name">
 
-    <label>
-      Age
-    </label>
+<label>
+Age
+</label>
 
-    <input
-      id="age"
-      type="number"
-      placeholder="Age">
+<input id="age"
+       type="number"
+       placeholder="Age">
 
-    <label>
-      Gender
-    </label>
+<label>
+Gender
+</label>
 
-    <select id="gender">
+<select id="gender">
 
-      <option value="">
-        Select Gender
-      </option>
+<option value="">
+Select Gender
+</option>
 
-      <option value="Male">
-        Male
-      </option>
+<option value="Male">
+Male
+</option>
 
-      <option value="Female">
-        Female
-      </option>
+<option value="Female">
+Female
+</option>
 
-      <option value="Other">
-        Other
-      </option>
+<option value="Other">
+Other
+</option>
 
-    </select>
+</select>
 
-    <label>
-      Height
-    </label>
+<label>
+Height
+</label>
 
-    <input
-      id="height"
-      placeholder="Example: 5'8">
+<input id="height"
+       placeholder="Example: 5'8">
 
-    <label>
-      Contact Number
-    </label>
+<label>
+Contact Number
+</label>
 
-    <input
-      id="contact"
-      type="tel"
-      placeholder="Contact number">
+<input id="contact"
+       type="tel"
+       placeholder="Contact number">
 
-    <label>
-      Current Location
-    </label>
+<label>
+Current Location
+</label>
 
-    <input
-      id="current_location"
-      placeholder="Current location">
+<input id="current_location"
+       placeholder="Current location">
 
-    <label>
-      Hobbies
-    </label>
+<label>
+Hobbies
+</label>
 
-    <textarea
-      id="hobbies"
-      placeholder="Your hobbies">
-    </textarea>
+<textarea id="hobbies"
+          placeholder="Your hobbies">
+</textarea>
 
-    <label>
-      Acting Experience
-    </label>
+<label>
+Acting Experience
+</label>
 
-    <textarea
-      id="experience"
-      placeholder="Your acting experience">
-    </textarea>
+<textarea id="experience"
+          placeholder="Your acting experience">
+</textarea>
 
-    <label>
-      Introduction Video URL
-    </label>
+<label>
+Introduction Video URL
+</label>
 
-    <input
-      id="intro_video_url"
-      type="url"
-      placeholder="YouTube / Drive / other video link">
+<input id="intro_video_url"
+       type="url"
+       placeholder="YouTube / Drive / other video link">
 
-    <button
-      class="btn"
-      onclick="saveProfile()">
+<button class="btn"
+        onclick="saveProfile()">
 
-      Save / Update Profile
+Save / Update Profile
 
-    </button>
+</button>
 
-    <div
-      id="profileMessage"
-      class="message">
-    </div>
+<div id="profileMessage"
+     class="message">
+</div>
 
-  </div>
+</div>
 
 </section>
 
@@ -936,44 +879,35 @@ label{
 
 <nav class="bottom-nav">
 
-  <div
-    id="navHome"
-    class="nav-item active"
-    onclick="showPage('home')">
+<div id="navHome"
+     class="nav-item active"
+     onclick="showPage('home')">
 
-    <span class="nav-icon">
-      ⌂
-    </span>
+<span class="nav-icon">⌂</span>
 
-    Home
+Home
 
-  </div>
+</div>
 
-  <div
-    id="navAuditions"
-    class="nav-item"
-    onclick="showPage('auditions')">
+<div id="navAuditions"
+     class="nav-item"
+     onclick="showPage('auditions')">
 
-    <span class="nav-icon">
-      🎬
-    </span>
+<span class="nav-icon">🎬</span>
 
-    Auditions
+Auditions
 
-  </div>
+</div>
 
-  <div
-    id="navProfile"
-    class="nav-item"
-    onclick="showPage('profile')">
+<div id="navProfile"
+     class="nav-item"
+     onclick="showPage('profile')">
 
-    <span class="nav-icon">
-      👤
-    </span>
+<span class="nav-icon">👤</span>
 
-    Profile
+Profile
 
-  </div>
+</div>
 
 </nav>
 
@@ -982,328 +916,285 @@ label{
 
 <!-- NOTIFICATIONS -->
 
-<div
-  id="notificationOverlay"
-  class="overlay hidden"
-  onclick="closeNotifications(event)">
+<div id="notificationOverlay"
+     class="overlay hidden"
+     onclick="closeNotifications(event)">
 
-  <div
-    class="sheet"
-    onclick="event.stopPropagation()">
+<div class="sheet"
+     onclick="event.stopPropagation()">
 
-    <button
-      class="close-btn"
-      onclick="closeNotifications()">
+<button class="close-btn"
+        onclick="closeNotifications()">
+×
+</button>
 
-      ×
+<div class="sheet-title">
+Notifications
+</div>
 
-    </button>
+<div id="notificationsList">
 
-    <div class="sheet-title">
-      Notifications
-    </div>
+<div class="empty">
+No new notifications.
+</div>
 
-    <div id="notificationsList">
+</div>
 
-      <div class="empty">
-        No new notifications.
-      </div>
+<button class="btn btn-secondary"
+        onclick="closeNotifications()">
 
-    </div>
+Close
 
-    <button
-      class="btn btn-secondary"
-      onclick="closeNotifications()">
+</button>
 
-      Close
-
-    </button>
-
-  </div>
+</div>
 
 </div>
 
 
 <!-- SETTINGS -->
 
-<div
-  id="settingsOverlay"
-  class="overlay hidden"
-  onclick="closeSettings(event)">
+<div id="settingsOverlay"
+     class="overlay hidden"
+     onclick="closeSettings(event)">
 
-  <div
-    class="sheet"
-    onclick="event.stopPropagation()">
+<div class="sheet"
+     onclick="event.stopPropagation()">
 
-    <button
-      class="close-btn"
-      onclick="closeSettings()">
+<button class="close-btn"
+        onclick="closeSettings()">
+×
+</button>
 
-      ×
+<div class="sheet-title">
+Settings
+</div>
 
-    </button>
+<div class="setting-item"
+     onclick="forgotPassword()">
 
-    <div class="sheet-title">
-      Settings
-    </div>
+<strong>
+🔐 Forgot Password
+</strong>
 
-    <div
-      class="setting-item"
-      onclick="forgotPassword()">
+<span>
+Send a password reset link to your email.
+</span>
 
-      <strong>
-        🔐 Forgot Password
-      </strong>
+</div>
 
-      <span>
-        Send a password reset link to your email.
-      </span>
+<div class="setting-item"
+     onclick="showAccountInfo()">
 
-    </div>
+<strong>
+👤 Account
+</strong>
 
-    <div
-      class="setting-item"
-      onclick="showAccountInfo()">
+<span>
+View your registered email address.
+</span>
 
-      <strong>
-        👤 Account
-      </strong>
+</div>
 
-      <span>
-        View your registered email address.
-      </span>
+<div class="setting-item"
+     onclick="closeSettings();showPage('profile')">
 
-    </div>
+<strong>
+✏️ Edit Profile
+</strong>
 
-    <div
-      class="setting-item"
-      onclick="closeSettings();showPage('profile')">
+<span>
+Update your actor profile and information.
+</span>
 
-      <strong>
-        ✏️ Edit Profile
-      </strong>
+</div>
 
-      <span>
-        Update your actor profile and information.
-      </span>
+<div class="setting-item"
+     onclick="logout()">
 
-    </div>
+<strong>
+🚪 Logout
+</strong>
 
-    <div
-      class="setting-item"
-      onclick="logout()">
+<span>
+Sign out from your account.
+</span>
 
-      <strong>
-        🚪 Logout
-      </strong>
+</div>
 
-      <span>
-        Sign out from your account.
-      </span>
+<button class="btn btn-secondary"
+        onclick="closeSettings()">
 
-    </div>
+Close
 
-    <button
-      class="btn btn-secondary"
-      onclick="closeSettings()">
+</button>
 
-      Close
-
-    </button>
-
-  </div>
+</div>
 
 </div>
 
 
-<!-- ACCOUNT MODAL -->
+<!-- ACCOUNT -->
 
-<div
-  id="accountOverlay"
-  class="overlay hidden"
-  onclick="closeAccount(event)">
+<div id="accountOverlay"
+     class="overlay hidden"
+     onclick="closeAccount(event)">
 
-  <div
-    class="sheet"
-    onclick="event.stopPropagation()">
+<div class="sheet"
+     onclick="event.stopPropagation()">
 
-    <button
-      class="close-btn"
-      onclick="closeAccount()">
+<button class="close-btn"
+        onclick="closeAccount()">
+×
+</button>
 
-      ×
+<div class="sheet-title">
+Account
+</div>
 
-    </button>
+<div class="card">
 
-    <div class="sheet-title">
-      Account
-    </div>
+<label>
+Registered Email
+</label>
 
-    <div class="card">
+<div id="accountEmail"
+     style="font-size:17px;margin-top:10px;word-break:break-all;">
+</div>
 
-      <label>
-        Registered Email
-      </label>
+</div>
 
-      <div
-        id="accountEmail"
-        style="font-size:17px;margin-top:10px;word-break:break-all;">
-      </div>
+<button class="btn btn-secondary"
+        onclick="closeAccount()">
 
-    </div>
+Close
 
-    <button
-      class="btn btn-secondary"
-      onclick="closeAccount()">
+</button>
 
-      Close
-
-    </button>
-
-  </div>
+</div>
 
 </div>
 
 
 <!-- FORGOT PASSWORD -->
 
-<div
-  id="forgotOverlay"
-  class="overlay hidden"
-  onclick="closeForgot(event)">
+<div id="forgotOverlay"
+     class="overlay hidden"
+     onclick="closeForgot(event)">
 
-  <div
-    class="sheet"
-    onclick="event.stopPropagation()">
+<div class="sheet"
+     onclick="event.stopPropagation()">
 
-    <button
-      class="close-btn"
-      onclick="closeForgot()">
+<button class="close-btn"
+        onclick="closeForgot()">
+×
+</button>
 
-      ×
+<div class="sheet-title">
+Reset Password
+</div>
 
-    </button>
+<p style="color:#aaa;line-height:1.5;">
+Enter your registered email address and we will send you a password reset link.
+</p>
 
-    <div class="sheet-title">
-      Reset Password
-    </div>
+<label>
+Email Address
+</label>
 
-    <p style="color:#aaa;line-height:1.5;">
-      Enter your registered email address and we will send you a password reset link.
-    </p>
+<input id="resetEmail"
+       type="email"
+       placeholder="your@email.com">
 
-    <label>
-      Email Address
-    </label>
+<button class="btn"
+        onclick="sendResetEmail()">
 
-    <input
-      id="resetEmail"
-      type="email"
-      placeholder="your@email.com">
+Send Reset Link
 
-    <button
-      class="btn"
-      onclick="sendResetEmail()">
+</button>
 
-      Send Reset Link
+<div id="resetMessage"
+     class="message">
+</div>
 
-    </button>
-
-    <div
-      id="resetMessage"
-      class="message">
-    </div>
-
-  </div>
+</div>
 
 </div>
 
 
-<!-- APPLICATION FORM -->
+<!-- APPLICATION -->
 
-<div
-  id="applicationOverlay"
-  class="overlay hidden"
-  onclick="closeApplication(event)">
+<div id="applicationOverlay"
+     class="overlay hidden"
+     onclick="closeApplication(event)">
 
-  <div
-    class="sheet"
-    onclick="event.stopPropagation()">
+<div class="sheet"
+     onclick="event.stopPropagation()">
 
-    <button
-      class="close-btn"
-      onclick="closeApplication()">
+<button class="close-btn"
+        onclick="closeApplication()">
+×
+</button>
 
-      ×
+<div class="sheet-title">
+Casting Application
+</div>
 
-    </button>
+<p style="color:#aaa;line-height:1.5;">
+Submit your application for this audition.
+</p>
 
-    <div class="sheet-title">
-      Casting Application
-    </div>
+<label>
+Full Name
+</label>
 
-    <p style="color:#aaa;line-height:1.5;">
-      Submit your application for this audition.
-    </p>
+<input id="application_name"
+       placeholder="Your full name">
 
-    <label>
-      Full Name
-    </label>
+<label>
+Age
+</label>
 
-    <input
-      id="application_name"
-      placeholder="Your full name">
+<input id="application_age"
+       type="number"
+       placeholder="Your age">
 
-    <label>
-      Age
-    </label>
+<label>
+Contact Number
+</label>
 
-    <input
-      id="application_age"
-      type="number"
-      placeholder="Your age">
+<input id="application_contact"
+       type="tel"
+       placeholder="Contact number">
 
-    <label>
-      Contact Number
-    </label>
+<label>
+Introduction Video URL
+</label>
 
-    <input
-      id="application_contact"
-      type="tel"
-      placeholder="Contact number">
+<input id="application_video"
+       type="url"
+       placeholder="YouTube / Drive video link">
 
-    <label>
-      Introduction Video URL
-    </label>
+<label>
+Message / Experience
+</label>
 
-    <input
-      id="application_video"
-      type="url"
-      placeholder="YouTube / Drive video link">
+<textarea id="application_message"
+          placeholder="Tell us about yourself...">
+</textarea>
 
-    <label>
-      Message / Experience
-    </label>
+<button class="btn"
+        onclick="submitApplication()">
 
-    <textarea
-      id="application_message"
-      placeholder="Tell us about yourself...">
-    </textarea>
+Submit Application
 
-    <button
-      class="btn"
-      onclick="submitApplication()">
+</button>
 
-      Submit Application
+<div id="applicationMessage"
+     class="message">
+</div>
 
-    </button>
-
-    <div
-      id="applicationMessage"
-      class="message">
-    </div>
-
-  </div>
+</div>
 
 </div>
 
@@ -1508,7 +1399,6 @@ async function sendResetEmail(){
 
   message.innerText =
     "Password reset link sent successfully.";
-
 }
 
 
@@ -1539,11 +1429,8 @@ async function startApp(){
     .classList.remove("hidden");
 
   await loadProfile();
-
   await loadUpdates();
-
   await loadActors();
-
   await loadApplications();
 
   showPage("home");
@@ -2023,7 +1910,7 @@ function auditionHTML(update,isAdmin){
 
 
 /* =====================================================
-   APPLICATION FORM
+   APPLICATION
 ===================================================== */
 
 async function openApplication(updateId){
@@ -2092,10 +1979,6 @@ function closeApplication(event){
     .classList.add("hidden");
 }
 
-
-/* =====================================================
-   SUBMIT APPLICATION
-===================================================== */
 
 async function submitApplication(){
 
@@ -2387,7 +2270,7 @@ async function publishUpdate(){
 
 
 /* =====================================================
-   EDIT UPDATE
+   EDIT / DELETE
 ===================================================== */
 
 async function editUpdate(id){
@@ -2441,10 +2324,6 @@ async function editUpdate(id){
 }
 
 
-/* =====================================================
-   DELETE UPDATE
-===================================================== */
-
 async function deleteUpdate(id){
 
   if(
@@ -2482,7 +2361,7 @@ async function deleteUpdate(id){
 
 
 /* =====================================================
-   LOAD ACTORS
+   ACTORS
 ===================================================== */
 
 async function loadActors(){
@@ -2645,7 +2524,7 @@ async function loadActors(){
 
 
 /* =====================================================
-   LOAD APPLICATIONS
+   APPLICATIONS
 ===================================================== */
 
 async function loadApplications(){
@@ -3039,4 +2918,4 @@ checkUser();
 </script>
 
 </body>
-  </html>
+      </html>
