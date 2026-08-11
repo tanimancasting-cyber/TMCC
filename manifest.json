@@ -1,33 +1,26 @@
 {
-  "id": "./",
   "name": "TaniMan Casting Company",
   "short_name": "TMCC",
-  "description": "TaniMan Casting Company - Professional casting auditions and actor applications.",
-  "lang": "en",
-  "dir": "ltr",
-
-  "start_url": "./",
-  "scope": "./",
-
+  "description": "TaniMan Casting Company - Professional Casting and Audition Platform",
+  "start_url": "/TMCC/",
+  "scope": "/TMCC/",
   "display": "standalone",
-  "orientation": "portrait",
-
   "background_color": "#101117",
-  "theme_color": "#C99A4A",
-
+  "theme_color": "#101117",
+  "orientation": "portrait-primary",
+  "lang": "en",
   "icons": [
     {
-      "src": "./logo-512.png",
+      "src": "/TMCC/logo-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/TMCC/logo-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     }
-  ],
-
-  "categories": [
-    "entertainment",
-    "business"
-  ],
-
-  "prefer_related_applications": false
+  ]
 }
