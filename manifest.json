@@ -11,10 +11,6 @@
   "orientation": "portrait-primary",
   "theme_color": "#101117",
   "background_color": "#101117",
-  "categories": [
-    "entertainment",
-    "business"
-  ],
   "icons": [
     {
       "src": "./icon-192.png",
@@ -26,7 +22,7 @@
       "src": "./icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any"
+      "purpose": "any maskable"
     }
   ]
 }
