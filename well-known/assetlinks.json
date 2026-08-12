@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.tanimancasting.tmcc",
+      "sha256_cert_fingerprints": [
+        "81:A0:E3:BB:64:BF:BD:56:1B:5F:83:FD:72:71:49:A6:83:4F:62:A6:70:19:2B:17:69:A9:2B:5F:AE:78:5E:54"
+      ]
+    }
+  }
+]
